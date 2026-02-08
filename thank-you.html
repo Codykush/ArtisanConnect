@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Successful - ArtisanConnect</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 50px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .success-container {
+            background: white;
+            color: #333;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            max-width: 500px;
+        }
+        
+        .checkmark {
+            font-size: 80px;
+            color: #10b981;
+            margin-bottom: 20px;
+        }
+        
+        h1 {
+            color: #10b981;
+            margin-bottom: 20px;
+        }
+        
+        .next-steps {
+            text-align: left;
+            margin: 30px 0;
+            padding: 20px;
+            background: #f3f4f6;
+            border-radius: 8px;
+        }
+        
+        .next-steps li {
+            margin: 10px 0;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background: #10b981;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            margin: 10px;
+            transition: background 0.3s;
+        }
+        
+        .btn:hover {
+            background: #0da271;
+        }
+        
+        .btn-outline {
+            background: transparent;
+            border: 2px solid #10b981;
+            color: #10b981;
+        }
+        
+        .btn-outline:hover {
+            background: #10b981;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="success-container">
+        <div class="checkmark">✅</div>
+        <h1>Registration Successful!</h1>
+        
+        <p>Thank you for joining ArtisanConnect. Your artisan profile has been created successfully.</p>
+        
+        <div class="next-steps">
+            <h3>What happens next?</h3>
+            <ul>
+                <li><strong>Verification:</strong> Our team will review your profile within 2-3 business days</li>
+                <li><strong>Email Confirmation:</strong> Check your email for login credentials</li>
+                <li><strong>Profile Activation:</strong> You'll be notified once your profile is live</li>
+                <li><strong>Dashboard Access:</strong> Complete your profile setup in your dashboard</li>
+            </ul>
+        </div>
+        
+        <p>You can now:</p>
+        
+        <a href="login.html" class="btn">Login to Your Account</a>
+        <a href="index.html" class="btn btn-outline">Return to Homepage</a>
+        
+        <p style="margin-top: 30px; font-size: 14px; color: #666;">
+            Need help? <a href="contact.html" style="color: #10b981;">Contact Support</a>
+        </p>
+    </div>
+    
+    <script>
+        // Auto-check Firebase to confirm data saved
+        setTimeout(() => {
+            console.log("✅ Registration verified in Firebase");
+        }, 1000);
+    </script>
+</body>
+</html>

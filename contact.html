@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - ArtisanConnect</title>
+    <meta name="description" content="Get in touch with ArtisanConnect team. We're here to help you connect with artisans and preserve traditional crafts.">
+    
+    <!-- Fonts & Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="css/contact.css">
+    
+    <!-- Google Maps API -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap" async defer></script>
+</head>
+<body class="contact-page">
+    <!-- Background Circles -->
+    <div class="bg-circles">
+        <div class="bg-circle circle-1"></div>
+        <div class="bg-circle circle-2"></div>
+        <div class="bg-circle circle-3"></div>
+    </div>
+
+    <!-- Professional Header -->
+    <header class="main-header">
+        <div class="container header-container">
+            <a href="index.html" class="logo">
+                <div class="logo-icon">AC</div>
+                <div class="logo-text">
+                    <h1>Artisan<span>Connect</span></h1>
+                    <p>Bridging Crafts and Community</p>
+                </div>
+            </a>
+
+            <nav class="main-nav" id="mainNav">
+                <ul>
+                    <li><a href="index.html" class="nav-link"><i class="fas fa-home"></i> Home</a></li>
+                    <li><a href="artisans.html" class="nav-link"><i class="fas fa-search"></i> Discover Artisans</a></li>
+                    <li><a href="about.html" class="nav-link"><i class="fas fa-bullseye"></i> Our Mission</a></li>
+                    <li><a href="join-community.html" class="nav-link"><i class="fas fa-user-plus"></i> Join Community</a></li>
+                    <li><a href="contact.html" class="nav-link active"><i class="fas fa-envelope"></i> Contact</a></li>
+                </ul>
+            </nav>
+
+            <div class="header-actions">
+                <a href="login.html" class="btn btn-outline">
+                    <i class="fas fa-sign-in-alt"></i> Login
+                </a>
+                <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="page-hero">
+        <div class="container">
+            <div class="hero-content animate-fade-in">
+                <h1 class="hero-title">Contact Us</h1>
+                <p class="hero-subtitle">
+                    We're here to help you connect with artisans and preserve traditional crafts. 
+                    Reach out to us with any questions or feedback.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Info Cards -->
+    <section class="contact-sections">
+        <div class="container">
+            <div class="contact-info-cards">
+                <!-- Support Card -->
+                <div class="contact-info-card animate-fade-in delay-100">
+                    <div class="contact-icon">
+                        <i class="fas fa-headset"></i>
+                    </div>
+                    <h3>Customer Support</h3>
+                    <p>Get help with your account, orders, or general inquiries</p>
+                    <div class="contact-details">
+                        <div class="contact-detail">
+                            <i class="fas fa-envelope"></i>
+                            <span>support@artisanconnect.com</span>
+                        </div>
+                        <div class="contact-detail">
+                            <i class="fas fa-phone"></i>
+                            <span>+91 98765 43210</span>
+                        </div>
+                        <div class="contact-detail">
+                            <i class="fas fa-clock"></i>
+                            <span>Mon-Sat: 9AM-7PM IST</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Business Card -->
+                <div class="contact-info-card animate-fade-in delay-200">
+                    <div class="contact-icon">
+                        <i class="fas fa-handshake"></i>
+                    </div>
+                    <h3>Business Inquiries</h3>
+                    <p>For partnerships, collaborations, and enterprise solutions</p>
+                    <div class="contact-details">
+                        <div class="contact-detail">
+                            <i class="fas fa-envelope"></i>
+                            <span>partnerships@artisanconnect.com</span>
+                        </div>
+                        <div class="contact-detail">
+                            <i class="fas fa-briefcase"></i>
+                            <span>Corporate Solutions</span>
+                        </div>
+                        <div class="contact-detail">
+                            <i class="fas fa-calendar-alt"></i>
+                            <span>Schedule a Meeting</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Artisan Support Card -->
+                <div class="contact-info-card animate-fade-in delay-300">
+                    <div class="contact-icon">
+                        <i class="fas fa-palette"></i>
+                    </div>
+                    <h3>Artisan Support</h3>
+                    <p>Help for artisans joining or already on our platform</p>
+                    <div class="contact-details">
+                        <div class="contact-detail">
+                            <i class="fas fa-envelope"></i>
+                            <span>artisans@

@@ -1,0 +1,205 @@
+/* Admin Dashboard Styles */
+.admin-page {
+    background: var(--neutral-50);
+}
+
+.admin-header {
+    background: var(--neutral-100);
+    border-bottom: 1px solid var(--neutral-300);
+    padding: 1rem 0;
+}
+
+.admin-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.admin-menu {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.admin-menu a {
+    color: var(--neutral-700);
+    text-decoration: none;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.admin-menu a:hover {
+    color: var(--primary-500);
+}
+
+.admin-container {
+    display: flex;
+    min-height: calc(100vh - 70px);
+}
+
+.admin-sidebar {
+    width: 250px;
+    background: white;
+    border-right: 1px solid var(--neutral-300);
+    padding: 2rem 0;
+}
+
+.sidebar-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.sidebar-nav a {
+    padding: 0.75rem 1.5rem;
+    color: var(--neutral-700);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    transition: all var(--transition);
+}
+
+.sidebar-nav a:hover {
+    background: var(--neutral-100);
+    color: var(--primary-500);
+}
+
+.sidebar-nav a.active {
+    background: var(--primary-50);
+    color: var(--primary-500);
+    border-left: 3px solid var(--primary-500);
+}
+
+.sidebar-nav .badge {
+    margin-left: auto;
+    background: var(--primary-500);
+    color: white;
+    font-size: 0.75rem;
+    padding: 0.25rem 0.5rem;
+    border-radius: 1rem;
+}
+
+.admin-content {
+    flex: 1;
+    padding: 2rem;
+}
+
+.admin-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+    margin: 2rem 0;
+}
+
+.stat-card {
+    background: white;
+    padding: 1.5rem;
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--neutral-300);
+    box-shadow: var(--shadow-sm);
+}
+
+.stat-card h3 {
+    font-size: 0.875rem;
+    color: var(--neutral-600);
+    margin-bottom: 0.5rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.stat-card .stat-number {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--primary-500);
+}
+
+.admin-section {
+    background: white;
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--neutral-300);
+    padding: 1.5rem;
+    margin-top: 2rem;
+}
+
+.admin-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+}
+
+.admin-table th {
+    text-align: left;
+    padding: 1rem;
+    background: var(--neutral-100);
+    border-bottom: 2px solid var(--neutral-300);
+    font-weight: 600;
+    color: var(--neutral-700);
+}
+
+.admin-table td {
+    padding: 1rem;
+    border-bottom: 1px solid var(--neutral-200);
+}
+
+.admin-table tr:hover {
+    background: var(--neutral-50);
+}
+
+.status-badge {
+    padding: 0.25rem 0.75rem;
+    border-radius: 1rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.status-active {
+    background: var(--secondary-100);
+    color: var(--secondary-700);
+}
+
+.status-pending {
+    background: var(--accent-100);
+    color: var(--accent-700);
+}
+
+.status-inactive {
+    background: var(--neutral-200);
+    color: var(--neutral-600);
+}
+
+.table-actions {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.btn-icon {
+    width: 32px;
+    height: 32px;
+    border-radius: var(--radius);
+    border: none;
+    background: var(--neutral-100);
+    color: var(--neutral-700);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all var(--transition);
+}
+
+.btn-icon:hover {
+    background: var(--neutral-200);
+    transform: translateY(-1px);
+}
+
+.btn-icon.edit:hover {
+    background: var(--primary-100);
+    color: var(--primary-500);
+}
+
+.btn-icon.delete:hover {
+    background: var(--accent-100);
+    color: var(--accent-500);
+}

@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - ArtisanConnect</title>
+    
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/animations.css">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Background Circles -->
+    <div class="bg-circles">
+        <div class="bg-circle circle-1"></div>
+        <div class="bg-circle circle-2"></div>
+        <div class="bg-circle circle-3"></div>
+    </div>
+
+    <!-- Simple Header -->
+    <header class="main-header" style="background: white;">
+        <div class="container">
+            <a href="index.html" class="logo">
+                <div class="logo-icon">AC</div>
+                <div class="logo-text">
+                    <h1>Artisan<span>Connect</span></h1>
+                    <p>Preserving Traditional Crafts</p>
+                </div>
+            </a>
+        </div>
+    </header>
+
+    <!-- Login Section -->
+    <section class="section" style="min-height: 80vh; display: flex; align-items: center;">
+        <div class="container" style="max-width: 500px;">
+            <div class="login-card animate-fade-in">
+                <div class="login-header text-center">
+                    <h2>Welcome Back</h2>
+                    <p>Login to your ArtisanConnect account</p>
+                </div>
+
+                <form id="loginForm" class="login-form">
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <div class="input-with-icon">
+                            <i class="fas fa-envelope"></i>
+                            <input type="email" id="email" placeholder="Enter your email" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <div class="input-with-icon">
+                            <i class="fas fa-lock"></i>
+                            <input type="password" id="password" placeholder="Enter your password" required>
+                        </div>
+                    </div>
+
+                    <div class="form-options">
+                        <label class="checkbox">
+                            <input type="checkbox" id="remember">
+                            <span>Remember me</span>
+                        </label>
+                        <a href="forgot-password.html" class="forgot-link">Forgot password?</a>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary btn-full">
+                        <i class="fas fa-sign-in-alt"></i> Login
+                    </button>
+
+                    <div class="divider">
+                        <span>or continue with</span>
+                    </div>
+
+                    <button type="button" class="btn btn-outline btn-full" id="googleLogin">
+                        <i class="fab fa-google"></i> Google
+                    </button>
+
+                    <div class="login-footer text-center">
+                        <p>Don't have an account? <a href="join-community.html" class="link">Sign up here</a></p>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Simple Footer -->
+    <footer class="main-footer" style="background: var(--neutral-50);">
+        <div class="container">
+            <div class="footer-bottom text-center">
+                <p>&copy; <span id="currentYear">2024</span> ArtisanConnect. All rights reserved.</p>
+                <div class="footer-bottom-links">
+                    <a href="privacy-policy.html">Privacy Policy</a>
+                    <a href="terms-of-service.html">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript Files -->
+    <script src="js/components.js"></script>
+    <script>
+        // Set current year
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+        
+        // Handle login form
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            
+            // Simple validation
+            if (!email || !password) {
+                Components.showNotification('Please fill in all fields', 'error');
+                return;
+            }
+            
+            // For now, just redirect to home page
+            Components.showNotification('Login successful!', 'success');
+            setTimeout(() => {
+                window.location.href = 'index.html';
+            }, 1000);
+        });
+        
+        // Google login
+        document.getElementById('googleLogin').addEventListener('click', function() {
+            Components.showNotification('Google login coming soon!', 'info');
+        });
+    </script>
+</body>
+</html>

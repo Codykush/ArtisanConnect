@@ -1,0 +1,1078 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rajesh Kumar - Master Pottery Artisan | ArtisanConnect</title>
+    <meta name="description" content="Connect with Rajesh Kumar, a master pottery artisan from Delhi. View his portfolio, book workshops, and explore traditional pottery craftsmanship.">
+    
+    <!-- Fonts & Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+    <!-- Leaflet CSS for Interactive Maps -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+    crossorigin=""/>
+    
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="css/profile.css">
+    
+    <!-- Google Fonts for Icons -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+</head>
+<body class="profile-page">
+    <!-- Background Circles -->
+    <div class="bg-circles">
+        <div class="bg-circle circle-1"></div>
+        <div class="bg-circle circle-2"></div>
+        <div class="bg-circle circle-3"></div>
+    </div>
+
+    <!-- Professional Header -->
+    <header class="main-header">
+        <div class="container header-container">
+            <a href="index.html" class="logo">
+                <div class="logo-icon">AC</div>
+                <div class="logo-text">
+                    <h1>Artisan<span>Connect</span></h1>
+                    <p>Bridging Crafts and Community</p>
+                </div>
+            </a>
+
+            <nav class="main-nav" id="mainNav">
+                <ul>
+                    <li><a href="index.html" class="nav-link"><i class="fas fa-home"></i> Home</a></li>
+                    <li><a href="artisans.html" class="nav-link"><i class="fas fa-search"></i> Discover Artisans</a></li>
+                    <li><a href="about.html" class="nav-link"><i class="fas fa-bullseye"></i> Our Mission</a></li>
+                    <li><a href="join-community.html" class="btn-cta"><i class="fas fa-user-plus"></i> Join Community</a></li>
+                </ul>
+            </nav>
+
+            <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Quick Action Bar -->
+    <div class="quick-action-bar">
+        <div class="container">
+            <div class="quick-actions">
+               
+                </a>
+                <a href="#gallery" class="quick-action">
+                    <i class="fas fa-images"></i>
+                    <span>Gallery</span>
+                </a>
+                <a href="#products" class="quick-action">
+                    <i class="fas fa-shopping-bag"></i>
+                    <span>Products</span>
+                </a>
+                <a href="#location" class="quick-action">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>Location</span>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <main>
+        <!-- Profile Header -->
+        <section class="profile-hero">
+            <div class="container">
+                <div class="profile-hero-content animate-fade-in">
+                    <!-- Back Button -->
+                    <a href="artisans.html" class="btn-back-floating">
+                        <i class="fas fa-arrow-left"></i>
+                        <span>Back to Artisans</span>
+                    </a>
+                    
+                    <!-- Profile Header -->
+                    <div class="profile-header-card">
+                        <div class="profile-avatar-container">
+                            <div class="profile-avatar-frame">
+                                <img src="/images/image.png" 
+                                     alt="Rajesh Kumar - Master Pottery Artisan" 
+                                     class="profile-avatar"
+                                     loading="lazy">
+                                <div class="online-status" title="Currently Available">
+                                    <i class="fas fa-circle"></i>
+                                </div>
+                            </div>
+                            <div class="profile-badges">
+                                <span class="badge featured" data-tooltip="Featured Artisan">
+                                    <i class="fas fa-star"></i> Featured
+                                </span>
+                                <span class="badge verified" data-tooltip="Verified Artisan">
+                                    <i class="fas fa-check-circle"></i> Verified
+                                </span>
+                                <span class="badge premium" data-tooltip="Premium Member">
+                                    <i class="fas fa-crown"></i> Premium
+                                </span>
+                            </div>
+                        </div>
+                        
+                        <div class="profile-info-main">
+                            <div class="profile-title-section">
+                                <h1 class="profile-name">Rajesh Kumar</h1>
+                                <div class="profile-tags">
+                                    <span class="profile-tag craft-tag">
+                                        <i class="fas fa-palette"></i> Pottery & Ceramics
+                                    </span>
+                                    <span class="profile-tag location-tag">
+                                        <i class="fas fa-map-marker-alt"></i> Delhi, India
+                                    </span>
+                                    <span class="profile-tag experience-tag">
+                                        <i class="fas fa-award"></i> 15+ Years Experience
+                                    </span>
+                                </div>
+                            </div>
+                            
+                            <div class="profile-stats-interactive">
+                                <div class="stat-circle">
+                                    <div class="stat-value" data-count="42">0</div>
+                                    <div class="stat-label">Reviews</div>
+                                </div>
+                                <div class="stat-circle">
+                                    <div class="stat-value" data-count="4.8">0.0</div>
+                                    <div class="stat-label">Rating</div>
+                                    <div class="rating-stars">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star-half-alt"></i>
+                                    </div>
+                                </div>
+                                <div class="stat-circle">
+                                    <div class="stat-value" data-count="156">0</div>
+                                    <div class="stat-label">Products Sold</div>
+                                </div>
+                                <div class="stat-circle">
+                                    <div class="stat-value" data-count="24">0</div>
+                                    <div class="stat-label">Workshops</div>
+                                </div>
+                            </div>
+                            
+                            <div class="profile-bio-preview">
+                                <p>"Traditional pottery artist with expertise in terracotta and ceramic arts. Passionate about preserving ancient techniques while creating modern masterpieces."</p>
+                            </div>
+                            
+                            <div class="profile-actions-main">
+                                <button class="btn btn-primary btn-action-lg" id="contactArtisanMain">
+                                    <i class="fas fa-comment-dots"></i> Message Artisan
+                                </button>
+                                <button class="btn btn-secondary btn-action-lg" id="bookWorkshopMain">
+                                    <i class="fas fa-calendar-check"></i> Book Workshop
+                                </button>
+                                <div class="action-group">
+                                    <button class="btn btn-icon" id="saveArtisanBtn" title="Save to Favorites">
+                                        <i class="far fa-heart"></i>
+                                    </button>
+                                    <button class="btn btn-icon" id="shareProfileBtn" title="Share Profile">
+                                        <i class="fas fa-share-alt"></i>
+                                    </button>
+                                    <button class="btn btn-icon" id="reportProfileBtn" title="Report Profile">
+                                        <i class="fas fa-flag"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Main Content Grid -->
+        <div class="profile-main-grid">
+            <div class="container">
+                <div class="grid-container">
+                    <!-- Left Column -->
+                    <div class="left-column">
+                        <!-- About Section -->
+                        <section class="card-section animate-fade-in delay-200" id="about">
+                            <div class="section-header">
+                                <h2><i class="fas fa-user-circle"></i> About the Artisan</h2>
+                                <div class="section-actions">
+                                    <button class="btn btn-sm btn-outline" id="readMoreBtn">
+                                        <i class="fas fa-book-open"></i> Read Full Story
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="card-content">
+                                <div class="about-content">
+                                    <p class="lead">Rajesh Kumar comes from a long lineage of potters in Delhi, with family roots tracing back to traditional terracotta artisans from Rajasthan.</p>
+                                    
+                                    <div class="timeline">
+                                        <div class="timeline-item">
+                                            <div class="timeline-marker">
+                                                <i class="fas fa-graduation-cap"></i>
+                                            </div>
+                                            <div class="timeline-content">
+                                                <h4>Early Learning</h4>
+                                                <p>Started learning pottery at age 12 from his grandfather, a renowned pottery master.</p>
+                                                <span class="timeline-date">2005 - 2010</span>
+                                            </div>
+                                        </div>
+                                        <div class="timeline-item">
+                                            <div class="timeline-marker">
+                                                <i class="fas fa-award"></i>
+                                            </div>
+                                            <div class="timeline-content">
+                                                <h4>Professional Journey</h4>
+                                                <p>Established own studio and began participating in national exhibitions.</p>
+                                                <span class="timeline-date">2010 - 2015</span>
+                                            </div>
+                                        </div>
+                                        <div class="timeline-item">
+                                            <div class="timeline-marker">
+                                                <i class="fas fa-star"></i>
+                                            </div>
+                                            <div class="timeline-content">
+                                                <h4>Recognition</h4>
+                                                <p>Featured in multiple art magazines and received National Craft Award.</p>
+                                                <span class="timeline-date">2015 - Present</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <blockquote class="artisan-quote">
+                                        <i class="fas fa-quote-left quote-icon"></i>
+                                        <p>"For me, pottery is not just a craft - it's meditation. Each piece carries the energy and story of its creation."</p>
+                                        <footer>— Rajesh Kumar</footer>
+                                    </blockquote>
+                                </div>
+                                
+                                <!-- Skills & Expertise -->
+                                <div class="skills-section">
+                                    <h3><i class="fas fa-tools"></i> Skills & Expertise</h3>
+                                    <div class="skills-grid">
+                                        <div class="skill-category">
+                                            <h4>Traditional Techniques</h4>
+                                            <div class="skill-meter">
+                                                <div class="skill-name">Terracotta Pottery</div>
+                                                <div class="skill-level" data-level="95">
+                                                    <div class="skill-progress" style="width: 95%"></div>
+                                                </div>
+                                            </div>
+                                            <div class="skill-meter">
+                                                <div class="skill-name">Wheel Throwing</div>
+                                                <div class="skill-level" data-level="90">
+                                                    <div class="skill-progress" style="width: 90%"></div>
+                                                </div>
+                                            </div>
+                                            <div class="skill-meter">
+                                                <div class="skill-name">Hand Building</div>
+                                                <div class="skill-level" data-level="88">
+                                                    <div class="skill-progress" style="width: 88%"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="skill-category">
+                                            <h4>Advanced Techniques</h4>
+                                            <div class="skill-meter">
+                                                <div class="skill-name">Glaze Chemistry</div>
+                                                <div class="skill-level" data-level="85">
+                                                    <div class="skill-progress" style="width: 85%"></div>
+                                                </div>
+                                            </div>
+                                            <div class="skill-meter">
+                                                <div class="skill-name">Raku Firing</div>
+                                                <div class="skill-level" data-level="80">
+                                                    <div class="skill-progress" style="width: 80%"></div>
+                                                </div>
+                                            </div>
+                                            <div class="skill-meter">
+                                                <div class="skill-name">Ceramic Sculpture</div>
+                                                <div class="skill-level" data-level="92">
+                                                    <div class="skill-progress" style="width: 92%"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+
+                        <!-- Gallery Section -->
+                        <section class="card-section animate-fade-in delay-300" id="gallery">
+                            <div class="section-header">
+                                <h2><i class="fas fa-images"></i> Artisan's Gallery</h2>
+                                <div class="section-actions">
+                                    <span class="gallery-count">12 Photos</span>
+                                    <button class="btn btn-sm btn-outline" id="viewFullGalleryBtn">
+                                        <i class="fas fa-expand-alt"></i> View All
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="card-content">
+                                <div class="gallery-grid-interactive">
+                                    <div class="gallery-main">
+                                        <div class="main-image-container">
+                                            <img src="/14.jpg" 
+                                                 alt="Traditional Terracotta Pottery"
+                                                 id="mainGalleryImage"
+                                                 loading="lazy">
+                                            <div class="image-overlay">
+                                                <button class="btn btn-icon-light" id="zoomImageBtn">
+                                                    <i class="fas fa-search-plus"></i>
+                                                </button>
+                                                <button class="btn btn-icon-light" id="likeImageBtn">
+                                                    <i class="far fa-heart"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="gallery-thumbnails">
+                                        <div class="thumbnail active" data-image="https://images.unsplash.com/photo-1574732011388-8e9d1ef55d93?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80">
+                                            <img src="/12.jpg" 
+                                                 alt="Terracotta Pottery"
+                                                 loading="lazy">
+                                        </div>
+                                        <div class="thumbnail" data-image="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80">
+                                            <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80" 
+                                                 alt="Pottery Workshop"
+                                                 loading="lazy">
+                                        </div>
+                                        <div class="thumbnail" data-image="https://images.unsplash.com/photo-1542744095-fcf48d80b0fd?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80">
+                                            <img src="https://images.unsplash.com/photo-1542744095-fcf48d80b0fd?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80" 
+                                                 alt="Ceramic Sculptures"
+                                                 loading="lazy">
+                                        </div>
+                                        <div class="thumbnail" data-image="https://images.unsplash.com/photo-1571900670724-8e0eaa2a3b3a?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80">
+                                            <img src="/11.jpg" 
+                                                 alt="Hand-thrown Ceramics"
+                                                 loading="lazy">
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="gallery-info">
+                                        <div class="image-info">
+                                            <h3 id="currentImageTitle">Traditional Terracotta Pottery</h3>
+                                            <p id="currentImageDesc">Handcrafted using ancient techniques passed down through generations.</p>
+                                            <div class="image-stats">
+                                                <span class="image-stat">
+                                                    <i class="fas fa-eye"></i> 245 views
+                                                </span>
+                                                <span class="image-stat">
+                                                    <i class="fas fa-heart"></i> 42 likes
+                                                </span>
+                                                <span class="image-stat">
+                                                    <i class="fas fa-calendar"></i> 2 weeks ago
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+
+                        <!-- Reviews Section -->
+                        <section class="card-section animate-fade-in delay-400" id="reviews">
+                            <div class="section-header">
+                                <h2><i class="fas fa-star"></i> Customer Reviews</h2>
+                                <div class="section-actions">
+                                    <div class="average-rating-display">
+                                        <div class="rating-big">4.8</div>
+                                        <div class="rating-details">
+                                            <div class="stars">
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star-half-alt"></i>
+                                            </div>
+                                            <span class="rating-count">42 reviews</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-content">
+                                <div class="rating-summary">
+                                    <div class="rating-bars">
+                                        <div class="rating-bar">
+                                            <span class="rating-label">5 Stars</span>
+                                            <div class="rating-progress">
+                                                <div class="progress-fill" style="width: 70%"></div>
+                                            </div>
+                                            <span class="rating-percentage">70%</span>
+                                        </div>
+                                        <div class="rating-bar">
+                                            <span class="rating-label">4 Stars</span>
+                                            <div class="rating-progress">
+                                                <div class="progress-fill" style="width: 20%"></div>
+                                            </div>
+                                            <span class="rating-percentage">20%</span>
+                                        </div>
+                                        <div class="rating-bar">
+                                            <span class="rating-label">3 Stars</span>
+                                            <div class="rating-progress">
+                                                <div class="progress-fill" style="width: 8%"></div>
+                                            </div>
+                                            <span class="rating-percentage">8%</span>
+                                        </div>
+                                        <div class="rating-bar">
+                                            <span class="rating-label">2 Stars</span>
+                                            <div class="rating-progress">
+                                                <div class="progress-fill" style="width: 2%"></div>
+                                            </div>
+                                            <span class="rating-percentage">2%</span>
+                                        </div>
+                                        <div class="rating-bar">
+                                            <span class="rating-label">1 Star</span>
+                                            <div class="rating-progress">
+                                                <div class="progress-fill" style="width: 0%"></div>
+                                            </div>
+                                            <span class="rating-percentage">0%</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="reviews-list-interactive">
+                                    <!-- Review 1 -->
+                                    <div class="review-card">
+                                        <div class="reviewer-info">
+                                            <div class="reviewer-avatar">
+                                                <img src="/10.jpg" 
+                                                     alt="Anjali Mehta"
+                                                     loading="lazy">
+                                                <div class="reviewer-verified">
+                                                    <i class="fas fa-check-circle"></i>
+                                                </div>
+                                            </div>
+                                            <div class="reviewer-details">
+                                                <h4>Anjali Mehta</h4>
+                                                <div class="reviewer-rating">
+                                                    <div class="stars">
+                                                        <i class="fas fa-star"></i>
+                                                        <i class="fas fa-star"></i>
+                                                        <i class="fas fa-star"></i>
+                                                        <i class="fas fa-star"></i>
+                                                        <i class="fas fa-star"></i>
+                                                    </div>
+                                                    <span class="review-date">2 weeks ago</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="review-content">
+                                            <p>"Beautiful terracotta pots! Rajesh's craftsmanship is exceptional. The attention to detail and traditional techniques make each piece unique."</p>
+                                            <div class="review-helpful">
+                                                <span class="helpful-count">
+                                                    <i class="fas fa-thumbs-up"></i> 12 helpful
+                                                </span>
+                                                <button class="btn-helpful" data-review="1">
+                                                    <i class="far fa-thumbs-up"></i> Helpful
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- Review 2 -->
+                                    <div class="review-card">
+                                        <div class="reviewer-info">
+                                            <div class="reviewer-avatar">
+                                                <img src="/11.jpg" 
+                                                     alt="Rahul Sharma"
+                                                     loading="lazy">
+                                            </div>
+                                            <div class="reviewer-details">
+                                                <h4>Rahul Sharma</h4>
+                                                <div class="reviewer-rating">
+                                                    <div class="stars">
+                                                        <i class="fas fa-star"></i>
+                                                        <i class="fas fa-star"></i>
+                                                        <i class="fas fa-star"></i>
+                                                        <i class="fas fa-star"></i>
+                                                        <i class="fas fa-star-half-alt"></i>
+                                                    </div>
+                                                    <span class="review-date">1 month ago</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="review-content">
+                                            <p>"Ordered a custom ceramic dinner set. The quality exceeded my expectations. Rajesh was very professional and kept me updated throughout the process."</p>
+                                            <div class="review-images">
+                                                <div class="review-image">
+                                                    <img src="/11.jpg" 
+                                                         alt="Custom Dinner Set"
+                                                         loading="lazy">
+                                                </div>
+                                            </div>
+                                            <div class="review-helpful">
+                                                <span class="helpful-count">
+                                                    <i class="fas fa-thumbs-up"></i> 8 helpful
+                                                </span>
+                                                <button class="btn-helpful" data-review="2">
+                                                    <i class="far fa-thumbs-up"></i> Helpful
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="review-actions">
+                                    <button class="btn btn-outline btn-full" id="loadMoreReviews">
+                                        <i class="fas fa-comments"></i> Load More Reviews
+                                    </button>
+                                    <button class="btn btn-primary" id="writeReviewBtn">
+                                        <i class="fas fa-pen"></i> Write a Review
+                                    </button>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+
+                    <!-- Right Column -->
+                    <div class="right-column">
+                        <!-- Contact Card -->
+                        <div class="sticky-sidebar">
+                            <!-- Contact Widget -->
+                            <div class="widget-card animate-fade-in delay-200">
+                                <div class="widget-header">
+                                    <h3><i class="fas fa-envelope"></i> Contact Artisan</h3>
+                                    <span class="online-badge">
+                                        <i class="fas fa-circle"></i> Available Now
+                                    </span>
+                                </div>
+                                <div class="widget-content">
+                                    <div class="contact-methods">
+                                        <div class="contact-method">
+                                            <div class="method-icon">
+                                                <i class="fas fa-envelope"></i>
+                                            </div>
+                                            <div class="method-info">
+                                                <h4>Email</h4>
+                                                <p>rajesh.pottery@artisanconnect.com</p>
+                                            </div>
+                                            <button class="btn btn-sm btn-outline" id="copyEmailBtn">
+                                                <i class="fas fa-copy"></i>
+                                            </button>
+                                        </div>
+                                        
+                                        <div class="contact-method">
+                                            <div class="method-icon">
+                                                <i class="fas fa-phone"></i>
+                                            </div>
+                                            <div class="method-info">
+                                                <h4>Phone</h4>
+                                                <p>+91 98765 43210</p>
+                                            </div>
+                                            <button class="btn btn-sm btn-outline" id="callBtn">
+                                                <i class="fas fa-phone"></i>
+                                            </button>
+                                        </div>
+                                        
+                                        <div class="contact-method">
+                                            <div class="method-icon">
+                                                <i class="fab fa-whatsapp"></i>
+                                            </div>
+                                            <div class="method-info">
+                                                <h4>WhatsApp</h4>
+                                                <p>Available for quick messages</p>
+                                            </div>
+                                            <button class="btn btn-sm btn-success" id="whatsappBtn">
+                                                <i class="fab fa-whatsapp"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="availability-widget">
+                                        <h4><i class="fas fa-clock"></i> Availability</h4>
+                                        <div class="availability-slots">
+                                            <div class="slot-day active">
+                                                <span class="day">Mon</span>
+                                                <span class="time">10AM-6PM</span>
+                                            </div>
+                                            <div class="slot-day active">
+                                                <span class="day">Tue</span>
+                                                <span class="time">10AM-6PM</span>
+                                            </div>
+                                            <div class="slot-day active">
+                                                <span class="day">Wed</span>
+                                                <span class="time">10AM-6PM</span>
+                                            </div>
+                                            <div class="slot-day active">
+                                                <span class="day">Thu</span>
+                                                <span class="time">10AM-6PM</span>
+                                            </div>
+                                            <div class="slot-day active">
+                                                <span class="day">Fri</span>
+                                                <span class="time">10AM-6PM</span>
+                                            </div>
+                                            <div class="slot-day">
+                                                <span class="day">Sat</span>
+                                                <span class="time">By Appointment</span>
+                                            </div>
+                                            <div class="slot-day">
+                                                <span class="day">Sun</span>
+                                                <span class="time">Closed</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="contact-form-widget">
+                                        <h4><i class="fas fa-paper-plane"></i> Quick Message</h4>
+                                        <form id="quickContactForm">
+                                            <div class="form-group">
+                                                <textarea id="quickMessage" 
+                                                          placeholder="Hi Rajesh, I'm interested in..." 
+                                                          rows="3"
+                                                          maxlength="200"></textarea>
+                                                <div class="char-count">0/200</div>
+                                            </div>
+                                            <button type="submit" class="btn btn-primary btn-full">
+                                                <i class="fas fa-paper-plane"></i> Send Message
+                                            </button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Location Widget -->
+                            <div class="widget-card animate-fade-in delay-300" id="location">
+                                <div class="widget-header">
+                                    <h3><i class="fas fa-map-marker-alt"></i> Studio Location</h3>
+                                    <button class="btn btn-sm btn-outline" id="getDirectionsBtn">
+                                        <i class="fas fa-directions"></i> Directions
+                                    </button>
+                                </div>
+                                <div class="widget-content">
+                                    <div class="location-details">
+                                        <h4>Rajesh Kumar Pottery Studio</h4>
+                                        <p class="location-address">
+                                            <i class="fas fa-map-pin"></i>
+                                            C-24, Pottery Lane, Chandni Chowk, Delhi - 110006
+                                        </p>
+                                        <div class="location-features">
+                                            <span class="location-feature">
+                                                <i class="fas fa-parking"></i> Parking Available
+                                            </span>
+                                            <span class="location-feature">
+                                                <i class="fas fa-wheelchair"></i> Wheelchair Access
+                                            </span>
+                                            <span class="location-feature">
+                                                <i class="fas fa-wifi"></i> Free WiFi
+                                            </span>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="interactive-map" id="artisanMap">
+                                        <!-- Map will be loaded here -->
+                                        <div class="map-placeholder">
+                                            <i class="fas fa-map-marked-alt fa-3x"></i>
+                                            <p>Interactive Map Loading...</p>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="location-actions">
+                                        <button class="btn btn-sm btn-outline" id="saveLocationBtn">
+                                            <i class="fas fa-bookmark"></i> Save Location
+                                        </button>
+                                        <button class="btn btn-sm btn-outline" id="bookVisitBtn">
+                                            <i class="fas fa-calendar-alt"></i> Book Studio Visit
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Products Widget -->
+                            <div class="widget-card animate-fade-in delay-400" id="products">
+                                <div class="widget-header">
+                                    <h3><i class="fas fa-shopping-bag"></i> Featured Products</h3>
+                                    <a href="#" class="btn btn-sm btn-outline">
+                                        <i class="fas fa-store"></i> View Shop
+                                    </a>
+                                </div>
+                                <div class="widget-content">
+                                    <div class="products-carousel">
+                                        <!-- Product 1 -->
+                                        <div class="product-card">
+                                            <div class="product-image">
+                                                <img src="/9.jpg" 
+                                                     alt="Traditional Terracotta Matka"
+                                                     loading="lazy">
+                                                <div class="product-badge bestseller">
+                                                    <i class="fas fa-fire"></i> Bestseller
+                                                </div>
+                                            </div>
+                                            <div class="product-info">
+                                                <h4>Terracotta Matka</h4>
+                                                <p class="product-price">₹1,200</p>
+                                                <div class="product-rating">
+                                                    <div class="stars">
+                                                        <i class="fas fa-star"></i>
+                                                        <i class="fas fa-star"></i>
+                                                        <i class="fas fa-star"></i>
+                                                        <i class="fas fa-star"></i>
+                                                        <i class="fas fa-star-half-alt"></i>
+                                                    </div>
+                                                    <span class="rating-count">(42)</span>
+                                                </div>
+                                                <button class="btn btn-sm btn-primary btn-block">
+                                                    <i class="fas fa-shopping-cart"></i> Add to Cart
+                                                </button>
+                                            </div>
+                                        </div>
+                                        
+                                        <!-- Product 2 -->
+                                        <div class="product-card">
+                                            <div class="product-image">
+                                                <img src="/12.jpg" 
+                                                     alt="Ceramic Dinner Set"
+                                                     loading="lazy">
+                                            </div>
+                                            <div class="product-info">
+                                                <h4>Ceramic Dinner Set</h4>
+                                                <p class="product-price">₹3,500</p>
+                                                <div class="product-rating">
+                                                    <div class="stars">
+                                                        <i class="fas fa-star"></i>
+                                                        <i class="fas fa-star"></i>
+                                                        <i class="fas fa-star"></i>
+                                                        <i class="fas fa-star"></i>
+                                                        <i class="fas fa-star"></i>
+                                                    </div>
+                                                    <span class="rating-count">(28)</span>
+                                                </div>
+                                                <button class="btn btn-sm btn-primary btn-block">
+                                                    <i class="fas fa-shopping-cart"></i> Add to Cart
+                                                </button>
+                                            </div>
+                                        </div>
+                                        
+                                        <!-- Product 3 -->
+                                        <div class="product-card">
+                                            <div class="product-image">
+                                                <img src="/13.jpg" 
+                                                     alt="Decorative Sculpture"
+                                                     loading="lazy">
+                                            </div>
+                                            <div class="product-info">
+                                                <h4>Ceramic Sculpture</h4>
+                                                <p class="product-price">₹2,800</p>
+                                                <div class="product-rating">
+                                                    <div class="stars">
+                                                        <i class="fas fa-star"></i>
+                                                        <i class="fas fa-star"></i>
+                                                        <i class="fas fa-star"></i>
+                                                        <i class="fas fa-star"></i>
+                                                        <i class="far fa-star"></i>
+                                                    </div>
+                                                    <span class="rating-count">(15)</span>
+                                                </div>
+                                                <button class="btn btn-sm btn-primary btn-block">
+                                                    <i class="fas fa-shopping-cart"></i> Add to Cart
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="products-nav">
+                                        <button class="btn btn-icon" id="prevProduct">
+                                            <i class="fas fa-chevron-left"></i>
+                                        </button>
+                                        <div class="product-dots">
+                                            <span class="dot active"></span>
+                                            <span class="dot"></span>
+                                            <span class="dot"></span>
+                                        </div>
+                                        <button class="btn btn-icon" id="nextProduct">
+                                            <i class="fas fa-chevron-right"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Workshops Widget -->
+                            <div class="widget-card animate-fade-in delay-500">
+                                <div class="widget-header">
+                                    <h3><i class="fas fa-graduation-cap"></i> Upcoming Workshops</h3>
+                                    <button class="btn btn-sm btn-outline" id="viewAllWorkshops">
+                                        <i class="fas fa-calendar"></i> View All
+                                    </button>
+                                </div>
+                                <div class="widget-content">
+                                    <div class="workshop-card featured">
+                                        <div class="workshop-header">
+                                            <h4>Beginner's Pottery Workshop</h4>
+                                            <span class="workshop-badge">
+                                                <i class="fas fa-bolt"></i> Fast Filling
+                                            </span>
+                                        </div>
+                                        <div class="workshop-details">
+                                            <div class="workshop-date">
+                                                <i class="fas fa-calendar"></i>
+                                                <span>March 15, 2024</span>
+                                            </div>
+                                            <div class="workshop-time">
+                                                <i class="fas fa-clock"></i>
+                                                <span>10:00 AM - 2:00 PM</span>
+                                            </div>
+                                            <div class="workshop-price">
+                                                <i class="fas fa-rupee-sign"></i>
+                                                <span>₹1,500 per person</span>
+                                            </div>
+                                            <div class="workshop-slots">
+                                                <i class="fas fa-users"></i>
+                                                <span>8 slots remaining</span>
+                                            </div>
+                                        </div>
+                                        <button class="btn btn-primary btn-block" id="bookWorkshopBtn">
+                                            <i class="fas fa-ticket-alt"></i> Book Now
+                                        </button>
+                                    </div>
+                                    
+                                    <div class="workshop-card">
+                                        <div class="workshop-header">
+                                            <h4>Advanced Ceramics Class</h4>
+                                        </div>
+                                        <div class="workshop-details">
+                                            <div class="workshop-date">
+                                                <i class="fas fa-calendar"></i>
+                                                <span>March 22, 2024</span>
+                                            </div>
+                                            <div class="workshop-price">
+                                                <i class="fas fa-rupee-sign"></i>
+                                                <span>₹2,500 per person</span>
+                                            </div>
+                                            <div class="workshop-slots">
+                                                <i class="fas fa-users"></i>
+                                                <span>12 slots available</span>
+                                            </div>
+                                        </div>
+                                        <button class="btn btn-outline btn-block">
+                                            <i class="fas fa-info-circle"></i> Learn More
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+
+                             
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Call to Action -->
+        <section class="profile-cta">
+            <div class="container">
+                <div class="cta-card">
+                    <div class="cta-content">
+                        <h2>Ready to Connect with Rajesh?</h2>
+                        <p>Start your journey into traditional pottery craftsmanship today</p>
+                        <div class="cta-buttons-group">
+                            <button class="btn btn-primary btn-lg" id="finalContactBtn">
+                                <i class="fas fa-comment-dots"></i> Send Message
+                            </button>
+                            <button class="btn btn-secondary btn-lg" id="finalBookBtn">
+                                <i class="fas fa-calendar-check"></i> Book Workshop
+                            </button>
+                            <button class="btn btn-outline btn-lg" id="finalVisitBtn">
+                                <i class="fas fa-map-marker-alt"></i> Plan Studio Visit
+                            </button>
+                        </div>
+                    </div>
+                    <div class="cta-image">
+                        <img src="/13.jpg" 
+                             alt="Pottery Workshop Experience"
+                             loading="lazy">
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Professional Footer -->
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-col">
+                    <div class="logo mb-3">
+                        <div class="logo-icon">AC</div>
+                        <div class="logo-text">
+                            <h1><span>ArtisanConnect</span></h1>
+                        </div>
+                    </div>
+                    <p>Bridging traditional artisans with modern consumers.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-link" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+                        <li><a href="artisans.html"><i class="fas fa-search"></i> Discover Artisans</a></li>
+                        <li><a href="about.html"><i class="fas fa-bullseye"></i> Our Mission</a></li>
+                        <li><a href="join-community.html"><i class="fas fa-user-plus"></i> Join Community</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Craft Categories</h4>
+                    <ul class="footer-links">
+                        <li><a href="#"><i class="fas fa-palette"></i> Pottery</a></li>
+                        <li><a href="#"><i class="fas fa-tshirt"></i> Textiles</a></li>
+                        <li><a href="#"><i class="fas fa-gem"></i> Jewelry</a></li>
+                        <li><a href="#"><i class="fas fa-tree"></i> Woodwork</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Support</h4>
+                    <ul class="footer-links">
+                        <li><a href="#"><i class="fas fa-question-circle"></i> Help Center</a></li>
+                        <li><a href="#"><i class="fas fa-shield-alt"></i> Safety Guidelines</a></li>
+                        <li><a href="#"><i class="fas fa-file-alt"></i> Terms of Service</a></li>
+                        <li><a href="#"><i class="fas fa-lock"></i> Privacy Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; <span id="currentYear"></span> ArtisanConnect. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- All Modals -->
+    
+    <!-- Contact Modal -->
+    <div class="modal" id="contactModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Contact Rajesh Kumar</h3>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="contactForm">
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="contactName">Your Name *</label>
+                            <input type="text" id="contactName" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="contactEmail">Email Address *</label>
+                            <input type="email" id="contactEmail" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="contactPhone">Phone Number</label>
+                            <input type="tel" id="contactPhone" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="contactPurpose">Purpose *</label>
+                            <select id="contactPurpose" class="form-control" required>
+                                <option value="">Select a purpose</option>
+                                <option value="general">General Inquiry</option>
+                                <option value="commission">Custom Commission</option>
+                                <option value="workshop">Workshop Inquiry</option>
+                                <option value="collaboration">Collaboration</option>
+                                <option value="purchase">Purchase Inquiry</option>
+                            </select>
+                        </div>
+                        <div class="form-group full-width">
+                            <label for="contactMessage">Message *</label>
+                            <textarea id="contactMessage" class="form-control" rows="5" required></textarea>
+                        </div>
+                    </div>
+                    <div class="form-actions">
+                        <button type="button" class="btn btn-outline" id="cancelContact">Cancel</button>
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-paper-plane"></i> Send Message
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Booking Modal -->
+    <div class="modal" id="bookingModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Book Workshop</h3>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <!-- Booking form will be loaded here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Image Lightbox -->
+    <div class="lightbox" id="imageLightbox">
+        <div class="lightbox-content">
+            <button class="lightbox-close">&times;</button>
+            <div class="lightbox-image-container">
+                <img src="" alt="" id="lightboxImage">
+                <div class="lightbox-controls">
+                    <button class="lightbox-control prev">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <button class="lightbox-control next">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="lightbox-info">
+                <h3 id="lightboxTitle"></h3>
+                <p id="lightboxDescription"></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Success Toast -->
+    <div class="toast" id="successToast">
+        <div class="toast-content">
+            <i class="fas fa-check-circle"></i>
+            <span class="toast-message">Action completed successfully!</span>
+        </div>
+    </div>
+
+    <!-- JavaScript Libraries -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+    integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+    crossorigin=""></script>
+    
+    <!-- JavaScript Files -->
+    <script src="js/main.js"></script>
+    <script src="js/profile.js"></script>
+    
+    <script>
+        // Set current year
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+        
+        // Initialize mobile menu
+        const menuToggle = document.getElementById('menuToggle');
+        const mainNav = document.getElementById('mainNav');
+        
+        if (menuToggle && mainNav) {
+            menuToggle.addEventListener('click', function() {
+                this.classList.toggle('active');
+                mainNav.classList.toggle('active');
+            });
+            
+            // Close mobile menu when clicking on a link
+            const navLinks = mainNav.querySelectorAll('.nav-link, .btn-cta');
+            navLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    menuToggle.classList.remove('active');
+                    mainNav.classList.remove('active');
+                });
+            });
+        }
+    </script>
+</body>
+</html>

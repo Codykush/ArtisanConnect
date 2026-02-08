@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Simple Firebase Test</title>
+</head>
+<body>
+    <h1>Test Firebase Directly</h1>
+    
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.0/firebase-app.js";
+        import { 
+            getFirestore, 
+            doc, 
+            setDoc, 
+            addDoc, 
+            collection,
+            updateDoc 
+        } from "https://www.gstatic.com/firebasejs/9.6.0/firebase-firestore.js";
+        import { 
+            getAuth, 
+            createUserWithEmailAndPassword 
+        } from "https://www.gstatic.com/firebasejs/9.6.0/firebase-auth.js";
+        
+        const firebaseConfig = {
+            apiKey: "AIzaSyBLEppI5BvI-8zBzQ-OCDjE8N5nhmpuP6E",
+            authDomain: "artisanconnect-5fff7.firebaseapp.com",
+            projectId: "artisanconnect-5fff7",
+            storageBucket: "artisanconnect-5fff7.firebasestorage.app",
+            messagingSenderId: "1041150969303",
+            appId: "1:1041150969303:web:30c8756d068f7a196c3792",
+            measurementId: "G-PW96DZ42D2"
+        };
+        
+        async function testDirect() {
+            console.clear();
+            console.log("🚀 Direct Firebase Test");
+            
+            try {
+                // Initialize
+                const app = initializeApp(firebaseConfig);
+                const db = getFirestore(app);
+                const auth = getAuth(app);
+                
+                console.log("✅ Firebase initialized");
+                
+                // Create user
+                const email = `direct_test_${Date.now()}@test.com`;
+                const password = "Test@123";
+                
+                console.log("Creating user:", email);
+                const userCred = await createUserWithEmailAndPassword(auth, email, password);
+                const userId = userCred.user.uid;
+                console.log("✅ User created:", userId);
+                
+                // Save to Firestore
+                console.log("Saving to Firestore...");
+                await setDoc(doc(db, "users", userId), {
+                    uid: userId,
+                    email: email,
+                    name: "Direct Test User",
+                    role: "test",
+                    time: new Date().toISOString()
+                });
+                console.log("✅ Saved to Firestore");
+                
+                alert("✅ SUCCESS!\nCheck Firebase Console for data.");
+                
+            } catch (error) {
+                console.error("❌ Error:", error);
+                alert("Error: " + error.message);
+            }
+        }
+        
+        // Run test on load
+        testDirect();
+    </script>
+    
+    <button onclick="testDirect()">Run Test Again</button>
+</body>
+</html>

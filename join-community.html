@@ -3,142 +3,667 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Join Our Community - ArtisanConnect</title>
+    <title>Join Our Community | ArtisanConnect</title>
+    <meta name="description" content="Join ArtisanConnect as an artisan or supporter. Be part of our movement to preserve traditional crafts.">
+    
+    <!-- Fonts & Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- CSS Files -->
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/animations.css">
     <link rel="stylesheet" href="css/join-community.css">
 </head>
-<body>
+<body class="join-page">
+    <!-- Background Circles -->
+    <div class="bg-circles">
+        <div class="bg-circle circle-1"></div>
+        <div class="bg-circle circle-2"></div>
+        <div class="bg-circle circle-3"></div>
+    </div>
+
+    <!-- Professional Header -->
     <header class="main-header">
-        <div class="container">
+        <div class="container header-container">
             <a href="index.html" class="logo">
-                <img src="images/logo.png" alt="ArtisanConnect Logo">
+                <div class="logo-icon">AC</div>
+                <div class="logo-text">
+                    <h1>Artisan<span>Connect</span></h1>
+                    <p>Bridging Crafts and Community</p>
+                </div>
             </a>
-            <nav>
+
+            <nav class="main-nav" id="mainNav">
                 <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="artisans.html">Discover Artisans</a></li>
-                    <li><a href="about.html">Our Mission</a></li>
-                    <li><a href="join-community.html" class="btn-cta">Join Community</a></li>
+                    <li><a href="index.html" class="nav-link"><i class="fas fa-home"></i> Home</a></li>
+                    <li><a href="artisans.html" class="nav-link"><i class="fas fa-search"></i> Discover Artisans</a></li>
+                    <li><a href="about.html" class="nav-link"><i class="fas fa-bullseye"></i> Our Mission</a></li>
+                    <li><a href="join-community.html" class="nav-link active"><i class="fas fa-user-plus"></i> Join Community</a></li>
                 </ul>
             </nav>
+
+            <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
         </div>
     </header>
 
     <main>
-        <section class="join-hero">
+        <!-- Hero Section -->
+        <section class="page-hero join-hero">
             <div class="container">
-                <h1>Join Our Growing Community</h1>
-                <p>Connect with fellow artisans, share your craft, and grow your business with ArtisanConnect. Whether you're an artist, crafter, or supporter, there's a place for you here.</p>
+                <div class="hero-content text-center animate-fade-in">
+                    <h1 class="hero-title">Join Our <span class="highlight">Growing Community</span></h1>
+                    <p class="hero-subtitle">
+                        Connect with fellow artisans, share your craft, and grow your business. 
+                        Whether you're an artist, crafter, or supporter, there's a place for you here.
+                    </p>
+                </div>
             </div>
         </section>
 
-        <div class="join-container">
-            <div class="join-cards">
-                <div class="join-card">
-                    <div class="join-icon">
-                        <i class="fas fa-hands-helping"></i>
+        <!-- Community Stats -->
+        <section class="stats-section">
+            <div class="container">
+                <div class="stats-grid grid-4">
+                    <div class="stat-card text-center animate-fade-in delay-200">
+                        <div class="stat-number">500+</div>
+                        <div class="stat-label">Active Artisans</div>
                     </div>
-                    <h3>For Artisans</h3>
-                    <p>Showcase your work, connect with customers, and grow your business in our supportive community of makers and creators.</p>
-                    <a href="#artisan-form" class="btn-join">Join as Artisan</a>
-                </div>
-
-                <div class="join-card">
-                    <div class="join-icon">
-                        <i class="fas fa-heart"></i>
+                    <div class="stat-card text-center animate-fade-in delay-300">
+                        <div class="stat-number">10,000+</div>
+                        <div class="stat-label">Community Members</div>
                     </div>
-                    <h3>For Supporters</h3>
-                    <p>Discover unique handmade products, connect with artisans, and support traditional crafts and local communities.</p>
-                    <a href="#supporter-form" class="btn-join btn-outline">Join as Supporter</a>
+                    <div class="stat-card text-center animate-fade-in delay-400">
+                        <div class="stat-number">50+</div>
+                        <div class="stat-label">Craft Categories</div>
+                    </div>
+                    <div class="stat-card text-center animate-fade-in delay-500">
+                        <div class="stat-number">15+</div>
+                        <div class="stat-label">Indian States</div>
+                    </div>
                 </div>
             </div>
+        </section>
 
-            <section class="join-form-section" id="artisan-form">
-                <h2 style="text-align: center; margin-bottom: 40px;">Join as an Artisan</h2>
-                <form id="artisanJoinForm">
-                    <div class="form-group">
-                        <label for="name">Full Name</label>
-                        <input type="text" id="name" class="form-control" required>
+        <!-- Choice Section -->
+        <section class="choice-section">
+            <div class="container">
+                <div class="section-header text-center animate-fade-in">
+                    <h2>How Would You Like to <span class="text-gradient">Join?</span></h2>
+                    <p class="section-subtitle">
+                        Choose your path to become part of our community
+                    </p>
+                </div>
+
+                <div class="choice-cards">
+                    <!-- Artisan Card -->
+                    <div class="choice-card artisan-choice animate-fade-in delay-200">
+                        <div class="choice-icon">
+                            <i class="fas fa-palette"></i>
+                        </div>
+                        <h3>Join as Artisan</h3>
+                        <p class="choice-description">
+                            Showcase your work, connect with customers, and grow your business 
+                            in our supportive community of makers and creators.
+                        </p>
+                        <div class="choice-benefits">
+                            <h4>Benefits:</h4>
+                            <ul>
+                                <li><i class="fas fa-check"></i> Free profile listing</li>
+                                <li><i class="fas fa-check"></i> Direct customer connections</li>
+                                <li><i class="fas fa-check"></i> Marketing & promotion</li>
+                                <li><i class="fas fa-check"></i> Workshop opportunities</li>
+                                <li><i class="fas fa-check"></i> Community support</li>
+                            </ul>
+                        </div>
+                        <button class="btn btn-primary btn-lg choice-select" data-type="artisan">
+                            <i class="fas fa-user-craft"></i> Join as Artisan
+                        </button>
                     </div>
 
-                    <div class="form-group">
-                        <label for="email">Email Address</label>
-                        <input type="email" id="email" class="form-control" required>
+                    <!-- Supporter Card -->
+                    <div class="choice-card supporter-choice animate-fade-in delay-300">
+                        <div class="choice-icon">
+                            <i class="fas fa-heart"></i>
+                        </div>
+                        <h3>Join as Supporter</h3>
+                        <p class="choice-description">
+                            Discover unique handmade products, connect with artisans, 
+                            and support traditional crafts and local communities.
+                        </p>
+                        <div class="choice-benefits">
+                            <h4>Benefits:</h4>
+                            <ul>
+                                <li><i class="fas fa-check"></i> Exclusive artisan access</li>
+                                <li><i class="fas fa-check"></i> Early product access</li>
+                                <li><i class="fas fa-check"></i> Workshop invitations</li>
+                                <li><i class="fas fa-check"></i> Community events</li>
+                                <li><i class="fas fa-check"></i> Impact tracking</li>
+                            </ul>
+                        </div>
+                        <button class="btn btn-secondary btn-lg choice-select" data-type="supporter">
+                            <i class="fas fa-hands-helping"></i> Join as Supporter
+                        </button>
                     </div>
+                </div>
 
-                    <div class="form-group">
-                        <label for="craft">Your Craft/Art Form</label>
-                        <input type="text" id="craft" class="form-control" required>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="experience">Years of Experience</label>
-                        <input type="number" id="experience" class="form-control" min="0" required>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="portfolio">Portfolio/Website (Optional)</label>
-                        <input type="url" id="portfolio" class="form-control">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="message">Tell us about yourself and your work</label>
-                        <textarea id="message" class="form-control" required></textarea>
-                    </div>
-
-                    <div class="form-group" style="text-align: center;">
-                        <button type="submit" class="btn-join" style="border: none; cursor: pointer;">Submit Application</button>
-                    </div>
-                </form>
-            </section>
-
-            <div class="form-footer">
-                <p>Have questions about joining? <a href="mailto:community@artisanconnect.com">Contact our team</a></p>
+                <!-- Both Option -->
+                <div class="both-option text-center animate-fade-in delay-400">
+                    <p class="lead">Want to experience both?</p>
+                    <button class="btn btn-outline" id="bothOptions">
+                        <i class="fas fa-users"></i> Explore Both Options
+                    </button>
+                </div>
             </div>
-        </div>
+        </section>
+
+        <!-- Forms Section -->
+        <section class="forms-section" id="formsSection">
+            <div class="container">
+                <!-- Artisan Form -->
+                <div class="form-container" id="artisanForm" style="display: none;">
+                    <div class="form-header">
+                        <h2><i class="fas fa-palette"></i> Artisan Registration</h2>
+                        <p class="form-subtitle">
+                            Complete this form to create your artisan profile and start connecting with customers
+                        </p>
+                    </div>
+
+                    <form id="artisanRegistrationForm" class="registration-form">
+                        <!-- Progress Bar -->
+                        <div class="form-progress">
+                            <div class="progress-steps">
+                                <div class="step active" data-step="1">1. Basic Info</div>
+                                <div class="step" data-step="2">2. Craft Details</div>
+                                <div class="step" data-step="3">3. Portfolio</div>
+                                <div class="step" data-step="4">4. Review</div>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 25%;"></div>
+                            </div>
+                        </div>
+
+                        <!-- Step 1: Basic Information -->
+                        <div class="form-step active" data-step="1">
+                            <h3 class="step-title">Basic Information</h3>
+                            
+                            <div class="form-grid">
+                                <div class="form-group">
+                                    <label for="artisanName">Full Name *</label>
+                                    <input type="text" id="artisanName" class="form-control" required>
+                                    <div class="form-hint">Your legal name as it appears on official documents</div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="artisanEmail">Email Address *</label>
+                                    <input type="email" id="artisanEmail" class="form-control" required>
+                                    <div class="form-hint">We'll send verification and updates to this email</div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="artisanPhone">Phone Number *</label>
+                                    <input type="tel" id="artisanPhone" class="form-control" required>
+                                    <div class="form-hint">For customer inquiries and verification</div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="artisanLocation">Primary Location *</label>
+                                    <input type="text" id="artisanLocation" class="form-control" required>
+                                    <div class="form-hint">City, State where your workshop is located</div>
+                                </div>
+
+                                <div class="form-group full-width">
+                                    <label for="artisanBio">Short Bio *</label>
+                                    <textarea id="artisanBio" class="form-control" rows="3" required></textarea>
+                                    <div class="form-hint">Tell us about yourself and your journey as an artisan (max 200 words)</div>
+                                </div>
+                            </div>
+
+                            <div class="form-navigation">
+                                <button type="button" class="btn btn-outline next-step" data-next="2">
+                                    Next <i class="fas fa-arrow-right"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Step 2: Craft Details -->
+                        <div class="form-step" data-step="2">
+                            <h3 class="step-title">Craft Details</h3>
+                            
+                            <div class="form-grid">
+                                <div class="form-group">
+                                    <label for="primaryCraft">Primary Craft *</label>
+                                    <select id="primaryCraft" class="form-control" required>
+                                        <option value="">Select your main craft</option>
+                                        <option value="pottery">Pottery & Ceramics</option>
+                                        <option value="textiles">Textiles & Weaving</option>
+                                        <option value="jewelry">Jewelry Making</option>
+                                        <option value="woodwork">Woodwork</option>
+                                        <option value="metalwork">Metalwork</option>
+                                        <option value="painting">Painting</option>
+                                        <option value="sculpture">Sculpture</option>
+                                        <option value="leather">Leatherwork</option>
+                                        <option value="glass">Glass Art</option>
+                                        <option value="other">Other</option>
+                                    </select>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="experienceYears">Years of Experience *</label>
+                                    <input type="number" id="experienceYears" class="form-control" min="0" max="100" required>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="craftSpecialty">Specialty/Technique</label>
+                                    <input type="text" id="craftSpecialty" class="form-control">
+                                    <div class="form-hint">e.g., Terracotta, Block Printing, Filigree</div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="workshopType">Workshop Type *</label>
+                                    <select id="workshopType" class="form-control" required>
+                                        <option value="">Select workshop type</option>
+                                        <option value="home">Home Workshop</option>
+                                        <option value="studio">Professional Studio</option>
+                                        <option value="collective">Artisan Collective</option>
+                                        <option value="mobile">Mobile Workshop</option>
+                                    </select>
+                                </div>
+
+                                <div class="form-group full-width">
+                                    <label for="craftDescription">Craft Description *</label>
+                                    <textarea id="craftDescription" class="form-control" rows="4" required></textarea>
+                                    <div class="form-hint">Describe your craft process, materials used, and what makes it unique</div>
+                                </div>
+
+                                <div class="form-group full-width">
+                                    <label>Additional Crafts (if any)</label>
+                                    <div class="tags-input">
+                                        <input type="text" id="additionalCrafts" class="form-control" placeholder="Type and press Enter">
+                                        <div class="tags-container" id="craftTags">
+                                            <!-- Tags will be added here -->
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-navigation">
+                                <button type="button" class="btn btn-outline prev-step" data-prev="1">
+                                    <i class="fas fa-arrow-left"></i> Previous
+                                </button>
+                                <button type="button" class="btn btn-outline next-step" data-next="3">
+                                    Next <i class="fas fa-arrow-right"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Step 3: Portfolio -->
+                        <div class="form-step" data-step="3">
+                            <h3 class="step-title">Portfolio & Gallery</h3>
+                            
+                            <div class="form-grid">
+                                <div class="form-group full-width">
+                                    <label>Profile Picture *</label>
+                                    <div class="file-upload">
+                                      <input type="file" id="profilePicture" name="profilePicture" accept="image/*" required style="position: absolute; opacity: 0; width: 1px; height: 1px;">
+                                        <div class="upload-area" id="profileUpload">
+                                            <i class="fas fa-camera fa-3x"></i>
+                                            <p>Click to upload profile picture</p>
+                                            <p class="upload-hint">Recommended: 400x400px, max 2MB</p>
+                                        </div>
+                                        <div class="upload-preview" id="profilePreview"></div>
+                                    </div>
+                                </div>
+
+                                <div class="form-group full-width">
+                                    <label>Work Gallery</label>
+                                    <div class="file-upload multiple">
+                                        <input type="file" id="workGallery" accept="image/*" multiple>
+                                        <div class="upload-area" id="galleryUpload">
+                                            <i class="fas fa-images fa-3x"></i>
+                                            <p>Click to upload work photos</p>
+                                            <p class="upload-hint">Upload up to 10 images, max 5MB each</p>
+                                        </div>
+                                        <div class="gallery-preview" id="galleryPreview"></div>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="portfolioLink">Portfolio Website</label>
+                                    <input type="url" id="portfolioLink" class="form-control" placeholder="https://">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="socialInstagram">Instagram</label>
+                                    <input type="url" id="socialInstagram" class="form-control" placeholder="https://instagram.com/">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="socialFacebook">Facebook</label>
+                                    <input type="url" id="socialFacebook" class="form-control" placeholder="https://facebook.com/">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="priceRange">Price Range</label>
+                                    <select id="priceRange" class="form-control">
+                                        <option value="">Select price range</option>
+                                        <option value="budget">Budget (₹500 - ₹5,000)</option>
+                                        <option value="mid">Mid-range (₹5,000 - ₹50,000)</option>
+                                        <option value="premium">Premium (₹50,000+)</option>
+                                        <option value="custom">Custom/Commission</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-navigation">
+                                <button type="button" class="btn btn-outline prev-step" data-prev="2">
+                                    <i class="fas fa-arrow-left"></i> Previous
+                                </button>
+                                <button type="button" class="btn btn-outline next-step" data-next="4">
+                                    Next <i class="fas fa-arrow-right"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Step 4: Review & Submit -->
+                        <div class="form-step" data-step="4">
+                            <h3 class="step-title">Review & Submit</h3>
+                            
+                            <div class="review-section">
+                                <div class="review-card">
+                                    <h4><i class="fas fa-user-check"></i> Basic Information</h4>
+                                    <div class="review-content" id="reviewBasic"></div>
+                                </div>
+
+                                <div class="review-card">
+                                    <h4><i class="fas fa-palette"></i> Craft Details</h4>
+                                    <div class="review-content" id="reviewCraft"></div>
+                                </div>
+
+                                <div class="review-card">
+                                    <h4><i class="fas fa-images"></i> Portfolio</h4>
+                                    <div class="review-content" id="reviewPortfolio"></div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="checkbox-label">
+                                        <div class="checkbox-container">
+                                            <input type="checkbox" id="termsAgreement" name="termsAgreement" required>
+                                            <label for="termsAgreement">I agree to the terms and conditions</label>
+                                        </div>
+                                        <span>I agree to the <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a> *</span>
+                                    </label>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" id="newsletterSubscribe">
+                                        <span>Subscribe to our newsletter for updates and opportunities</span>
+                                    </label>
+                                </div>
+
+                                <div class="form-navigation">
+                                    <button type="button" class="btn btn-outline prev-step" data-prev="3">
+                                        <i class="fas fa-arrow-left"></i> Edit
+                                    </button>
+                                    <button type="submit" class="btn btn-primary">
+                                        <i class="fas fa-paper-plane"></i> Submit Application
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Supporter Form -->
+                <div class="form-container" id="supporterForm" style="display: none;">
+                    <div class="form-header">
+                        <h2><i class="fas fa-heart"></i> Supporter Registration</h2>
+                        <p class="form-subtitle">
+                            Join our community of craft enthusiasts and support traditional artisans
+                        </p>
+                    </div>
+
+                    <form id="supporterRegistrationForm" class="registration-form">
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label for="supporterName">Full Name *</label>
+                                <input type="text" id="supporterName" class="form-control" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="supporterEmail">Email Address *</label>
+                                <input type="email" id="supporterEmail" class="form-control" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="supporterLocation">Location</label>
+                                <input type="text" id="supporterLocation" class="form-control">
+                                <div class="form-hint">Helps us show you local artisans</div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="interests">Craft Interests</label>
+                                <select id="interests" class="form-control" multiple>
+                                    <option value="pottery">Pottery & Ceramics</option>
+                                    <option value="textiles">Textiles & Weaving</option>
+                                    <option value="jewelry">Jewelry Making</option>
+                                    <option value="woodwork">Woodwork</option>
+                                    <option value="metalwork">Metalwork</option>
+                                    <option value="painting">Painting</option>
+                                    <option value="sculpture">Sculpture</option>
+                                </select>
+                                <div class="form-hint">Hold Ctrl/Cmd to select multiple</div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="supportLevel">Support Level</label>
+                                <select id="supportLevel" class="form-control">
+                                    <option value="basic">Basic Supporter</option>
+                                    <option value="active">Active Supporter</option>
+                                    <option value="premium">Premium Supporter</option>
+                                    <option value="patron">Artisan Patron</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group full-width">
+                                <label for="supporterMessage">Why do you want to join?</label>
+                                <textarea id="supporterMessage" class="form-control" rows="3"></textarea>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" id="supporterTerms" required>
+                                    <span>I agree to the <a href="#">Terms of Service</a></span>
+                                </label>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" id="supporterNewsletter" checked>
+                                    <span>Subscribe to artisan updates</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <button type="submit" class="btn btn-secondary btn-full">
+                            <i class="fas fa-user-plus"></i> Join as Supporter
+                        </button>
+                    </form>
+                </div>
+
+                <!-- Success Message -->
+                <div class="success-message" id="successMessage" style="display: none;">
+                    <div class="success-content text-center">
+                        <div class="success-icon">
+                            <i class="fas fa-check-circle"></i>
+                        </div>
+                        <h2>Application Submitted!</h2>
+                        <p class="lead">
+                            Thank you for joining ArtisanConnect. We'll review your application 
+                            and contact you within 2-3 business days.
+                        </p>
+                        <div class="success-actions">
+                            <a href="index.html" class="btn btn-primary">
+                                <i class="fas fa-home"></i> Back to Home
+                            </a>
+                            <a href="artisans.html" class="btn btn-outline">
+                                <i class="fas fa-search"></i> Browse Artisans
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section class="faq-section">
+            <div class="container">
+                <div class="section-header text-center">
+                    <h2>Frequently Asked <span class="text-gradient">Questions</span></h2>
+                    <p class="section-subtitle">
+                        Find answers to common questions about joining our community
+                    </p>
+                </div>
+
+                <div class="faq-grid">
+                    <!-- FAQ 1 -->
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            <span>Is there a fee to join as an artisan?</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                        <div class="faq-answer">
+                            <p>No, creating an artisan profile is completely free. We believe in supporting artisans without financial barriers. Premium features for advanced marketing and analytics are available as optional upgrades.</p>
+                        </div>
+                    </div>
+
+                    <!-- FAQ 2 -->
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            <span>How long does the verification process take?</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                        <div class="faq-answer">
+                            <p>Artisan verification typically takes 2-3 business days. We manually review each application to ensure quality and authenticity. You'll receive an email notification once your profile is approved.</p>
+                        </div>
+                    </div>
+
+                    <!-- FAQ 3 -->
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            <span>Can I update my profile after registration?</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                        <div class="faq-answer">
+                            <p>Yes, you can update your profile information, portfolio, and gallery anytime through your dashboard. Regular updates help keep your profile fresh and engaging for potential customers.</p>
+                        </div>
+                    </div>
+
+                    <!-- FAQ 4 -->
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            <span>What support do you provide to artisans?</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                        <div class="faq-answer">
+                            <p>We provide marketing support, customer connections, workshop opportunities, and community networking. Our team also offers guidance on pricing, photography, and business development.</p>
+                        </div>
+                    </div>
+
+                    <!-- FAQ 5 -->
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            <span>Can supporters purchase directly through the platform?</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                        <div class="faq-answer">
+                            <p>Currently, we facilitate connections between artisans and supporters. Purchases are arranged directly between you and the artisan. We're working on integrated payment solutions for future updates.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-cta text-center">
+                    <p>Still have questions?</p>
+                    <a href="mailto:support@artisanconnect.com" class="btn btn-outline">
+                        <i class="fas fa-envelope"></i> Contact Support
+                    </a>
+                </div>
+            </div>
+        </section>
     </main>
 
+    <!-- Professional Footer -->
     <footer class="main-footer">
         <div class="container">
-            <div class="footer-col">
-                <h4>Connect With Us</h4>
-                <p>Join our community of artisans and supporters</p>
-                <div class="social-links">
-                    <a href="https://facebook.com" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-                    <a href="https://twitter.com" target="_blank" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-                    <a href="https://instagram.com" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                    <a href="https://linkedin.com" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+            <div class="footer-content">
+                <div class="footer-col">
+                    <div class="logo mb-3">
+                        <div class="logo-icon">AC</div>
+                        <div class="logo-text">
+                            <h1><span>ArtisanConnect</span></h1>
+                        </div>
+                    </div>
+                    <p>
+                        Bridging the gap between traditional artisans and modern consumers.
+                    </p>
+                    <div class="social-links">
+                        <a href="#" class="social-link" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-link" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+                        <li><a href="artisans.html"><i class="fas fa-search"></i> Discover Artisans</a></li>
+                        <li><a href="about.html"><i class="fas fa-bullseye"></i> Our Mission</a></li>
+                        <li><a href="join-community.html"><i class="fas fa-user-plus"></i> Join Community</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4>For Artisans</h4>
+                    <ul class="footer-links">
+                        <li><a href="#"><i class="fas fa-book"></i> Getting Started Guide</a></li>
+                        <li><a href="#"><i class="fas fa-video"></i> Tutorial Videos</a></li>
+                        <li><a href="#"><i class="fas fa-calendar-alt"></i> Workshop Calendar</a></li>
+                        <li><a href="#"><i class="fas fa-question-circle"></i> Artisan FAQ</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Contact</h4>
+                    <ul class="footer-links">
+                        <li><a href="mailto:join@artisanconnect.com"><i class="fas fa-envelope"></i> Join Inquiries</a></li>
+                        <li><a href="mailto:support@artisanconnect.com"><i class="fas fa-envelope"></i> Support</a></li>
+                        <li><a href="tel:+911234567890"><i class="fas fa-phone"></i> +91 12345 67890</a></li>
+                        <li><a href="#"><i class="fas fa-comments"></i> Live Chat</a></li>
+                    </ul>
                 </div>
             </div>
-            <div class="footer-col">
-                <h4>Quick Links</h4>
-                <ul>
-                    <li><a href="/index.html">Home</a></li>
-                    <li><a href="/artisans.html">Artisan Directory</a></li>
-                    <li><a href="/about.html">About Us</a></li>
-                    <li><a href="/join-community.html">Join Community</a></li>
-                </ul>
+
+            <div class="footer-bottom">
+                <p>&copy; <span id="currentYear"></span> ArtisanConnect. All rights reserved.</p>
             </div>
-            <div class="footer-col">
-                <h4>Support</h4>
-                <ul>
-                    <li><a href="#">Contact Us</a></li>
-                    <li><a href="#">FAQ</a></li>
-                    <li><a href="#">Privacy Policy</a></li>
-                    <li><a href="#">Terms of Service</a></li>
-                </ul>
-            </div>
-        </div>
-        <div class="copyright">
-            <p>&copy; <span id="current-year">2024</span> ArtisanConnect. All rights reserved.</p>
         </div>
     </footer>
 
-    <script src="js/join-community.js"></script>
+    <!-- JavaScript Files -->
+    <script src="js/main.js" type="module"></script>
+    <script src="js/join-community.js" type="module"></script>
+    <script src="js/components.js"></script>
+    
+    <script>
+        // Set current year
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+    </script>
 </body>
 </html>
