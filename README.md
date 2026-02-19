@@ -13,8 +13,6 @@ This project focuses on authentication, structured database management, and dyna
 - **JavaScript**
 - **Firebase Authentication**
 - **Firebase Firestore (NoSQL Database)**
-- **MySQL (Relational Database – used in extended backend project)**
-
 ---
 
 ## ✨ Key Features
