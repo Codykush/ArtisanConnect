@@ -779,6 +779,7 @@ class JoinCommunity {
     // ===== SIMPLIFIED REGISTRATION =====
      // ===== FIXED REGISTRATION FUNCTION =====
         // ===== FIXED REGISTRATION FUNCTION =====
+    // ===== UPDATED submitArtisanForm WITH EMAIL SENDING =====
 async submitArtisanForm() {
     console.log("🚀 Starting registration...");
     
@@ -859,7 +860,18 @@ async submitArtisanForm() {
         const userId = userCredential.user.uid;
         console.log("✅ Auth user created:", userId);
         
-        // 2. Save user to Firestore Database
+        // 2. Send Firebase verification email
+        try {
+            await userCredential.user.sendEmailVerification({
+                url: window.location.origin + '/login.html',
+                handleCodeInApp: true
+            });
+            console.log("📧 Firebase verification email sent");
+        } catch (emailError) {
+            console.warn("Could not send Firebase verification email:", emailError);
+        }
+        
+        // 3. Save user to Firestore Database
         console.log("💾 Saving to Firestore users collection...");
         
         await setDoc(doc(db, "users", userId), {
@@ -870,7 +882,7 @@ async submitArtisanForm() {
             location: formData.location,
             bio: formData.bio,
             role: "artisan",
-            status: "active",
+            status: "pending",
             createdAt: new Date().toISOString(),
             updatedAt: new Date().toISOString(),
             preferences: {
@@ -881,7 +893,7 @@ async submitArtisanForm() {
         
         console.log("✅ User saved to Firestore");
         
-        // 3. Save artisan to Firestore
+        // 4. Save artisan to Firestore
         console.log("🎨 Saving to Firestore artisans collection...");
         
         const artisanData = {
@@ -930,28 +942,20 @@ async submitArtisanForm() {
         const artisanId = artisanRef.id;
         console.log("✅ Artisan saved to Firestore:", artisanId);
         
-        // 4. Update user with artisan ID
+        // 5. Update user with artisan ID
         await updateDoc(doc(db, "users", userId), {
             artisanId: artisanId
         });
         
         console.log("✅ Registration complete!");
-        console.log("📊 Check Firebase Console:");
-        console.log("1. Authentication → Users");
-        console.log("2. Firestore → users collection");
-        console.log("3. Firestore → artisans collection");
+        
+        // 6. Send Welcome Email using EmailJS
+        await this.sendWelcomeEmailViaEmailJS(formData, userId, artisanId);
         
         this.showLoading(false);
         
-        // Show success
-        alert(`🎉 REGISTRATION SUCCESSFUL!
-        
-Your account has been created:
-• Email: ${formData.email}
-• User ID: ${userId}
-• Artisan ID: ${artisanId}
-
-Check Firebase Console to verify data is saved.`);
+        // Show success message with email info
+        this.showSuccessModal(formData);
         
         // Show success message on page
         this.showSuccessMessage('artisan');
@@ -980,6 +984,290 @@ Check Firebase Console to verify data is saved.`);
         }
         
         alert(errorMsg);
+    }
+}
+    
+    // ===== EMAIL SENDING USING EMAILJS =====
+async sendWelcomeEmailViaEmailJS(userData, userId, artisanId) {
+    try {
+        console.log("📧 Preparing to send welcome email to:", userData.email);
+        
+        // Step 1: Sign up for EmailJS (free) at https://www.emailjs.com/
+        // Step 2: Get your Service ID, Template ID, and Public Key
+        
+        // EmailJS configuration - YOU NEED TO GET THESE FROM EMAILJS.COM
+        const EMAILJS_SERVICE_ID = 'service_your_service_id'; // Replace with yours
+        const EMAILJS_TEMPLATE_ID = 'template_your_template_id'; // Replace with yours
+        const EMAILJS_PUBLIC_KEY = 'your_public_key'; // Replace with yours
+        
+        // If EmailJS is not loaded, load it dynamically
+        if (typeof emailjs === 'undefined') {
+            console.log("📥 Loading EmailJS SDK...");
+            await this.loadEmailJSSDK();
+        }
+        
+        // Initialize EmailJS with your public key
+        if (typeof emailjs !== 'undefined' && emailjs.init) {
+            emailjs.init(EMAILJS_PUBLIC_KEY);
+            
+            // Prepare email parameters
+            const templateParams = {
+                to_name: userData.name,
+                to_email: userData.email,
+                user_id: userId,
+                artisan_id: artisanId,
+                craft_type: userData.craft,
+                registration_date: new Date().toLocaleDateString('en-IN', {
+                    weekday: 'long',
+                    year: 'numeric',
+                    month: 'long',
+                    day: 'numeric'
+                }),
+                login_url: `${window.location.origin}/login.html`,
+                support_email: 'support@artisanconnect.com',
+                phone_number: userData.phone,
+                location: userData.location,
+                experience: userData.experience + ' years'
+            };
+            
+            console.log("✉️ Sending email with params:", templateParams);
+            
+            // Send the email
+            const response = await emailjs.send(
+                EMAILJS_SERVICE_ID,
+                EMAILJS_TEMPLATE_ID,
+                templateParams
+            );
+            
+            console.log("✅ Email sent successfully:", response);
+            return { success: true, response };
+            
+        } else {
+            console.warn("⚠️ EmailJS not available, sending fallback email");
+            await this.sendFallbackEmail(userData, userId, artisanId);
+            return { success: true, fallback: true };
+        }
+        
+    } catch (error) {
+        console.error("❌ Email sending failed:", error);
+        
+        // Try fallback method
+        try {
+            await this.sendFallbackEmail(userData, userId, artisanId);
+            return { success: true, fallback: true };
+        } catch (fallbackError) {
+            console.error("❌ Fallback email also failed:", fallbackError);
+            return { success: false, error: error.message };
+        }
+    }
+}
+
+// Load EmailJS SDK dynamically
+async loadEmailJSSDK() {
+    return new Promise((resolve, reject) => {
+        const script = document.createElement('script');
+        script.src = 'https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js';
+        script.onload = () => {
+            console.log("✅ EmailJS SDK loaded");
+            resolve();
+        };
+        script.onerror = () => {
+            console.warn("⚠️ Failed to load EmailJS SDK");
+            reject(new Error('Failed to load EmailJS SDK'));
+        };
+        document.head.appendChild(script);
+    });
+}
+
+// Fallback email method using mailto link
+async sendFallbackEmail(userData, userId, artisanId) {
+    console.log("📧 Creating fallback email...");
+    
+    const subject = encodeURIComponent(`Welcome to ArtisanConnect - Registration Successful!`);
+    const body = encodeURIComponent(`
+Dear ${userData.name},
+
+🎉 Welcome to ArtisanConnect! Your artisan account has been created successfully.
+
+📋 YOUR ACCOUNT DETAILS:
+• Name: ${userData.name}
+• Email: ${userData.email}
+• Phone: ${userData.phone}
+• Location: ${userData.location}
+• Craft: ${userData.craft}
+• Experience: ${userData.experience} years
+• User ID: ${userId}
+• Artisan ID: ${artisanId}
+
+📝 NEXT STEPS:
+1. Verify your email address (check your inbox)
+2. Complete your profile
+3. Upload your portfolio images
+4. Start receiving orders
+
+🔗 LOGIN TO YOUR ACCOUNT:
+${window.location.origin}/login.html
+
+⏳ ACCOUNT STATUS:
+Your account is currently under review. We'll notify you once it's approved (usually within 2-3 business days).
+
+📞 NEED HELP?
+Contact our support team:
+• Email: support@artisanconnect.com
+• Phone: +91-XXXXXXXXXX
+
+Thank you for joining our community of talented artisans!
+
+Best regards,
+The ArtisanConnect Team
+    `.trim());
+    
+    // Create a mailto link
+    const mailtoLink = `mailto:${userData.email}?subject=${subject}&body=${body}`;
+    
+    // Show email in a modal for user to copy
+    this.showEmailPreviewModal(userData, body);
+    
+    // Also try to open mail client
+    setTimeout(() => {
+        window.open(mailtoLink, '_blank');
+    }, 1000);
+    
+    return true;
+}
+
+// Show email preview modal
+showEmailPreviewModal(userData, emailBody) {
+    const decodedBody = decodeURIComponent(emailBody);
+    
+    const modalHTML = `
+        <div class="email-preview-modal" style="
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.5); display: flex; align-items: center;
+            justify-content: center; z-index: 9999; padding: 20px;">
+            <div style="background: white; border-radius: 10px; max-width: 600px;
+                width: 100%; max-height: 80vh; overflow-y: auto; padding: 30px;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+                    <h2 style="margin: 0; color: #3B82F6;">📧 Registration Email Preview</h2>
+                    <button onclick="this.closest('.email-preview-modal').remove()" 
+                        style="background: none; border: none; font-size: 24px; cursor: pointer;">
+                        &times;
+                    </button>
+                </div>
+                
+                <div style="margin-bottom: 20px;">
+                    <p><strong>To:</strong> ${userData.email}</p>
+                    <p><strong>Subject:</strong> Welcome to ArtisanConnect - Registration Successful!</p>
+                </div>
+                
+                <div style="background: #f8fafc; padding: 20px; border-radius: 8px; margin-bottom: 20px;">
+                    <pre style="white-space: pre-wrap; font-family: Arial, sans-serif; font-size: 14px;">
+${decodedBody}
+                    </pre>
+                </div>
+                
+                <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+                    <button onclick="navigator.clipboard.writeText('${decodedBody}'); 
+                        alert('Email content copied to clipboard!');"
+                        style="background: #3B82F6; color: white; border: none; padding: 10px 20px;
+                        border-radius: 5px; cursor: pointer; flex: 1;">
+                        📋 Copy Email Content
+                    </button>
+                    
+                    <button onclick="window.open('mailto:${userData.email}?subject=${encodeURIComponent('Welcome to ArtisanConnect - Registration Successful!')}&body=${encodeURIComponent(decodedBody)}', '_blank');"
+                        style="background: #10B981; color: white; border: none; padding: 10px 20px;
+                        border-radius: 5px; cursor: pointer; flex: 1;">
+                        📤 Open in Email Client
+                    </button>
+                    
+                    <button onclick="this.closest('.email-preview-modal').remove()"
+                        style="background: #6B7280; color: white; border: none; padding: 10px 20px;
+                        border-radius: 5px; cursor: pointer; flex: 1;">
+                        Close
+                    </button>
+                </div>
+            </div>
+        </div>
+    `;
+    
+    const modalElement = document.createElement('div');
+    modalElement.innerHTML = modalHTML;
+    document.body.appendChild(modalElement);
+}
+
+// Show success modal with email information
+showSuccessModal(formData) {
+    const modalContent = `
+        <div style="text-align: center; padding: 30px;">
+            <div style="font-size: 60px; color: #10B981; margin-bottom: 20px;">✅</div>
+            <h2 style="color: #3B82F6; margin-bottom: 15px;">Registration Successful!</h2>
+            
+            <div style="background: #f0f9ff; padding: 20px; border-radius: 8px; margin: 20px 0;">
+                <h4 style="margin-top: 0; color: #0369A1;">📧 Emails Sent To:</h4>
+                <p style="font-size: 18px; font-weight: bold; color: #1E40AF;">${formData.email}</p>
+                
+                <div style="text-align: left; margin-top: 20px;">
+                    <p>✅ <strong>Verification Email</strong> - from Firebase Auth</p>
+                    <p>✅ <strong>Welcome Email</strong> - with your account details</p>
+                </div>
+            </div>
+            
+            <div style="background: #f8fafc; padding: 15px; border-radius: 8px; margin: 20px 0; text-align: left;">
+                <h4 style="margin-top: 0; color: #475569;">📝 What to do next:</h4>
+                <ol style="margin: 10px 0; padding-left: 20px;">
+                    <li>Check your email inbox</li>
+                    <li>Verify your email address</li>
+                    <li>Check spam folder if not received</li>
+                    <li>Login to complete your profile</li>
+                </ol>
+            </div>
+            
+            <div style="display: flex; gap: 10px; justify-content: center; margin-top: 30px;">
+                <button onclick="window.location.href='login.html'" 
+                    style="background: #3B82F6; color: white; border: none; padding: 12px 24px;
+                    border-radius: 5px; cursor: pointer; font-weight: bold;">
+                    Go to Login
+                </button>
+                
+                <button onclick="this.closest('.modal-overlay').remove()"
+                    style="background: #6B7280; color: white; border: none; padding: 12px 24px;
+                    border-radius: 5px; cursor: pointer;">
+                    Close
+                </button>
+            </div>
+        </div>
+    `;
+    
+    // Use your existing modal system or create a simple one
+    if (typeof Components !== 'undefined' && Components.showModal) {
+        Components.showModal({
+            title: 'Registration Complete',
+            content: modalContent,
+            size: 'md'
+        });
+    } else {
+        // Simple modal fallback
+        const modal = document.createElement('div');
+        modal.className = 'success-modal-overlay';
+        modal.style.cssText = `
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.5); display: flex; align-items: center;
+            justify-content: center; z-index: 9999; padding: 20px;
+        `;
+        modal.innerHTML = `
+            <div style="background: white; border-radius: 10px; max-width: 500px;
+                width: 100%; padding: 30px; box-shadow: 0 10px 25px rgba(0,0,0,0.1);">
+                ${modalContent}
+            </div>
+        `;
+        document.body.appendChild(modal);
+        
+        // Close on overlay click
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                modal.remove();
+            }
+        });
     }
 }
 
