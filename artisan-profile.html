@@ -1,387 +1,129 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Artisan Profile | ArtisanConnect</title>
-    <meta name="description" content="View artisan profile, see their work, and connect with traditional craftspeople.">
-    
-    <!-- Fonts & Icons -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    
-    <!-- CSS Files -->
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/animations.css">
-    <link rel="stylesheet" href="css/profile.css">
-    
-    <!-- Google Maps API -->
-    <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap" async defer></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>Artisan Profile | ArtisanConnect</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/profile.css">
+  <link rel="stylesheet" href="css/theme-marketplace.css">
 </head>
 <body class="profile-page">
-    <!-- Background Circles -->
-    <div class="bg-circles">
-        <div class="bg-circle circle-1"></div>
-        <div class="bg-circle circle-2"></div>
-        <div class="bg-circle circle-3"></div>
+  <header class="main-header">
+    <div class="container header-container">
+      <a href="index.html" class="logo">
+        <div class="logo-icon">AC</div>
+        <div class="logo-text">
+          <h1>Artisan<span>Connect</span></h1>
+          <p>Artisan Profile</p>
+        </div>
+      </a>
+
+      <nav class="main-nav" id="mainNav">
+        <ul>
+          <li><a href="index.html" class="nav-link">Home</a></li>
+          <li><a href="artisans.html" class="nav-link">Discover Artisans</a></li>
+          <li><a href="about.html" class="nav-link">Our Mission</a></li>
+          <li><a href="my-account.html" class="nav-link" data-requires-auth="true" data-redirect="my-account.html">My Account</a></li>
+        </ul>
+      </nav>
+
+      <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
     </div>
+  </header>
 
-    <!-- Professional Header -->
-    <header class="main-header">
-        <div class="container header-container">
-            <a href="index.html" class="logo">
-                <div class="logo-icon">AC</div>
-                <div class="logo-text">
-                    <h1>Artisan<span>Connect</span></h1>
-                    <p>Bridging Crafts and Community</p>
+  <main>
+    <section class="profile-hero" style="padding-top:120px;">
+      <div class="container">
+        <a href="artisans.html" class="btn btn-outline" style="margin-bottom:18px;display:inline-flex;align-items:center;gap:8px;">
+          <i class="fas fa-arrow-left"></i>
+          Back to Artisans
+        </a>
+        <div id="profileMain"></div>
+      </div>
+    </section>
+
+    <section class="profile-main-grid">
+      <div class="container">
+        <div class="grid-container">
+          <div class="left-column">
+            <section class="card-section">
+              <div class="section-header">
+                <h2><i class="fas fa-user-circle"></i> About the Artisan</h2>
+              </div>
+              <div class="card-content">
+                <div id="artisanDescription"></div>
+                <div style="margin-top:20px;">
+                  <h3><i class="fas fa-tools"></i> Skills & Techniques</h3>
+                  <div id="skillsList" class="tags-container" style="margin-top:12px;"></div>
                 </div>
-            </a>
+              </div>
+            </section>
+          </div>
 
-            <nav class="main-nav" id="mainNav">
-                <ul>
-                    <li><a href="index.html" class="nav-link"><i class="fas fa-home"></i> Home</a></li>
-                    <li><a href="artisans.html" class="nav-link"><i class="fas fa-search"></i> Discover Artisans</a></li>
-                    <li><a href="about.html" class="nav-link"><i class="fas fa-bullseye"></i> Our Mission</a></li>
-                    <li><a href="join-community.html" class="btn-cta"><i class="fas fa-user-plus"></i> Join Community</a></li>
-                </ul>
-            </nav>
+          <div class="right-column">
+            <div class="sticky-sidebar">
+              <div class="widget-card">
+                <div class="widget-header">
+                  <h3><i class="fas fa-envelope"></i> Contact Information</h3>
+                </div>
+                <div class="widget-content">
+                  <div id="contactInfo"></div>
+                </div>
+              </div>
 
-            <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
+              <div class="widget-card">
+                <div class="widget-header">
+                  <h3><i class="fas fa-images"></i> Gallery</h3>
+                </div>
+                <div class="widget-content">
+                  <div id="galleryGrid" class="gallery-grid"></div>
+                </div>
+              </div>
+
+              <div class="widget-card">
+                <div class="widget-header">
+                  <h3><i class="fas fa-shopping-bag"></i> Products</h3>
+                </div>
+                <div class="widget-content">
+                  <div id="productsList"></div>
+                </div>
+              </div>
+
+              <div class="widget-card" id="ownerInboxCard" style="display:none;">
+                <div class="widget-header">
+                  <h3><i class="fas fa-inbox"></i> Inbox</h3>
+                </div>
+                <div class="widget-content">
+                  <div id="ownerInboxSummary"></div>
+                  <div id="ownerInboxList"></div>
+                </div>
+              </div>
+
+              <div class="widget-card" id="ownerFollowersCard" style="display:none;">
+                <div class="widget-header">
+                  <h3><i class="fas fa-user-group"></i> Followers</h3>
+                </div>
+                <div class="widget-content">
+                  <div id="ownerFollowersList"></div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-    </header>
+      </div>
+    </section>
+  </main>
 
-    <main>
-        <!-- Breadcrumb -->
-        <div class="breadcrumb">
-            <div class="container">
-                <a href="index.html" class="breadcrumb-link">Home</a>
-                <i class="fas fa-chevron-right"></i>
-                <a href="artisans.html" class="breadcrumb-link">Artisans</a>
-                <i class="fas fa-chevron-right"></i>
-                <span class="breadcrumb-current">Artisan Profile</span>
-            </div>
-        </div>
+  <footer class="main-footer"></footer>
 
-        <!-- Profile Header -->
-        <section class="profile-header">
-            <div class="container">
-                <div class="profile-header-content">
-                    <a href="artisans.html" class="btn-back">
-                        <i class="fas fa-arrow-left"></i> Back to Artisans
-                    </a>
-                    
-                    <div class="profile-main" id="profileMain">
-                        <!-- Loading state -->
-                        <div class="loading-skeleton">
-                            <div class="skeleton-image"></div>
-                            <div class="skeleton-info">
-                                <div class="skeleton-text large"></div>
-                                <div class="skeleton-text medium"></div>
-                                <div class="skeleton-text small"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Profile Details -->
-        <section class="profile-details">
-            <div class="container">
-                <div class="details-grid">
-                    <!-- Left Column: About & Contact -->
-                    <div class="details-left">
-                        <!-- About Section -->
-                        <div class="about-section card">
-                            <div class="card-header">
-                                <h3><i class="fas fa-user-circle"></i> About This Artisan</h3>
-                            </div>
-                            <div class="card-body">
-                                <div class="about-content" id="artisanDescription">
-                                    <p class="loading-text">Loading description...</p>
-                                </div>
-                                
-                                <!-- Skills & Techniques -->
-                                <div class="skills-section">
-                                    <h4><i class="fas fa-tools"></i> Skills & Techniques</h4>
-                                    <div class="skills-list" id="skillsList">
-                                        <span class="skill-tag loading-skeleton-small"></span>
-                                        <span class="skill-tag loading-skeleton-small"></span>
-                                        <span class="skill-tag loading-skeleton-small"></span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Contact Section -->
-                        <div class="contact-section card">
-                            <div class="card-header">
-                                <h3><i class="fas fa-envelope"></i> Contact Information</h3>
-                            </div>
-                            <div class="card-body">
-                                <div class="contact-info" id="contactInfo">
-                                    <div class="contact-item loading-skeleton-medium"></div>
-                                    <div class="contact-item loading-skeleton-medium"></div>
-                                </div>
-                                
-                                <div class="contact-actions">
-                                    <button class="btn btn-primary" id="contactBtn">
-                                        <i class="fas fa-envelope"></i> Send Message
-                                    </button>
-                                    <button class="btn btn-outline" id="callBtn">
-                                        <i class="fas fa-phone"></i> Call Artisan
-                                    </button>
-                                    <button class="btn btn-outline" id="whatsappBtn">
-                                        <i class="fab fa-whatsapp"></i> WhatsApp
-                                    </button>
-                                </div>
-                                
-                                <!-- Social Media -->
-                                <div class="social-section">
-                                    <h4><i class="fas fa-share-alt"></i> Social Media</h4>
-                                    <div class="social-links" id="socialLinks">
-                                        <a href="#" class="social-link" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                                        <a href="#" class="social-link" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-                                        <a href="#" class="social-link" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Reviews Section -->
-                        <div class="reviews-section card">
-                            <div class="card-header">
-                                <div class="reviews-header">
-                                    <h3><i class="fas fa-star"></i> Reviews & Ratings</h3>
-                                    <div class="average-rating" id="averageRating">
-                                        <div class="rating-stars">
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star-half-alt"></i>
-                                        </div>
-                                        <span class="rating-number">4.8</span>
-                                        <span class="rating-count">(24 reviews)</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="card-body">
-                                <div class="reviews-list" id="reviewsList">
-                                    <!-- Reviews will be loaded here -->
-                                </div>
-                                <button class="btn btn-outline btn-full" id="viewAllReviews">
-                                    <i class="fas fa-comments"></i> View All Reviews
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Right Column: Map & Gallery -->
-                    <div class="details-right">
-                        <!-- Map Section -->
-                        <div class="map-section card">
-                            <div class="card-header">
-                                <h3><i class="fas fa-map-marker-alt"></i> Find This Shop</h3>
-                            </div>
-                            <div class="card-body">
-                                <div class="location-info">
-                                    <div class="location-details" id="locationDetails">
-                                        <div class="loading-skeleton-medium"></div>
-                                        <div class="loading-skeleton-small"></div>
-                                    </div>
-                                    <button class="btn btn-sm btn-secondary" id="getDirections">
-                                        <i class="fas fa-directions"></i> Get Directions
-                                    </button>
-                                </div>
-                                <div id="map"></div>
-                                <div class="map-actions">
-                                    <button class="btn btn-sm btn-outline" id="openInMaps">
-                                        <i class="fas fa-external-link-alt"></i> Open in Google Maps
-                                    </button>
-                                    <button class="btn btn-sm btn-outline" id="saveLocation">
-                                        <i class="fas fa-bookmark"></i> Save Location
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Gallery Section -->
-                        <div class="gallery-section card">
-                            <div class="card-header">
-                                <h3><i class="fas fa-images"></i> Gallery</h3>
-                                <button class="btn btn-sm btn-outline" id="viewFullGallery">
-                                    <i class="fas fa-expand"></i> View All
-                                </button>
-                            </div>
-                            <div class="card-body">
-                                <div class="gallery-grid" id="galleryGrid">
-                                    <!-- Gallery items will be loaded here -->
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Products Section -->
-                        <div class="products-section card">
-                            <div class="card-header">
-                                <h3><i class="fas fa-shopping-bag"></i> Featured Products</h3>
-                            </div>
-                            <div class="card-body">
-                                <div class="products-list" id="productsList">
-                                    <!-- Products will be loaded here -->
-                                </div>
-                                <button class="btn btn-outline btn-full" id="viewAllProducts">
-                                    <i class="fas fa-store"></i> View All Products
-                                </button>
-                            </div>
-                        </div>
-
-                        <!-- Similar Artisans -->
-                        <div class="similar-section card">
-                            <div class="card-header">
-                                <h3><i class="fas fa-users"></i> Similar Artisans</h3>
-                            </div>
-                            <div class="card-body">
-                                <div class="similar-artisans" id="similarArtisans">
-                                    <!-- Similar artisans will be loaded here -->
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- CTA Section -->
-        <section class="profile-cta">
-            <div class="container">
-                <div class="cta-content text-center">
-                    <h2>Like This Artisan's Work?</h2>
-                    <p class="lead mb-4">
-                        Support traditional crafts by connecting with this artisan directly
-                    </p>
-                    <div class="cta-buttons">
-                        <button class="btn btn-primary btn-lg" id="contactArtisanBtn">
-                            <i class="fas fa-envelope"></i> Contact Artisan
-                        </button>
-                        <button class="btn btn-secondary btn-lg" id="bookAppointmentBtn">
-                            <i class="fas fa-calendar-alt"></i> Book Appointment
-                        </button>
-                        <button class="btn btn-outline btn-lg" id="saveArtisanBtn">
-                            <i class="fas fa-heart"></i> Save to Favorites
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <!-- Professional Footer -->
-    <footer class="main-footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-col">
-                    <div class="logo mb-3">
-                        <div class="logo-icon">AC</div>
-                        <div class="logo-text">
-                            <h1><span>ArtisanConnect</span></h1>
-                        </div>
-                    </div>
-                    <p>
-                        Bridging the gap between traditional artisans and modern consumers.
-                    </p>
-                    <div class="social-links">
-                        <a href="#" class="social-link" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#" class="social-link" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                        <a href="#" class="social-link" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-                        <a href="#" class="social-link" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-                    </div>
-                </div>
-
-                <div class="footer-col">
-                    <h4>Quick Links</h4>
-                    <ul class="footer-links">
-                        <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
-                        <li><a href="artisans.html"><i class="fas fa-search"></i> Discover Artisans</a></li>
-                        <li><a href="about.html"><i class="fas fa-bullseye"></i> Our Mission</a></li>
-                        <li><a href="join-community.html"><i class="fas fa-user-plus"></i> Join Community</a></li>
-                    </ul>
-                </div>
-
-                <div class="footer-col">
-                    <h4>Support</h4>
-                    <ul class="footer-links">
-                        <li><a href="#"><i class="fas fa-question-circle"></i> Help Center</a></li>
-                        <li><a href="#"><i class="fas fa-shield-alt"></i> Safety Guidelines</a></li>
-                        <li><a href="#"><i class="fas fa-file-alt"></i> Terms of Service</a></li>
-                        <li><a href="#"><i class="fas fa-lock"></i> Privacy Policy</a></li>
-                    </ul>
-                </div>
-
-                <div class="footer-col">
-                    <h4>Contact</h4>
-                    <ul class="footer-links">
-                        <li><a href="mailto:support@artisanconnect.com"><i class="fas fa-envelope"></i> Email Support</a></li>
-                        <li><a href="tel:+911234567890"><i class="fas fa-phone"></i> Call Us</a></li>
-                        <li><a href="#"><i class="fas fa-comments"></i> Live Chat</a></li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="footer-bottom">
-                <p>&copy; <span id="currentYear"></span> ArtisanConnect. All rights reserved.</p>
-            </div>
-        </div>
-    </footer>
-
-    <!-- Contact Modal -->
-    <div class="modal" id="contactModal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h3>Contact Artisan</h3>
-                <button class="modal-close" id="modalClose">&times;</button>
-            </div>
-            <div class="modal-body">
-                <form id="contactForm">
-                    <div class="form-group">
-                        <label for="contactName">Your Name</label>
-                        <input type="text" id="contactName" class="form-control" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="contactEmail">Your Email</label>
-                        <input type="email" id="contactEmail" class="form-control" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="contactMessage">Message</label>
-                        <textarea id="contactMessage" class="form-control" rows="4" required></textarea>
-                    </div>
-                    <div class="form-group">
-                        <label for="contactPurpose">Purpose</label>
-                        <select id="contactPurpose" class="form-control">
-                            <option value="general">General Inquiry</option>
-                            <option value="commission">Custom Commission</option>
-                            <option value="workshop">Workshop Inquiry</option>
-                            <option value="collaboration">Collaboration</option>
-                        </select>
-                    </div>
-                    <button type="submit" class="btn btn-primary btn-full">Send Message</button>
-                </form>
-            </div>
-        </div>
-    </div>
-
-    <!-- JavaScript Files -->
-    <script src="js/main.js" type="module"></script>
-    <script src="js/profile.js" type="module"></script>
-    <script src="js/components.js"></script>
-    
-    <script>
-        // Set current year
-        document.getElementById('currentYear').textContent = new Date().getFullYear();
-    </script>
+  <script src="js/main.js"></script>
+  <script type="module" src="js/profile.js"></script>
 </body>
 </html>

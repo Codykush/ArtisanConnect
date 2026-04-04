@@ -1,9 +1,8 @@
-// firebase-config.js - Your actual Firebase config
 const firebaseConfig = {
-    apiKey: "AIzaSyBTjckH6h4su0h6FremSQiA5nvCUhavuJU",
-    authDomain: "artisanconnect-f2e1d.firebaseapp.com",
-    projectId: "artisanconnect-f2e1d",
-    storageBucket: "artisanconnect-f2e1d.appspot.com",
-    messagingSenderId: "YOUR_ACTUAL_SENDER_ID",  // Get from Firebase Console
-    appId: "YOUR_ACTUAL_APP_ID"                  // Get from Firebase Console
+  apiKey: "AIzaSyBLEppI5BvI-8zBzQ-OCDjE8N5nhmpuP6E",
+  authDomain: "artisanconnect-5fff7.firebaseapp.com",
+  projectId: "artisanconnect-5fff7",
+  storageBucket: "artisanconnect-5fff7.firebasestorage.app",
+  messagingSenderId: "1041150969303",
+  appId: "1:1041150969303:web:30c8756d068f7a196c3792"
 };

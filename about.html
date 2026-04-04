@@ -1,484 +1,191 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Our Mission & Story - ArtisanConnect</title>
-    <meta name="description" content="Learn about ArtisanConnect's mission to preserve traditional crafts and connect artisans with global audiences.">
-    
-    <!-- Fonts & Icons -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    
-    <!-- CSS Files -->
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/animations.css">
-    <link rel="stylesheet" href="css/about.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>Our Mission & Story - ArtisanConnect</title>
+  <meta name="description" content="Learn how ArtisanConnect supports artisans, preserves cultural heritage, and builds meaningful craft communities.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/guest-experience.css">
 </head>
-<body class="about-page">
-    <!-- Background Circles -->
-    <div class="bg-circles">
-        <div class="bg-circle circle-1"></div>
-        <div class="bg-circle circle-2"></div>
-        <div class="bg-circle circle-3"></div>
+<body class="about-page marketplace-page">
+  <header class="main-header">
+    <div class="container header-container">
+      <a href="index.html" class="logo">
+        <div class="logo-icon">AC</div>
+        <div class="logo-text">
+          <h1>Artisan<span>Connect</span></h1>
+          <p>Bridging Crafts and Community</p>
+        </div>
+      </a>
+
+      <nav class="main-nav" id="mainNav">
+        <ul>
+          <li><a href="index.html" class="nav-link"><i class="fas fa-house"></i> Home</a></li>
+          <li><a href="artisans.html" class="nav-link"><i class="fas fa-magnifying-glass"></i> Discover Artisans</a></li>
+          <li><a href="about.html" class="nav-link active"><i class="fas fa-circle-dot"></i> Our Mission</a></li>
+          <li><a href="join-community.html" class="btn-cta"><i class="fas fa-user-plus"></i> Join Community</a></li>
+        </ul>
+      </nav>
+
+      <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
     </div>
+  </header>
 
-    <!-- Professional Header -->
-    <header class="main-header">
-        <div class="container header-container">
-            <a href="index.html" class="logo">
-                <div class="logo-icon">AC</div>
-                <div class="logo-text">
-                    <h1><span>ArtisanConnect</span></h1>
-                    <p>Bridging Crafts and Community</p>
-                </div>
-            </a>
+  <main>
+    <section class="page-banner soft-banner">
+      <div class="container text-center">
+        <h1>Our <span class="text-gradient">Mission &amp; Story</span></h1>
+        <p>Preserving traditional crafts by connecting <span class="inline-highlight">Master Craftspeople</span> with the world.</p>
+      </div>
+    </section>
 
-            <nav class="main-nav" id="mainNav">
-                <ul>
-                    <li><a href="index.html" class="nav-link"><i class="fas fa-home"></i> Home</a></li>
-                    <li><a href="artisans.html" class="nav-link"><i class="fas fa-search"></i> Discover Artisans</a></li>
-                    <li><a href="about.html" class="nav-link active"><i class="fas fa-bullseye"></i> Our Mission</a></li>
-                    <li><a href="join-community.html" class="btn-cta"><i class="fas fa-user-plus"></i> Join Community</a></li>
-                </ul>
-            </nav>
+    <section class="section-space-sm">
+      <div class="container mission-card-grid">
+        <div class="mini-feature-card"><div class="story-icon small"><i class="fas fa-handshake-angle"></i></div><h3>Connect</h3><p>Bridge traditional artisans with modern customers and designers.</p></div>
+        <div class="mini-feature-card"><div class="story-icon small"><i class="fas fa-shield-heart"></i></div><h3>Preserve</h3><p>Protect cultural heritage and promote authentic craftsmanship.</p></div>
+        <div class="mini-feature-card"><div class="story-icon small"><i class="fas fa-chart-line"></i></div><h3>Empower</h3><p>Create sustainable livelihood opportunities for artisans.</p></div>
+        <div class="mini-feature-card"><div class="story-icon small"><i class="fas fa-earth-asia"></i></div><h3>Showcase</h3><p>Bring traditional crafts to wider national and global audiences.</p></div>
+      </div>
+    </section>
 
-            <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
+    <section class="section-space story-block-wrap">
+      <div class="container narrow-content text-center">
+        <span class="section-pill">Our Journey</span>
+        <h2>From a <span class="text-gradient">Simple Idea</span> to a Movement</h2>
+        <p>
+          ArtisanConnect was born from a simple observation: talented artisans often struggle to reach customers beyond their local communities,
+          while buyers actively look for authentic handmade products with meaningful stories.
+        </p>
+      </div>
+      <div class="container story-media-block">
+        <div class="story-photo">
+          <img src="images/1.jpg" alt="ArtisanConnect Headquarters - Greater Noida">
         </div>
-    </header>
-
-    <main>
-        <!-- Hero Section -->
-        <section class="page-hero">
-            <div class="container">
-                <div class="hero-content text-center animate-fade-in">
-                    <h1 class="hero-title">Our <span class="highlight">Mission & Story</span></h1>
-                    <p class="hero-subtitle">
-                        Preserving traditional crafts by connecting <span class="text-gradient">Master Craftspeople</span> with the world
-                    </p>
-                </div>
-            </div>
-        </section>
-
-        <!-- Mission Section -->
-        <section class="mission-section">
-            <div class="container">
-                <div class="mission-grid">
-                    <!-- Mission Card -->
-                    <div class="mission-card animate-fade-in">
-                        <div class="mission-icon">
-                            <i class="fas fa-handshake"></i>
-                        </div>
-                        <h3>Connect</h3>
-                        <p>Bridge traditional artisans with modern consumers and designers</p>
-                    </div>
-                    
-                    <!-- Mission Card -->
-                    <div class="mission-card animate-fade-in delay-200">
-                        <div class="mission-icon">
-                            <i class="fas fa-shield-alt"></i>
-                        </div>
-                        <h3>Preserve</h3>
-                        <p>Protect and promote India's rich cultural heritage and craftsmanship</p>
-                    </div>
-                    
-                    <!-- Mission Card -->
-                    <div class="mission-card animate-fade-in delay-400">
-                        <div class="mission-icon">
-                            <i class="fas fa-chart-line"></i>
-                        </div>
-                        <h3>Empower</h3>
-                        <p>Create sustainable livelihoods for artisans across India</p>
-                    </div>
-                    
-                    <!-- Mission Card -->
-                    <div class="mission-card animate-fade-in delay-600">
-                        <div class="mission-icon">
-                            <i class="fas fa-globe-asia"></i>
-                        </div>
-                        <h3>Showcase</h3>
-                        <p>Bring traditional crafts to global audiences</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Story Section -->
-        <section class="story-section">
-            <div class="container">
-                <div class="section-header text-center animate-fade-in">
-                    <div class="section-tag">Our Journey</div>
-                    <h2>From a <span class="text-gradient">Simple Idea</span> to a Movement</h2>
-                    <p class="section-subtitle">
-                        ArtisanConnect was born in 2025 from a simple observation: talented artisans were struggling 
-                        to reach customers beyond their local communities, while people were searching for authentic, 
-                        handmade products.
-                    </p>
-                </div>
-
-                <!-- Story Content -->
-                <div class="story-content">
-                    <div class="story-image-frame animate-fade-in delay-200">
-                        <div class="frame-container">
-                            <div class="photo-frame">
-                                <div class="frame-border"></div>
-                                <div class="frame-matte"></div>
-                                <img src="/images/1.jpg" 
-                                     alt="ArtisanConnect Headquarters - Greater Noida" 
-                                     loading="lazy">
-                                <div class="frame-decoration">
-                                    <div class="corner corner-tl"></div>
-                                    <div class="corner corner-tr"></div>
-                                    <div class="corner corner-bl"></div>
-                                    <div class="corner corner-br"></div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="image-caption">
-                            <i class="fas fa-map-marker-alt"></i>
-                            <span>ArtisanConnect Headquarters - Greater Noida, Uttar Pradesh</span>
-                        </div>
-                    </div>
-
-                    <div class="story-text animate-fade-in delay-300">
-                        <p>
-                            What started as a small initiative to help local artisans in Greater Noida has grown into a 
-                            nationwide movement supporting hundreds of artisans across India. We believe every handmade 
-                            piece tells a story — of tradition, skill, and the artisan's dedication.
-                        </p>
-                        <p>
-                            Based in Greater Noida, Uttar Pradesh, our platform brings these stories to you, creating 
-                            meaningful connections between makers and appreciators while preserving cultural heritage 
-                            for future generations.
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Gallery Section -->
-        <section class="gallery-section bg-light">
-            <div class="container">
-                <div class="section-header text-center animate-fade-in">
-                    <div class="section-tag">Our Gallery</div>
-                    <h2>Moments That <span class="text-gradient">Define Us</span></h2>
-                    <p class="section-subtitle">
-                        Capturing the essence of traditional craftsmanship and community
-                    </p>
-                </div>
-
-                <div class="gallery-grid">
-                    <!-- Gallery Item 1 -->
-                    <div class="gallery-item animate-fade-in delay-200">
-                        <div class="photo-frame gallery-frame">
-                            <div class="frame-border"></div>
-                            <div class="frame-matte"></div>
-                            <img src="/images/2.jpg" 
-                                 alt="Traditional Artisan Workshop" 
-                                 loading="lazy">
-                            <div class="gallery-overlay">
-                                <div class="overlay-content">
-                                    <i class="fas fa-expand-alt"></i>
-                                    <p>View Details</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="gallery-caption">
-                            <h4>Traditional Workshop</h4>
-                            <p>Greater Noida, Uttar Pradesh</p>
-                        </div>
-                    </div>
-
-                    <!-- Gallery Item 2 -->
-                    <div class="gallery-item animate-fade-in delay-300">
-                        <div class="photo-frame gallery-frame">
-                            <div class="frame-border"></div>
-                            <div class="frame-matte"></div>
-                            <img src="/images/3.jpg" 
-                                 alt="Community Artisan Collective" 
-                                 loading="lazy">
-                            <div class="gallery-overlay">
-                                <div class="overlay-content">
-                                    <i class="fas fa-expand-alt"></i>
-                                    <p>View Details</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="gallery-caption">
-                            <h4>Artisan Collective</h4>
-                            <p>Community gathering & skills sharing</p>
-                        </div>
-                    </div>
-
-                     
-                </div>
-            </div>
-        </section>
-
-        <!-- Impact Section -->
-        <section class="impact-section">
-            <div class="container">
-                <div class="section-header text-center animate-fade-in">
-                    <div class="section-tag">Our Impact</div>
-                    <h2>Making a <span class="text-gradient">Real Difference</span></h2>
-                    <p class="section-subtitle">
-                        Transforming lives while preserving cultural heritage
-                    </p>
-                </div>
-
-                <div class="impact-grid">
-                    <div class="impact-card animate-fade-in">
-                        <div class="impact-number">500+</div>
-                        <div class="impact-title">Artisans Empowered</div>
-                        <p>Providing sustainable livelihoods across India</p>
-                    </div>
-
-                    <div class="impact-card animate-fade-in delay-200">
-                        <div class="impact-number">50+</div>
-                        <div class="impact-title">Craft Categories</div>
-                        <p>Preserving diverse traditional crafts</p>
-                    </div>
-
-                    <div class="impact-card animate-fade-in delay-400">
-                        <div class="impact-number">₹2.5Cr+</div>
-                        <div class="impact-title">Revenue Generated</div>
-                        <p>For artisan communities</p>
-                    </div>
-
-                    <div class="impact-card animate-fade-in delay-600">
-                        <div class="impact-number">15+</div>
-                        <div class="impact-title">Indian States</div>
-                        <p>Reaching artisans nationwide</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Founder Section -->
-        <section class="founder-section">
-            <div class="container">
-                <div class="section-header text-center animate-fade-in">
-                    <div class="section-tag">Our Leader</div>
-                    <h2>The <span class="text-gradient">Visionary</span> Behind ArtisanConnect</h2>
-                    <p class="section-subtitle">
-                        Meet the driving force behind our mission to preserve traditional crafts
-                    </p>
-                </div>
-                
-                <div class="founder-profile animate-fade-in delay-200">
-                    <div class="founder-image">
-                        <div class="founder-frame">
-                            <div class="frame-border"></div>
-                            <div class="frame-matte"></div>
-                            <img src="/images/1neww.jpg" 
-                                 alt="Kushagra Singh Bhadauria - Founder & CEO" 
-                                 loading="lazy">
-                            <div class="frame-decoration">
-                                <div class="corner corner-tl"></div>
-                                <div class="corner corner-tr"></div>
-                                <div class="corner corner-bl"></div>
-                                <div class="corner corner-br"></div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="founder-info">
-                        <div class="founder-badge">
-                            <i class="fas fa-crown"></i>
-                            Founder & CEO
-                        </div>
-                        <h3>Kushagra Singh Bhadauria</h3>
-                        <p class="founder-tagline">Cultural Preservation Advocate & Social Entrepreneur</p>
-                        
-                        <div class="founder-quote">
-                            <div class="quote-icon">
-                                <i class="fas fa-quote-left"></i>
-                            </div>
-                            <blockquote>
-                                "We're not just building a platform; we're preserving heritage, empowering communities, 
-                                and creating a legacy of craftsmanship for future generations."
-                            </blockquote>
-                        </div>
-                        
-                        <p class="founder-bio">
-                            Based in Greater Noida, Uttar Pradesh, Kushagra brings over a decade of experience in 
-                            cultural preservation and sustainable development. His passion for traditional crafts 
-                            stems from growing up surrounded by artisans and witnessing their struggles firsthand. 
-                            With degrees in Social Entrepreneurship and Cultural Studies, he combines business 
-                            acumen with cultural sensitivity to create meaningful impact.
-                        </p>
-                        
-                        <div class="founder-highlights">
-                            <div class="highlight-item">
-                                <i class="fas fa-award"></i>
-                                <span>10+ Years Experience</span>
-                            </div>
-                            <div class="highlight-item">
-                                <i class="fas fa-graduation-cap"></i>
-                                <span>Cultural Studies Expert</span>
-                            </div>
-                            <div class="highlight-item">
-                                <i class="fas fa-users"></i>
-                                <span>500+ Artisans Mentored</span>
-                            </div>
-                        </div>
-                        
-                        <div class="founder-contact">
-                            <a href="mailto:kushagra@artisanconnect.com" class="contact-link">
-                                <i class="fas fa-envelope"></i>
-                                kushagra@artisanconnect.com
-                            </a>
-                            <div class="founder-social">
-                                <a href="#" aria-label="LinkedIn" class="social-btn">
-                                    <i class="fab fa-linkedin"></i>
-                                </a>
-                                <a href="#" aria-label="Twitter" class="social-btn">
-                                    <i class="fab fa-twitter"></i>
-                                </a>
-                                <a href="#" aria-label="Instagram" class="social-btn">
-                                    <i class="fab fa-instagram"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- CTA Section -->
-        <section class="about-cta">
-            <div class="container">
-                <div class="cta-content text-center animate-fade-in">
-                    <h2 class="text-white">Join Our Mission</h2>
-                    <p class="lead text-white mb-4">
-                        Whether you're an artisan, designer, or craft enthusiast, together we can preserve 
-                        traditional crafts for generations to come.
-                    </p>
-                    <div class="cta-buttons">
-                        <a href="join-community.html" class="btn btn-primary btn-lg">
-                            <i class="fas fa-user-plus"></i> Join as Artisan
-                        </a>
-                        <a href="artisans.html" class="btn btn-outline btn-lg text-white">
-                            <i class="fas fa-search"></i> Discover Crafts
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <!-- Professional Footer -->
-    <footer class="main-footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-col">
-                    <div class="logo mb-3">
-                        <div class="logo-icon">AC</div>
-                        <div class="logo-text">
-                            <h1>ArtisanConnect</h1>
-                        </div>
-                    </div>
-                    <p>Bridging the gap between traditional artisans and modern consumers.</p>
-                    <p>
-                        <strong>Headquarters:</strong><br>
-                        G-55, 7th Cross St, Block G, Beta li,<br>
-                        Greater Noida, Uttar Pradesh 201308, India
-                    </p>
-                    <div class="social-links">
-                        <a href="#" class="social-link" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#" class="social-link" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                        <a href="#" class="social-link" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-                        <a href="#" class="social-link" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-                    </div>
-                </div>
-
-                <div class="footer-col">
-                    <h4>Quick Links</h4>
-                    <ul class="footer-links">
-                        <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
-                        <li><a href="artisans.html"><i class="fas fa-search"></i> Discover Artisans</a></li>
-                        <li><a href="about.html"><i class="fas fa-bullseye"></i> Our Mission</a></li>
-                        <li><a href="join-community.html"><i class="fas fa-user-plus"></i> Join Community</a></li>
-                    </ul>
-                </div>
-
-                <div class="footer-col">
-                    <h4>Craft Categories</h4>
-                    <ul class="footer-links">
-                        <li><a href="#"><i class="fas fa-palette"></i> Pottery</a></li>
-                        <li><a href="#"><i class="fas fa-tshirt"></i> Textiles</a></li>
-                        <li><a href="#"><i class="fas fa-gem"></i> Jewelry</a></li>
-                        <li><a href="#"><i class="fas fa-tree"></i> Woodwork</a></li>
-                    </ul>
-                </div>
-
-                <div class="footer-col">
-                    <h4>Contact Us</h4>
-                    <ul class="footer-links">
-                        <li><a href="mailto:hello@artisanconnect.com"><i class="fas fa-envelope"></i> hello@artisanconnect.com</a></li>
-                        <li><a href="tel:+911234567890"><i class="fas fa-phone"></i> +91 12345 67890</a></li>
-                        <li>
-                            <a href="#" class="address-link">
-                                <i class="fas fa-map-marker-alt"></i> 
-                                <span>
-                                    G-55, 7th Cross St, Block G,<br>
-                                    Beta li, Greater Noida,<br>
-                                    Uttar Pradesh 201308, India
-                                </span>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="footer-bottom">
-                <p>&copy; <span id="currentYear"></span> ArtisanConnect. All rights reserved.</p>
-            </div>
+        <div class="caption-bar"><i class="fas fa-location-dot"></i> ArtisanConnect Headquarters - Greater Noida, Uttar Pradesh</div>
+        <div class="narrow-copy text-center">
+          <p>
+            What started as a local effort in Greater Noida has grown into a broader mission to support artisans across India.
+            Every handmade piece carries tradition, patience, skill, and identity — and our goal is to help those stories reach the right audience.
+          </p>
+          <p>
+            By building stronger connections between makers and buyers, we help preserve cultural heritage while creating modern opportunities for artisans to grow.
+          </p>
         </div>
-    </footer>
+      </div>
+    </section>
 
-    <!-- JavaScript Files -->
-    <script src="js/main.js"></script>
-    <script src="js/about.js"></script>
-    
-    <script>
-        // Set current year
-        document.getElementById('currentYear').textContent = new Date().getFullYear();
-        
-        // Mobile menu toggle
-        const menuToggle = document.getElementById('menuToggle');
-        const mainNav = document.getElementById('mainNav');
-        
-        if (menuToggle && mainNav) {
-            menuToggle.addEventListener('click', function() {
-                this.classList.toggle('active');
-                mainNav.classList.toggle('active');
-            });
-            
-            // Close mobile menu when clicking on a link
-            const navLinks = mainNav.querySelectorAll('.nav-link, .btn-cta');
-            navLinks.forEach(link => {
-                link.addEventListener('click', function() {
-                    menuToggle.classList.remove('active');
-                    mainNav.classList.remove('active');
-                });
-            });
-        }
-        
-        // Gallery image hover effect
-        document.querySelectorAll('.gallery-frame').forEach(frame => {
-            frame.addEventListener('mouseenter', function() {
-                this.style.transform = 'translateY(-10px) scale(1.02)';
-            });
-            
-            frame.addEventListener('mouseleave', function() {
-                this.style.transform = 'translateY(0) scale(1)';
-            });
-        });
-    </script>
+    <section class="section-space-sm light-surface">
+      <div class="container text-center narrow-content">
+        <span class="section-pill">Our Gallery</span>
+        <h2>Moments That <span class="text-gradient">Define Us</span></h2>
+        <p>Capturing the essence of traditional craftsmanship and community collaboration.</p>
+      </div>
+      <div class="container gallery-two-grid">
+        <figure class="gallery-panel">
+          <img src="images/2.jpg" alt="Traditional artisan workshop">
+          <figcaption>
+            <h4>Traditional Workshop</h4>
+            <p>Greater Noida, Uttar Pradesh</p>
+          </figcaption>
+        </figure>
+        <figure class="gallery-panel">
+          <img src="images/3.jpg" alt="Community artisan collective">
+          <figcaption>
+            <h4>Artisan Collective</h4>
+            <p>Community gathering and skills sharing</p>
+          </figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="section-space-sm">
+      <div class="container text-center narrow-content">
+        <span class="section-pill">Our Impact</span>
+        <h2>Making a <span class="text-gradient">Real Difference</span></h2>
+        <p>Transforming lives while preserving cultural heritage.</p>
+      </div>
+      <div class="container stats-row compact-stats">
+        <div class="stat-box"><strong>500+</strong><span>Artisans Empowered</span></div>
+        <div class="stat-box"><strong>50+</strong><span>Craft Categories</span></div>
+        <div class="stat-box"><strong>₹2.5Cr+</strong><span>Revenue Generated</span></div>
+        <div class="stat-box"><strong>15+</strong><span>Indian States</span></div>
+      </div>
+    </section>
+
+    <section class="section-space leader-section light-surface">
+      <div class="container text-center narrow-content">
+        <span class="section-pill">Our Leader</span>
+        <h2>The <span class="text-gradient">Visionary</span> Behind ArtisanConnect</h2>
+        <p>Meet the driving force behind our mission to preserve traditional crafts.</p>
+      </div>
+
+      <div class="container founder-layout">
+        <div class="founder-image-card">
+          <img src="images/4.jpg" alt="Kushagra Singh Bhadauria - Founder & CEO">
+        </div>
+        <div class="founder-copy">
+          <span class="section-pill small-pill">Founder &amp; CEO</span>
+          <h3>Kushagra Singh Bhadauria</h3>
+          <p class="founder-role">Cultural Preservation Advocate &amp; Social Entrepreneur</p>
+          <blockquote>
+            “We are not just building a platform; we are preserving heritage, empowering communities, and creating a legacy of craftsmanship for future generations.”
+          </blockquote>
+          <p>
+            Based in Greater Noida, Kushagra brings a strong passion for traditional crafts and meaningful digital experiences.
+            ArtisanConnect reflects a vision where design, technology, and cultural sensitivity work together to create real impact.
+          </p>
+          <div class="chip-row">
+            <span class="chip">8+ years vision</span>
+            <span class="chip">Cultural studies focus</span>
+            <span class="chip">500+ artisans mentored</span>
+          </div>
+          <div class="hero-actions">
+            <a href="mailto:hello@artisanconnect.com" class="btn btn-primary btn-sm"><i class="fas fa-envelope"></i> kushagra@artisanconnect.com</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta-band">
+      <div class="container text-center text-white">
+        <h2>Join Our Mission</h2>
+        <p>Whether you are an artisan, designer, or craft enthusiast, together we can preserve traditional crafts for generations to come.</p>
+        <div class="hero-actions center-actions">
+          <a href="join-community.html" class="btn btn-primary"><i class="fas fa-user-plus"></i> Join as Artisan</a>
+          <a href="artisans.html" class="btn btn-outline light-outline"><i class="fas fa-magnifying-glass"></i> Discover Crafts</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="main-footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-col footer-brand">
+          <a href="index.html" class="logo">
+            <div class="logo-icon">AC</div>
+            <div class="logo-text">
+              <h1>Artisan<span>Connect</span></h1>
+              <p>Bridging Crafts and Community</p>
+            </div>
+          </a>
+          <p>Bridging the gap between traditional artisans and modern audiences.</p>
+        </div>
+        <div class="footer-col"><h3>Quick Links</h3><ul><li><a href="index.html">Home</a></li><li><a href="artisans.html">Discover Artisans</a></li><li><a href="about.html">Our Mission</a></li><li><a href="join-community.html">Join Community</a></li></ul></div>
+        <div class="footer-col"><h3>Craft Categories</h3><ul><li><a href="artisans.html?craft=pottery">Pottery</a></li><li><a href="artisans.html?craft=textiles">Textiles</a></li><li><a href="artisans.html?craft=jewelry">Jewelry</a></li><li><a href="artisans.html?craft=woodwork">Woodwork</a></li></ul></div>
+        <div class="footer-col"><h3>Contact Us</h3><ul><li><i class="fas fa-envelope"></i> hello@artisanconnect.com</li><li><i class="fas fa-phone"></i> +91 12345 67890</li><li><i class="fas fa-location-dot"></i> Greater Noida, India</li></ul></div>
+      </div>
+      <div class="footer-bottom">© <span id="currentYear"></span> ArtisanConnect. All rights reserved.</div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
 </body>
 </html>

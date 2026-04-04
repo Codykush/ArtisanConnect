@@ -1,0 +1,122 @@
+ArtisanConnect Firebase setup updates
+
+1) Firestore collections used by the updated artisan profile
+- users
+- artisans
+- products
+- conversations
+- messages
+- follows
+
+2) Required document fields
+
+users/{uid}
+- uid
+- name
+- email
+- role   ("user" or "artisan")
+
+artisans/{artisanId}
+- userId        (must equal the artisan owner's auth uid)
+- name
+- craft
+- description or bio
+- email
+- phone
+- location      (string or { city: "..." })
+- specialty
+- imageUrl
+- gallery       (array of image urls)
+- experience
+- status        (use "active")
+
+products/{productId}
+- artisanId
+- artisanName
+- name
+- description
+- price
+- imageUrl
+- status
+
+conversations/{conversationId}
+- artisanId
+- userId
+- artisanName
+- userName
+- lastMessage
+- createdAt
+- updatedAt
+
+messages/{messageId}
+- conversationId
+- artisanId
+- userId
+- senderId
+- senderRole    ("buyer" or "artisan")
+- text
+- read          (true/false)
+- createdAt
+
+follows/{followId}
+- artisanId
+- artisanName
+- followerId
+- followerName
+- followerEmail
+- createdAt
+
+3) Important website data update
+When an artisan creates a profile, save:
+- userId = currently logged in Firebase Auth user uid
+- email = artisan email
+This is required for owner inbox, followers, and artisan email buttons.
+
+4) Suggested Firestore security rules
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /users/{userId} {
+      allow read, write: if request.auth != null && request.auth.uid == userId;
+    }
+
+    match /artisans/{artisanId} {
+      allow read: if true;
+      allow create: if request.auth != null;
+      allow update, delete: if request.auth != null && resource.data.userId == request.auth.uid;
+    }
+
+    match /products/{productId} {
+      allow read: if true;
+      allow create: if request.auth != null;
+      allow update, delete: if request.auth != null;
+    }
+
+    match /conversations/{conversationId} {
+      allow read, create: if request.auth != null;
+      allow update: if request.auth != null;
+    }
+
+    match /messages/{messageId} {
+      allow read, create, update: if request.auth != null;
+    }
+
+    match /follows/{followId} {
+      allow read: if true;
+      allow create, delete: if request.auth != null;
+    }
+  }
+}
+
+5) Authentication providers to enable in Firebase Console
+- Email/Password
+- Google
+
+6) Where to update in Firebase Console
+- Authentication -> Sign-in method -> enable providers
+- Firestore Database -> create database -> add rules above
+- Firestore Database -> manually check documents contain required fields
+
+7) Existing project config file
+Your Firebase web config is already in js/firebase.js.
+Only change it if you switch to another Firebase project.

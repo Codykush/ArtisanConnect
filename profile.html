@@ -164,14 +164,14 @@
                             </div>
                             
                             <div class="profile-actions-main">
-                                <button class="btn btn-primary btn-action-lg" id="contactArtisanMain">
+                                <button class="btn btn-primary btn-action-lg" id="contactArtisanMain" data-requires-auth="true" data-redirect="profile.html">
                                     <i class="fas fa-comment-dots"></i> Message Artisan
                                 </button>
-                                <button class="btn btn-secondary btn-action-lg" id="bookWorkshopMain">
+                                <button class="btn btn-secondary btn-action-lg" id="bookWorkshopMain" data-requires-auth="true" data-redirect="profile.html">
                                     <i class="fas fa-calendar-check"></i> Book Workshop
                                 </button>
                                 <div class="action-group">
-                                    <button class="btn btn-icon" id="saveArtisanBtn" title="Save to Favorites">
+                                    <button class="btn btn-icon" id="saveArtisanBtn" data-requires-auth="true" data-redirect="profile.html" title="Save to Favorites">
                                         <i class="far fa-heart"></i>
                                     </button>
                                     <button class="btn btn-icon" id="shareProfileBtn" title="Share Profile">
@@ -521,7 +521,7 @@
                                     <button class="btn btn-outline btn-full" id="loadMoreReviews">
                                         <i class="fas fa-comments"></i> Load More Reviews
                                     </button>
-                                    <button class="btn btn-primary" id="writeReviewBtn">
+                                    <button class="btn btn-primary" id="writeReviewBtn" data-requires-auth="true" data-redirect="profile.html">
                                         <i class="fas fa-pen"></i> Write a Review
                                     </button>
                                 </div>
@@ -675,7 +675,7 @@
                                         <button class="btn btn-sm btn-outline" id="saveLocationBtn">
                                             <i class="fas fa-bookmark"></i> Save Location
                                         </button>
-                                        <button class="btn btn-sm btn-outline" id="bookVisitBtn">
+                                        <button class="btn btn-sm btn-outline" id="bookVisitBtn" data-requires-auth="true" data-redirect="profile.html">
                                             <i class="fas fa-calendar-alt"></i> Book Studio Visit
                                         </button>
                                     </div>
@@ -869,13 +869,13 @@
                         <h2>Ready to Connect with Rajesh?</h2>
                         <p>Start your journey into traditional pottery craftsmanship today</p>
                         <div class="cta-buttons-group">
-                            <button class="btn btn-primary btn-lg" id="finalContactBtn">
+                            <button class="btn btn-primary btn-lg" id="finalContactBtn" data-requires-auth="true" data-redirect="profile.html">
                                 <i class="fas fa-comment-dots"></i> Send Message
                             </button>
-                            <button class="btn btn-secondary btn-lg" id="finalBookBtn">
+                            <button class="btn btn-secondary btn-lg" id="finalBookBtn" data-requires-auth="true" data-redirect="profile.html">
                                 <i class="fas fa-calendar-check"></i> Book Workshop
                             </button>
-                            <button class="btn btn-outline btn-lg" id="finalVisitBtn">
+                            <button class="btn btn-outline btn-lg" id="finalVisitBtn" data-requires-auth="true" data-redirect="profile.html">
                                 <i class="fas fa-map-marker-alt"></i> Plan Studio Visit
                             </button>
                         </div>
@@ -1048,7 +1048,7 @@
     
     <!-- JavaScript Files -->
     <script src="js/main.js"></script>
-    <script src="js/profile.js"></script>
+    <script type="module" src="js/profile.js"></script>
     
     <script>
         // Set current year

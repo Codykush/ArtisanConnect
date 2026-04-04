@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>Create Artisan Profile - ArtisanConnect</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/guest-experience.css">
+</head>
+<body class="create-profile-page marketplace-page">
+  <header class="main-header">
+    <div class="container header-container">
+      <a href="index.html" class="logo">
+        <div class="logo-icon">AC</div>
+        <div class="logo-text">
+          <h1>Artisan<span>Connect</span></h1>
+          <p>Create Artisan Profile</p>
+        </div>
+      </a>
+      <nav class="main-nav" id="mainNav">
+        <ul>
+          <li><a href="index.html" class="nav-link">Home</a></li>
+          <li><a href="artisans.html" class="nav-link">Discover Artisans</a></li>
+          <li><a href="about.html" class="nav-link">Our Mission</a></li>
+          <li><a href="join-community.html" class="btn-cta">Join Community</a></li>
+        </ul>
+      </nav>
+      <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+    </div>
+  </header>
+
+  <main class="form-page-main">
+    <div class="container" style="max-width: 980px;">
+      <div class="form-page-header text-center">
+        <h1>Create Your Artisan Profile</h1>
+        <p>Complete your details below to start showcasing your craft on ArtisanConnect.</p>
+      </div>
+
+      <div class="card profile-form-card">
+        <form id="artisanRegistrationForm">
+          <div class="form-grid two-column-grid">
+            <div>
+              <label for="artisanName">Full Name *</label>
+              <input id="artisanName" class="form-control" required>
+            </div>
+            <div>
+              <label for="artisanEmail">Email *</label>
+              <input id="artisanEmail" class="form-control" type="email" required>
+            </div>
+            <div>
+              <label for="artisanPhone">Phone *</label>
+              <input id="artisanPhone" class="form-control" required>
+            </div>
+            <div>
+              <label for="artisanLocation">City *</label>
+              <input id="artisanLocation" class="form-control" required>
+            </div>
+            <div>
+              <label for="primaryCraft">Primary Craft *</label>
+              <select id="primaryCraft" class="form-control" required>
+                <option value="">Select</option>
+                <option value="pottery">Pottery</option>
+                <option value="textiles">Textiles</option>
+                <option value="jewelry">Jewelry</option>
+                <option value="woodwork">Woodwork</option>
+                <option value="metalwork">Metalwork</option>
+                <option value="painting">Painting</option>
+                <option value="sculpture">Sculpture</option>
+              </select>
+            </div>
+            <div>
+              <label for="experienceYears">Years of Experience *</label>
+              <input id="experienceYears" class="form-control" type="number" min="0" required>
+            </div>
+            <div>
+              <label for="craftSpecialty">Specialty</label>
+              <input id="craftSpecialty" class="form-control">
+            </div>
+            <div>
+              <label for="workshopType">Workshop Type *</label>
+              <select id="workshopType" class="form-control" required>
+                <option value="">Select</option>
+                <option value="home">Home Workshop</option>
+                <option value="studio">Studio</option>
+                <option value="collective">Collective</option>
+              </select>
+            </div>
+            <div style="grid-column:1/-1;">
+              <label for="artisanBio">Bio *</label>
+              <textarea id="artisanBio" class="form-control" rows="3" required></textarea>
+            </div>
+            <div style="grid-column:1/-1;">
+              <label for="craftDescription">Craft Description *</label>
+              <textarea id="craftDescription" class="form-control" rows="4" required></textarea>
+            </div>
+            <div>
+              <label for="profilePicture">Profile Image *</label>
+              <input id="profilePicture" type="file" accept="image/*" class="form-control" required>
+              <div class="form-hint">JPG, PNG, or WEBP. Maximum 2MB.</div>
+            </div>
+            <div>
+              <label for="workGallery">Gallery Images</label>
+              <input id="workGallery" type="file" accept="image/*" multiple class="form-control">
+              <div class="form-hint">Up to 5 images, maximum 2MB each.</div>
+            </div>
+            <div style="grid-column:1/-1;">
+              <label class="upload-consent consent-row">
+                <input type="checkbox" id="copyrightConsent" required>
+                <span>I confirm that all uploaded images are mine or I have legal permission to use them.</span>
+              </label>
+            </div>
+            <div>
+              <label for="portfolioLink">Portfolio URL</label>
+              <input id="portfolioLink" class="form-control" type="url">
+            </div>
+            <div>
+              <label for="socialInstagram">Instagram URL</label>
+              <input id="socialInstagram" class="form-control" type="url">
+            </div>
+          </div>
+          <div class="form-submit-row">
+            <button type="submit" class="btn btn-primary btn-lg">Create Artisan Profile</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </main>
+
+  <script src="js/main.js"></script>
+  <script type="module" src="js/create-artisan-profile.js"></script>
+</body>
+</html>

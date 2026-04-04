@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>Product Details | ArtisanConnect</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/theme-marketplace.css">
+</head>
+<body class="product-page">
+  <header class="main-header">
+    <div class="container header-container">
+      <a href="index.html" class="logo">
+        <div class="logo-icon">AC</div>
+        <div class="logo-text">
+          <h1>Artisan<span>Connect</span></h1>
+          <p>Product Details</p>
+        </div>
+      </a>
+    </div>
+  </header>
+
+  <main class="product-wrap">
+    <div class="container">
+      <div id="productMain"></div>
+
+      <div class="product-grid">
+        <section class="dash-card">
+          <div class="dash-card-head"><h3>Reviews</h3></div>
+          <div id="productReviews"></div>
+
+          <form id="reviewForm" class="stack-form">
+            <input type="number" id="reviewRating" min="1" max="5" placeholder="Rating 1-5" required>
+            <textarea id="reviewComment" placeholder="Write your review" required></textarea>
+            <button type="submit" class="btn btn-primary">Add Review</button>
+          </form>
+        </section>
+
+        <section class="dash-card">
+          <div class="dash-card-head"><h3>Buy Request</h3></div>
+          <form id="buyRequestForm" class="stack-form">
+            <textarea id="buyMessage" placeholder="Send request to buy this product" required></textarea>
+            <button type="submit" class="btn btn-primary">Send Request</button>
+          </form>
+        </section>
+      </div>
+    </div>
+  </main>
+
+  <script src="js/main.js"></script>
+  <script type="module" src="js/product-details.js"></script>
+</body>
+</html>

@@ -1,597 +1,520 @@
-// ===== DATABASE OPERATIONS =====
-// Updated to work with your new Firebase project
+import {
+  db,
+  collection,
+  getDocs,
+  doc,
+  getDoc,
+  addDoc,
+  updateDoc,
+  deleteDoc,
+  setDoc,
+  query,
+  where
+} from "./firebase.js";
 
-import { 
-    db, 
-    auth,
-    collection, 
-    getDocs,
-    doc,
-    getDoc,
-    addDoc,
-    updateDoc,
-    deleteDoc,
-    setDoc,
-    query,
-    where,
-    orderBy,
-    limit,
-    serverTimestamp 
-} from './firebase.js';
-
-class ArtisanDB {
-    constructor() {
-        this.artisansCollection = 'artisans';
-        this.usersCollection = 'users';
-        this.reviewsCollection = 'reviews';
-        this.messagesCollection = 'messages';
-    }
-
-    // Get all active artisans
-    async getAllArtisans() {
-        try {
-            const artisansRef = collection(db, this.artisansCollection);
-            const q = query(
-                artisansRef, 
-                where('status', '==', 'active'),
-                orderBy('createdAt', 'desc')
-            );
-            const snapshot = await getDocs(q);
-            
-            if (snapshot.empty) {
-                console.log('No artisans found in database');
-                return [];
-            }
-            
-            const artisans = snapshot.docs.map(doc => ({
-                id: doc.id,
-                ...doc.data(),
-                // Convert Firestore timestamps to JS Dates if needed
-                createdAt: doc.data().createdAt?.toDate() || new Date(),
-                updatedAt: doc.data().updatedAt?.toDate() || new Date()
-            }));
-            
-            return artisans;
-        } catch (error) {
-            console.error('Error getting artisans:', error);
-            // Return empty array instead of sample data for production
-            return [];
-        }
-    }
-
-    // Get featured artisans
-    async getFeaturedArtisans(count = 6) {
-        try {
-            const artisansRef = collection(db, this.artisansCollection);
-            const q = query(
-                artisansRef, 
-                where('featured', '==', true),
-                where('status', '==', 'active'),
-                orderBy('rating', 'desc'),
-                limit(count)
-            );
-            const snapshot = await getDocs(q);
-            
-            if (snapshot.empty) {
-                console.log('No featured artisans found');
-                return [];
-            }
-            
-            const artisans = snapshot.docs.map(doc => ({
-                id: doc.id,
-                ...doc.data()
-            }));
-            
-            return artisans;
-        } catch (error) {
-            console.error('Error getting featured artisans:', error);
-            return [];
-        }
-    }
-
-    // Get artisan by ID
-    async getArtisanById(id) {
-        try {
-            if (!id) {
-                throw new Error('Artisan ID is required');
-            }
-            
-            const artisanRef = doc(db, this.artisansCollection, id);
-            const snapshot = await getDoc(artisanRef);
-            
-            if (!snapshot.exists()) {
-                console.log(`Artisan ${id} not found`);
-                return null;
-            }
-            
-            return { 
-                id: snapshot.id, 
-                ...snapshot.data(),
-                createdAt: snapshot.data().createdAt?.toDate() || new Date(),
-                updatedAt: snapshot.data().updatedAt?.toDate() || new Date()
-            };
-        } catch (error) {
-            console.error('Error getting artisan:', error);
-            return null;
-        }
-    }
-
-    // Search artisans
-    async searchArtisans(searchTerm, filters = {}) {
-        try {
-            let constraints = [
-                where('status', '==', 'active')
-            ];
-            
-            // Apply search term
-            if (searchTerm && searchTerm.trim() !== '') {
-                const term = searchTerm.toLowerCase().trim();
-                // We'll filter after fetching since Firestore doesn't support OR queries well
-            }
-            
-            // Apply other filters
-            if (filters.craft && filters.craft !== 'all') {
-                constraints.push(where('craft', '==', filters.craft));
-            }
-            
-            if (filters.location && filters.location !== 'all') {
-                constraints.push(where('location.city', '==', filters.location));
-            }
-            
-            const artisansRef = collection(db, this.artisansCollection);
-            const q = query(artisansRef, ...constraints);
-            const snapshot = await getDocs(q);
-            
-            let artisans = snapshot.docs.map(doc => ({
-                id: doc.id,
-                ...doc.data()
-            }));
-            
-            // Apply search term filtering in memory
-            if (searchTerm && searchTerm.trim() !== '') {
-                const term = searchTerm.toLowerCase().trim();
-                artisans = artisans.filter(artisan => {
-                    const searchFields = [
-                        artisan.name?.toLowerCase() || '',
-                        artisan.craft?.toLowerCase() || '',
-                        artisan.specialty?.toLowerCase() || '',
-                        artisan.description?.toLowerCase() || '',
-                        artisan.location?.city?.toLowerCase() || '',
-                        ...(artisan.tags || []).map(tag => tag.toLowerCase())
-                    ].join(' ');
-                    
-                    return searchFields.includes(term);
-                });
-            }
-            
-            return artisans;
-        } catch (error) {
-            console.error('Error searching artisans:', error);
-            return [];
-        }
-    }
-
-    // Create new artisan
-    async createArtisan(artisanData, userId) {
-        try {
-            const artisansRef = collection(db, this.artisansCollection);
-            
-            // Prepare artisan data
-            const artisanDoc = {
-                ...artisanData,
-                userId: userId,
-                status: 'pending', // New artisans need approval
-                featured: false,
-                verified: false,
-                rating: 0,
-                reviewCount: 0,
-                views: 0,
-                createdAt: serverTimestamp(),
-                updatedAt: serverTimestamp()
-            };
-            
-            const docRef = await addDoc(artisansRef, artisanDoc);
-            
-            // Update user document with artisan ID
-            const userRef = doc(db, this.usersCollection, userId);
-            await updateDoc(userRef, {
-                artisanId: docRef.id,
-                role: 'artisan',
-                updatedAt: serverTimestamp()
-            });
-            
-            return { 
-                success: true, 
-                id: docRef.id,
-                message: 'Artisan profile created successfully. Awaiting verification.'
-            };
-        } catch (error) {
-            console.error('Error creating artisan:', error);
-            return { 
-                success: false, 
-                error: error.message,
-                message: 'Failed to create artisan profile'
-            };
-        }
-    }
-
-    // Update artisan profile
-    async updateArtisan(artisanId, updates) {
-        try {
-            const artisanRef = doc(db, this.artisansCollection, artisanId);
-            
-            await updateDoc(artisanRef, {
-                ...updates,
-                updatedAt: serverTimestamp()
-            });
-            
-            return { success: true, message: 'Artisan profile updated successfully' };
-        } catch (error) {
-            console.error('Error updating artisan:', error);
-            return { success: false, error: error.message };
-        }
-    }
-
-    // Increment view count
-    async incrementViewCount(artisanId) {
-        try {
-            const artisanRef = doc(db, this.artisansCollection, artisanId);
-            const snapshot = await getDoc(artisanRef);
-            
-            if (snapshot.exists()) {
-                const currentViews = snapshot.data().views || 0;
-                await updateDoc(artisanRef, {
-                    views: currentViews + 1,
-                    updatedAt: serverTimestamp()
-                });
-            }
-        } catch (error) {
-            console.error('Error incrementing view count:', error);
-        }
-    }
-
-    // Get artisans by user ID
-    async getArtisansByUserId(userId) {
-        try {
-            const artisansRef = collection(db, this.artisansCollection);
-            const q = query(
-                artisansRef,
-                where('userId', '==', userId),
-                orderBy('createdAt', 'desc')
-            );
-            const snapshot = await getDocs(q);
-            
-            return snapshot.docs.map(doc => ({
-                id: doc.id,
-                ...doc.data()
-            }));
-        } catch (error) {
-            console.error('Error getting user artisans:', error);
-            return [];
-        }
-    }
-}
+const now = () => new Date().toISOString();
 
 class UserDB {
-    constructor() {
-        this.usersCollection = 'users';
-    }
+  constructor() {
+    this.collectionName = "users";
+  }
 
-    // Get user profile
-    async getUserProfile(userId) {
-        try {
-            const userRef = doc(db, this.usersCollection, userId);
-            const snapshot = await getDoc(userRef);
-            
-            if (snapshot.exists()) {
-                return { 
-                    id: snapshot.id, 
-                    ...snapshot.data(),
-                    createdAt: snapshot.data().createdAt?.toDate() || new Date(),
-                    lastLogin: snapshot.data().lastLogin?.toDate() || new Date()
-                };
-            }
-            return null;
-        } catch (error) {
-            console.error('Error getting user profile:', error);
-            return null;
-        }
+  async saveUser(user) {
+    try {
+      await setDoc(
+        doc(db, this.collectionName, user.uid),
+        {
+          ...user,
+          updatedAt: now()
+        },
+        { merge: true }
+      );
+      return { success: true };
+    } catch (error) {
+      console.error("saveUser error:", error);
+      return { success: false, error: error.message };
     }
+  }
 
-    // Create or update user profile
-    async createUserProfile(userId, userData) {
-        try {
-            const userRef = doc(db, this.usersCollection, userId);
-            const snapshot = await getDoc(userRef);
-            
-            if (snapshot.exists()) {
-                // Update existing user
-                await updateDoc(userRef, {
-                    ...userData,
-                    updatedAt: serverTimestamp(),
-                    lastLogin: serverTimestamp()
-                });
-            } else {
-                // Create new user
-                await setDoc(userRef, {
-                    ...userData,
-                    uid: userId,
-                    favorites: [],
-                    createdAt: serverTimestamp(),
-                    updatedAt: serverTimestamp(),
-                    lastLogin: serverTimestamp(),
-                    emailVerified: false,
-                    isActive: true
-                });
-            }
-            
-            return true;
-        } catch (error) {
-            console.error('Error creating user profile:', error);
-            return false;
-        }
+  async getUser(uid) {
+    try {
+      const snap = await getDoc(doc(db, this.collectionName, uid));
+      if (!snap.exists()) return null;
+      return { id: snap.id, ...snap.data() };
+    } catch (error) {
+      console.error("getUser error:", error);
+      return null;
     }
+  }
+}
 
-    // Toggle favorite artisan
-    async toggleFavorite(userId, artisanId) {
-        try {
-            const userRef = doc(db, this.usersCollection, userId);
-            const user = await this.getUserProfile(userId);
-            
-            if (!user) {
-                throw new Error('User not found');
-            }
-            
-            let favorites = user.favorites || [];
-            const isFavorite = favorites.includes(artisanId);
-            
-            if (isFavorite) {
-                // Remove from favorites
-                favorites = favorites.filter(id => id !== artisanId);
-            } else {
-                // Add to favorites
-                favorites.push(artisanId);
-            }
-            
-            await updateDoc(userRef, {
-                favorites: favorites,
-                updatedAt: serverTimestamp()
-            });
-            
-            return { 
-                success: true, 
-                favorites: favorites,
-                isFavorite: !isFavorite
-            };
-        } catch (error) {
-            console.error('Error toggling favorite:', error);
-            return { success: false, error: error.message };
-        }
-    }
+class ArtisanDB {
+  constructor() {
+    this.collectionName = "artisans";
+  }
 
-    // Update user profile
-    async updateUserProfile(userId, updates) {
-        try {
-            const userRef = doc(db, this.usersCollection, userId);
-            
-            await updateDoc(userRef, {
-                ...updates,
-                updatedAt: serverTimestamp()
-            });
-            
-            return { success: true, message: 'Profile updated successfully' };
-        } catch (error) {
-            console.error('Error updating user profile:', error);
-            return { success: false, error: error.message };
-        }
+  async createArtisan(data) {
+    try {
+      const refDoc = await addDoc(collection(db, this.collectionName), {
+        ...data,
+        status: "active",
+        featured: false,
+        verified: false,
+        viewCount: 0,
+        reviewCount: 0,
+        createdAt: now(),
+        updatedAt: now()
+      });
+      return { success: true, id: refDoc.id };
+    } catch (error) {
+      console.error("createArtisan error:", error);
+      return { success: false, error: error.message };
     }
+  }
+
+  async updateArtisan(id, updates) {
+    try {
+      await updateDoc(doc(db, this.collectionName, id), {
+        ...updates,
+        updatedAt: now()
+      });
+      return { success: true };
+    } catch (error) {
+      console.error("updateArtisan error:", error);
+      return { success: false, error: error.message };
+    }
+  }
+
+  async getArtisanById(id) {
+    try {
+      const snap = await getDoc(doc(db, this.collectionName, id));
+      if (!snap.exists()) return null;
+      return { id: snap.id, ...snap.data() };
+    } catch (error) {
+      console.error("getArtisanById error:", error);
+      return null;
+    }
+  }
+
+  async getArtisanByUserId(userId) {
+    try {
+      const q = query(collection(db, this.collectionName), where("userId", "==", userId));
+      const snap = await getDocs(q);
+      if (snap.empty) return null;
+      const first = snap.docs[0];
+      return { id: first.id, ...first.data() };
+    } catch (error) {
+      console.error("getArtisanByUserId error:", error);
+      return null;
+    }
+  }
+
+  async getAllArtisans() {
+    try {
+      const q = query(collection(db, this.collectionName), where("status", "==", "active"));
+      const snap = await getDocs(q);
+      const list = snap.docs.map((d) => ({ id: d.id, ...d.data() }));
+      return list.sort((a, b) => String(b.createdAt || "").localeCompare(String(a.createdAt || "")));
+    } catch (error) {
+      console.error("getAllArtisans error:", error);
+      return [];
+    }
+  }
+
+  async incrementView(id) {
+    try {
+      const artisan = await this.getArtisanById(id);
+      if (!artisan) return;
+      await updateDoc(doc(db, this.collectionName, id), {
+        viewCount: Number(artisan.viewCount || 0) + 1,
+        updatedAt: now()
+      });
+    } catch (error) {
+      console.error("incrementView error:", error);
+    }
+  }
+
+  async deleteArtisan(id) {
+    try {
+      await deleteDoc(doc(db, this.collectionName, id));
+      return { success: true };
+    } catch (error) {
+      console.error("deleteArtisan error:", error);
+      return { success: false, error: error.message };
+    }
+  }
+
+  async isOwner(artisanId, currentUser) {
+    if (!currentUser) return false;
+    const artisan = await this.getArtisanById(artisanId);
+    if (!artisan) return false;
+    return currentUser.uid === artisan.userId;
+  }
+}
+
+class ProductDB {
+  constructor() {
+    this.collectionName = "products";
+  }
+
+  async addProduct(data) {
+    try {
+      const refDoc = await addDoc(collection(db, this.collectionName), {
+        ...data,
+        status: "active",
+        views: 0,
+        impressions: 0,
+        buyRequestsCount: 0,
+        reviewsCount: 0,
+        createdAt: now(),
+        updatedAt: now()
+      });
+      return { success: true, id: refDoc.id };
+    } catch (error) {
+      console.error("addProduct error:", error);
+      return { success: false, error: error.message };
+    }
+  }
+
+  async updateProduct(id, updates) {
+    try {
+      await updateDoc(doc(db, this.collectionName, id), {
+        ...updates,
+        updatedAt: now()
+      });
+      return { success: true };
+    } catch (error) {
+      console.error("updateProduct error:", error);
+      return { success: false, error: error.message };
+    }
+  }
+
+  async deleteProduct(id) {
+    try {
+      await deleteDoc(doc(db, this.collectionName, id));
+      return { success: true };
+    } catch (error) {
+      console.error("deleteProduct error:", error);
+      return { success: false, error: error.message };
+    }
+  }
+
+  async getProductById(id) {
+    try {
+      const snap = await getDoc(doc(db, this.collectionName, id));
+      if (!snap.exists()) return null;
+      return { id: snap.id, ...snap.data() };
+    } catch (error) {
+      console.error("getProductById error:", error);
+      return null;
+    }
+  }
+
+  async getProductsByArtisanId(artisanId) {
+    try {
+      const q = query(collection(db, this.collectionName), where("artisanId", "==", artisanId));
+      const snap = await getDocs(q);
+      const list = snap.docs.map((d) => ({ id: d.id, ...d.data() }));
+      return list.sort((a, b) => String(b.createdAt || "").localeCompare(String(a.createdAt || "")));
+    } catch (error) {
+      console.error("getProductsByArtisanId error:", error);
+      return [];
+    }
+  }
+
+  async incrementView(id) {
+    try {
+      const product = await this.getProductById(id);
+      if (!product) return;
+      await updateDoc(doc(db, this.collectionName, id), {
+        views: Number(product.views || 0) + 1,
+        impressions: Number(product.impressions || 0) + 1,
+        updatedAt: now()
+      });
+    } catch (error) {
+      console.error("incrementView error:", error);
+    }
+  }
 }
 
 class ReviewDB {
-    constructor() {
-        this.reviewsCollection = 'reviews';
-    }
+  constructor() {
+    this.collectionName = "productReviews";
+  }
 
-    // Add review for artisan
-    async addReview(artisanId, userId, reviewData) {
-        try {
-            const reviewsRef = collection(db, this.reviewsCollection);
-            
-            const reviewDoc = {
-                artisanId: artisanId,
-                userId: userId,
-                ...reviewData,
-                createdAt: serverTimestamp(),
-                updatedAt: serverTimestamp(),
-                helpfulCount: 0,
-                reported: false
-            };
-            
-            const docRef = await addDoc(reviewsRef, reviewDoc);
-            
-            // Update artisan's rating and review count
-            await this.updateArtisanRating(artisanId);
-            
-            return { success: true, id: docRef.id };
-        } catch (error) {
-            console.error('Error adding review:', error);
-            return { success: false, error: error.message };
-        }
-    }
+  async addReview(data) {
+    try {
+      const refDoc = await addDoc(collection(db, this.collectionName), {
+        ...data,
+        createdAt: now()
+      });
 
-    // Get reviews for artisan
-    async getArtisanReviews(artisanId, limitCount = 10) {
-        try {
-            const reviewsRef = collection(db, this.reviewsCollection);
-            const q = query(
-                reviewsRef,
-                where('artisanId', '==', artisanId),
-                orderBy('createdAt', 'desc'),
-                limit(limitCount)
-            );
-            
-            const snapshot = await getDocs(q);
-            return snapshot.docs.map(doc => ({
-                id: doc.id,
-                ...doc.data()
-            }));
-        } catch (error) {
-            console.error('Error getting reviews:', error);
-            return [];
-        }
-    }
+      const product = await productDB.getProductById(data.productId);
+      if (product) {
+        await productDB.updateProduct(data.productId, {
+          reviewsCount: Number(product.reviewsCount || 0) + 1
+        });
+      }
 
-    // Update artisan's average rating
-    async updateArtisanRating(artisanId) {
-        try {
-            const reviews = await this.getArtisanReviews(artisanId, 1000); // Get all reviews
-            
-            if (reviews.length === 0) {
-                return;
-            }
-            
-            const totalRating = reviews.reduce((sum, review) => sum + (review.rating || 0), 0);
-            const averageRating = totalRating / reviews.length;
-            
-            const artisanRef = doc(db, 'artisans', artisanId);
-            await updateDoc(artisanRef, {
-                rating: parseFloat(averageRating.toFixed(1)),
-                reviewCount: reviews.length,
-                updatedAt: serverTimestamp()
-            });
-        } catch (error) {
-            console.error('Error updating artisan rating:', error);
-        }
+      return { success: true, id: refDoc.id };
+    } catch (error) {
+      console.error("addReview error:", error);
+      return { success: false, error: error.message };
     }
+  }
+
+  async getProductReviews(productId) {
+    try {
+      const q = query(collection(db, this.collectionName), where("productId", "==", productId));
+      const snap = await getDocs(q);
+      const list = snap.docs.map((d) => ({ id: d.id, ...d.data() }));
+      return list.sort((a, b) => String(b.createdAt || "").localeCompare(String(a.createdAt || "")));
+    } catch (error) {
+      console.error("getProductReviews error:", error);
+      return [];
+    }
+  }
+}
+
+class BuyRequestDB {
+  constructor() {
+    this.collectionName = "buyRequests";
+  }
+
+  async addRequest(data) {
+    try {
+      const refDoc = await addDoc(collection(db, this.collectionName), {
+        ...data,
+        status: "new",
+        createdAt: now()
+      });
+
+      const product = await productDB.getProductById(data.productId);
+      if (product) {
+        await productDB.updateProduct(data.productId, {
+          buyRequestsCount: Number(product.buyRequestsCount || 0) + 1
+        });
+      }
+
+      return { success: true, id: refDoc.id };
+    } catch (error) {
+      console.error("addRequest error:", error);
+      return { success: false, error: error.message };
+    }
+  }
+
+  async getRequestsForArtisan(artisanId) {
+    try {
+      const q = query(collection(db, this.collectionName), where("artisanId", "==", artisanId));
+      const snap = await getDocs(q);
+      const list = snap.docs.map((d) => ({ id: d.id, ...d.data() }));
+      return list.sort((a, b) => String(b.createdAt || "").localeCompare(String(a.createdAt || "")));
+    } catch (error) {
+      console.error("getRequestsForArtisan error:", error);
+      return [];
+    }
+  }
 }
 
 class MessageDB {
-    constructor() {
-        this.messagesCollection = 'messages';
-    }
+  constructor() {
+    this.conversationsCollection = "conversations";
+    this.messagesCollection = "messages";
+  }
 
-    // Send message to artisan
-    async sendMessage(artisanId, messageData) {
-        try {
-            const messagesRef = collection(db, this.messagesCollection);
-            
-            const messageDoc = {
-                artisanId: artisanId,
-                ...messageData,
-                status: 'unread',
-                read: false,
-                archived: false,
-                createdAt: serverTimestamp()
-            };
-            
-            const docRef = await addDoc(messagesRef, messageDoc);
-            
-            return { success: true, id: docRef.id };
-        } catch (error) {
-            console.error('Error sending message:', error);
-            return { success: false, error: error.message };
-        }
-    }
+  async getOrCreateConversation(artisanId, userId, artisanName, userName) {
+    const q = query(collection(db, this.conversationsCollection), where("artisanId", "==", artisanId));
+    const snap = await getDocs(q);
 
-    // Get messages for artisan
-    async getMessages(artisanId, limitCount = 50) {
-        try {
-            const messagesRef = collection(db, this.messagesCollection);
-            const q = query(
-                messagesRef,
-                where('artisanId', '==', artisanId),
-                orderBy('createdAt', 'desc'),
-                limit(limitCount)
-            );
-            
-            const snapshot = await getDocs(q);
-            return snapshot.docs.map(doc => ({
-                id: doc.id,
-                ...doc.data()
-            }));
-        } catch (error) {
-            console.error('Error getting messages:', error);
-            return [];
-        }
-    }
+    const found = snap.docs
+      .map((d) => ({ id: d.id, ...d.data() }))
+      .find((c) => c.userId === userId);
 
-    // Mark message as read
-    async markAsRead(messageId) {
-        try {
-            const messageRef = doc(db, this.messagesCollection, messageId);
-            await updateDoc(messageRef, {
-                read: true,
-                status: 'read',
-                updatedAt: serverTimestamp()
-            });
-            
-            return { success: true };
-        } catch (error) {
-            console.error('Error marking message as read:', error);
-            return { success: false, error: error.message };
-        }
-    }
-}
+    if (found) return found.id;
 
-// Create instances
-const artisanDB = new ArtisanDB();
-const userDB = new UserDB();
-const reviewDB = new ReviewDB();
-const messageDB = new MessageDB();
+    const refDoc = await addDoc(collection(db, this.conversationsCollection), {
+      artisanId,
+      userId,
+      artisanName,
+      userName,
+      lastMessage: "",
+      updatedAt: now(),
+      createdAt: now()
+    });
 
-// Export instances
-export { artisanDB, userDB, reviewDB, messageDB };
+    return refDoc.id;
+  }
 
-// Helper function to populate sample data (for testing)
-export async function populateSampleData() {
-    console.log('Populating sample data...');
-    
-    // Sample artisans data
-    const sampleArtisans = [
-        {
-            name: 'Rajesh Kumar',
-            craft: 'Pottery',
-            specialty: 'Terracotta & Blue Pottery',
-            description: 'Master potter with 15+ years of experience in traditional Indian pottery techniques. Specializes in terracotta and blue pottery with intricate hand-painted designs.',
-            location: {
-                city: 'Delhi',
-                state: 'Delhi',
-                address: 'Craft Street, Artisan Colony',
-                latitude: 28.6139,
-                longitude: 77.2090
-            },
-            experience: 15,
-            rating: 4.8,
-            reviewCount: 124,
-            featured: true,
-            verified: true,
-            imageUrl: 'https://images.unsplash.com/photo-1605000797499-95a51c5269ae?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-            tags: ['Handmade', 'Terracotta', 'Blue Pottery', 'Traditional'],
-            skills: ['Pottery Wheel', 'Hand Building', 'Glazing', 'Firing'],
-            contact: {
-                phone: '+91 98765 43210',
-                email: 'rajesh@artisanconnect.com'
-            },
-            social: {
-                instagram: 'https://instagram.com/rajeshpottery',
-                facebook: 'https://facebook.com/rajeshpottery'
-            },
-            workshopType: 'studio',
-            priceRange: 'mid',
-            languages: ['Hindi', 'English'],
-            commission: true,
-            workshops: true,
-            status: 'active'
-        }
-        // Add more sample artisans as needed
-    ];
-    
+  async sendMessage({ artisanId, userId, artisanName, userName, senderId, senderRole, text }) {
     try {
-        for (const artisan of sampleArtisans) {
-            await artisanDB.createArtisan(artisan, 'sample-user-id');
-        }
-        console.log('Sample data populated successfully');
+      const conversationId = await this.getOrCreateConversation(
+        artisanId,
+        userId,
+        artisanName,
+        userName
+      );
+
+      await addDoc(collection(db, this.messagesCollection), {
+        conversationId,
+        artisanId,
+        userId,
+        senderId,
+        senderRole,
+        text,
+        read: false,
+        createdAt: now()
+      });
+
+      await updateDoc(doc(db, this.conversationsCollection, conversationId), {
+        lastMessage: text,
+        updatedAt: now()
+      });
+
+      return { success: true, conversationId };
     } catch (error) {
-        console.error('Error populating sample data:', error);
+      console.error("sendMessage error:", error);
+      return { success: false, error: error.message };
     }
+  }
+
+  async getInboxForArtisan(artisanId) {
+    try {
+      const q = query(collection(db, this.conversationsCollection), where("artisanId", "==", artisanId));
+      const snap = await getDocs(q);
+      const list = snap.docs.map((d) => ({ id: d.id, ...d.data() }));
+      return list.sort((a, b) => String(b.updatedAt || "").localeCompare(String(a.updatedAt || "")));
+    } catch (error) {
+      console.error("getInboxForArtisan error:", error);
+      return [];
+    }
+  }
+
+  async getMessages(conversationId) {
+    try {
+      const q = query(collection(db, this.messagesCollection), where("conversationId", "==", conversationId));
+      const snap = await getDocs(q);
+      const list = snap.docs.map((d) => ({ id: d.id, ...d.data() }));
+      return list.sort((a, b) => String(a.createdAt || "").localeCompare(String(b.createdAt || "")));
+    } catch (error) {
+      console.error("getMessages error:", error);
+      return [];
+    }
+  }
+
+  async getUnreadCountForArtisan(artisanId) {
+    try {
+      const inbox = await this.getInboxForArtisan(artisanId);
+      let unread = 0;
+
+      for (const convo of inbox) {
+        const messages = await this.getMessages(convo.id);
+        unread += messages.filter(
+          (msg) => msg.senderRole !== "artisan" && !msg.read
+        ).length;
+      }
+
+      return unread;
+    } catch (error) {
+      console.error("getUnreadCountForArtisan error:", error);
+      return 0;
+    }
+  }
+
+  async markConversationAsRead(conversationId) {
+    try {
+      const messages = await this.getMessages(conversationId);
+      const unreadMessages = messages.filter(
+        (msg) => msg.senderRole !== "artisan" && !msg.read
+      );
+
+      await Promise.all(
+        unreadMessages.map((msg) =>
+          updateDoc(doc(db, this.messagesCollection, msg.id), { read: true })
+        )
+      );
+
+      return { success: true };
+    } catch (error) {
+      console.error("markConversationAsRead error:", error);
+      return { success: false, error: error.message };
+    }
+  }
 }
+
+class FollowDB {
+  constructor() {
+    this.collectionName = "follows";
+  }
+
+  async followArtisan({ artisanId, artisanName, followerId, followerName, followerEmail }) {
+    try {
+      const existing = await this.getFollowRecord(artisanId, followerId);
+      if (existing) return { success: true, id: existing.id, alreadyFollowing: true };
+
+      const refDoc = await addDoc(collection(db, this.collectionName), {
+        artisanId,
+        artisanName,
+        followerId,
+        followerName,
+        followerEmail,
+        createdAt: now()
+      });
+
+      return { success: true, id: refDoc.id, alreadyFollowing: false };
+    } catch (error) {
+      console.error("followArtisan error:", error);
+      return { success: false, error: error.message };
+    }
+  }
+
+  async unfollowArtisan(artisanId, followerId) {
+    try {
+      const existing = await this.getFollowRecord(artisanId, followerId);
+      if (!existing) return { success: true };
+      await deleteDoc(doc(db, this.collectionName, existing.id));
+      return { success: true };
+    } catch (error) {
+      console.error("unfollowArtisan error:", error);
+      return { success: false, error: error.message };
+    }
+  }
+
+  async getFollowRecord(artisanId, followerId) {
+    try {
+      const q = query(collection(db, this.collectionName), where("artisanId", "==", artisanId));
+      const snap = await getDocs(q);
+      const record = snap.docs
+        .map((d) => ({ id: d.id, ...d.data() }))
+        .find((item) => item.followerId === followerId);
+      return record || null;
+    } catch (error) {
+      console.error("getFollowRecord error:", error);
+      return null;
+    }
+  }
+
+  async isFollowing(artisanId, followerId) {
+    const record = await this.getFollowRecord(artisanId, followerId);
+    return Boolean(record);
+  }
+
+  async getFollowersForArtisan(artisanId) {
+    try {
+      const q = query(collection(db, this.collectionName), where("artisanId", "==", artisanId));
+      const snap = await getDocs(q);
+      const list = snap.docs.map((d) => ({ id: d.id, ...d.data() }));
+      return list.sort((a, b) => String(b.createdAt || "").localeCompare(String(a.createdAt || "")));
+    } catch (error) {
+      console.error("getFollowersForArtisan error:", error);
+      return [];
+    }
+  }
+}
+
+export const userDB = new UserDB();
+export const artisanDB = new ArtisanDB();
+export const productDB = new ProductDB();
+export const reviewDB = new ReviewDB();
+export const buyRequestDB = new BuyRequestDB();
+export const messageDB = new MessageDB();
+export const followDB = new FollowDB();

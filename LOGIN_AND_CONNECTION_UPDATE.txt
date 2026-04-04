@@ -1,0 +1,24 @@
+ArtisanConnect update summary
+
+What was updated:
+1. Global auth guard added in js/main.js
+   - If user clicks protected actions while logged out, they are redirected to login.html
+   - After login, they return to the requested page
+
+2. Login redirect fixed in js/login.js
+   - Redirect query now has priority
+   - This makes message/follow/create-profile flow return correctly
+
+3. Artisan profile buttons updated in js/profile.js
+   - Message Artisan and Follow Artisan now trigger login when needed
+
+4. artisan-profile.html
+   - My Account nav is now protected
+
+5. profile.html
+   - Static message/workshop/review buttons now also force login first
+
+Important Firebase reminders:
+- Use collection name: follows
+- Make sure messages.artisanId matches conversations.artisanId for the same conversation
+- artisans.userId must equal the Firebase Auth uid of the artisan owner

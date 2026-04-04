@@ -1,582 +1,153 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Discover Artisans | ArtisanConnect</title>
-    <meta name="description" content="Browse and discover talented artisans, traditional crafts, and handmade products in your area.">
-    
-    <!-- Fonts & Icons -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    
-    <!-- CSS Files -->
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/animations.css">
-    <link rel="stylesheet" href="css/artisans.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>Discover Artisans - ArtisanConnect</title>
+  <meta name="description" content="Browse verified artisans, explore traditional crafts, and discover makers near you.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/guest-experience.css">
 </head>
-<body class="artisans-page">
-    <!-- Background Circles -->
-    <div class="bg-circles">
-        <div class="bg-circle circle-1"></div>
-        <div class="bg-circle circle-2"></div>
-        <div class="bg-circle circle-3"></div>
+<body class="artisans-page marketplace-page">
+  <header class="main-header">
+    <div class="container header-container">
+      <a href="index.html" class="logo">
+        <div class="logo-icon">AC</div>
+        <div class="logo-text">
+          <h1>Artisan<span>Connect</span></h1>
+          <p>Bridging Crafts and Community</p>
+        </div>
+      </a>
+
+      <nav class="main-nav" id="mainNav">
+        <ul>
+          <li><a href="index.html" class="nav-link"><i class="fas fa-house"></i> Home</a></li>
+          <li><a href="artisans.html" class="nav-link active"><i class="fas fa-magnifying-glass"></i> Discover Artisans</a></li>
+          <li><a href="about.html" class="nav-link"><i class="fas fa-circle-dot"></i> Our Mission</a></li>
+          <li><a href="join-community.html" class="btn-cta"><i class="fas fa-user-plus"></i> Join Community</a></li>
+        </ul>
+      </nav>
+
+      <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
     </div>
+  </header>
 
-    <!-- Professional Header -->
-    <header class="main-header">
-        <div class="container header-container">
-            <a href="index.html" class="logo">
-                <div class="logo-icon">AC</div>
-                <div class="logo-text">
-                    <h1>Artisan<span>Connect</span></h1>
-                    <p>Bridging Crafts and Community</p>
-                </div>
-            </a>
+  <main>
+    <section class="page-banner discover-banner">
+      <div class="container text-center narrow-content">
+        <h1>Discover Talented Artisans</h1>
+        <p>Connect with skilled craftspeople preserving traditional arts and creating unique handmade products.</p>
+      </div>
+    </section>
 
-            <nav class="main-nav" id="mainNav">
-                <ul>
-                    <li><a href="index.html" class="nav-link"><i class="fas fa-home"></i> Home</a></li>
-                    <li><a href="artisans.html" class="nav-link active"><i class="fas fa-search"></i> Discover Artisans</a></li>
-                    <li><a href="about.html" class="nav-link"><i class="fas fa-bullseye"></i> Our Mission</a></li>
-                    <li><a href="join-community.html" class="btn-cta"><i class="fas fa-user-plus"></i> Join Community</a></li>
-                </ul>
-            </nav>
+    <section class="section-space-sm">
+      <div class="container">
+        <div class="search-shell cardish">
+          <div class="search-top-row">
+            <div class="search-field-wrap">
+              <i class="fas fa-magnifying-glass"></i>
+              <input type="text" id="artisanSearchInput" class="form-control search-input" placeholder="Search artisans, crafts, or locations...">
+            </div>
+            <button type="button" class="btn btn-primary" id="artisanSearchBtn"><i class="fas fa-magnifying-glass"></i> Search</button>
+          </div>
 
-            <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
+          <div class="quick-filter-row">
+            <button class="quick-pill active" data-quick="nearby">Nearby Artisans</button>
+            <button class="quick-pill" data-quick="featured">Featured Only</button>
+          </div>
+
+          <div class="filters-grid">
+            <div>
+              <label for="craftFilter">Craft Type</label>
+              <select id="craftFilter" class="filter-select">
+                <option value="">All Crafts</option>
+                <option value="pottery">Pottery</option>
+                <option value="textiles">Textiles</option>
+                <option value="jewelry">Jewelry</option>
+                <option value="woodwork">Woodwork</option>
+                <option value="metalwork">Metalwork</option>
+                <option value="painting">Painting</option>
+              </select>
+            </div>
+            <div>
+              <label for="locationFilter">Location</label>
+              <select id="locationFilter" class="filter-select">
+                <option value="">All Locations</option>
+                <option value="delhi">Delhi</option>
+                <option value="jaipur">Jaipur</option>
+                <option value="bangalore">Bangalore</option>
+                <option value="hyderabad">Hyderabad</option>
+                <option value="mumbai">Mumbai</option>
+                <option value="varanasi">Varanasi</option>
+              </select>
+            </div>
+            <div>
+              <label for="experienceFilter">Experience</label>
+              <select id="experienceFilter" class="filter-select">
+                <option value="">Any Experience</option>
+                <option value="0-5">0-5 Years</option>
+                <option value="6-10">6-10 Years</option>
+                <option value="11+">11+ Years</option>
+              </select>
+            </div>
+            <div>
+              <label for="sortFilter">Sort By</label>
+              <select id="sortFilter" class="filter-select">
+                <option value="featured">Featured</option>
+                <option value="newest">Newest</option>
+                <option value="rating">Rating</option>
+                <option value="name">Name</option>
+              </select>
+            </div>
+            <button type="button" class="btn btn-outline clear-filter-btn" id="clearFiltersBtn"><i class="fas fa-xmark"></i> Clear All</button>
+          </div>
         </div>
-    </header>
+      </div>
+    </section>
 
-    <main>
-        <!-- Hero Section -->
-        <section class="page-hero artisans-hero" style="margin-top: 70px;">
-            <div class="container">
-                <div class="hero-content text-center animate-fade-in">
-                    <h1 class="hero-title">Discover <span class="highlight">Talented Artisans</span></h1>
-                    <p class="hero-subtitle">
-                        Connect with skilled craftspeople preserving traditional arts and creating unique handmade products
-                    </p>
-                </div>
-            </div>
-        </section>
-
-        <!-- Search & Filters Section -->
-        <section class="search-section">
-            <div class="container">
-                <div class="search-wrapper animate-fade-in">
-                    <!-- Main Search -->
-                    <div class="main-search">
-                        <div class="search-box">
-                            <i class="fas fa-search search-icon"></i>
-                            <input type="text" 
-                                   id="mainSearch" 
-                                   placeholder="Search artisans, crafts, or locations..."
-                                   aria-label="Search artisans">
-                            <button class="btn btn-primary btn-search" id="searchBtn">
-                                <i class="fas fa-search"></i> Search
-                            </button>
-                        </div>
-                        <div class="search-options">
-                            <button class="btn btn-sm btn-outline" id="nearbyBtn">
-                                <i class="fas fa-map-marker-alt"></i> Nearby Artisans
-                            </button>
-                            <button class="btn btn-sm btn-outline" id="featuredBtn">
-                                <i class="fas fa-star"></i> Featured Only
-                            </button>
-                        </div>
-                    </div>
-
-                    <!-- Advanced Filters -->
-                    <div class="advanced-filters">
-                        <div class="filter-group">
-                            <label for="craftFilter"><i class="fas fa-palette"></i> Craft Type</label>
-                            <select id="craftFilter" class="filter-select">
-                                <option value="">All Crafts</option>
-                                <option value="pottery">Pottery & Ceramics</option>
-                                <option value="textiles">Textiles & Weaving</option>
-                                <option value="jewelry">Jewelry Making</option>
-                                <option value="woodwork">Woodwork</option>
-                                <option value="metalwork">Metalwork</option>
-                                <option value="painting">Painting</option>
-                                <option value="sculpture">Sculpture</option>
-                                <option value="leather">Leatherwork</option>
-                                <option value="glass">Glass Art</option>
-                            </select>
-                        </div>
-
-                        <div class="filter-group">
-                            <label for="locationFilter"><i class="fas fa-map-marker-alt"></i> Location</label>
-                            <select id="locationFilter" class="filter-select">
-                                <option value="">All Locations</option>
-                                <option value="delhi">Delhi NCR</option>
-                                <option value="mumbai">Mumbai</option>
-                                <option value="bangalore">Bangalore</option>
-                                <option value="hyderabad">Hyderabad</option>
-                                <option value="chennai">Chennai</option>
-                                <option value="kolkata">Kolkata</option>
-                                <option value="jaipur">Jaipur</option>
-                                <option value="varanasi">Varanasi</option>
-                                <option value="remote">Remote/Online</option>
-                            </select>
-                        </div>
-
-                        <div class="filter-group">
-                            <label for="experienceFilter"><i class="fas fa-award"></i> Experience</label>
-                            <select id="experienceFilter" class="filter-select">
-                                <option value="">Any Experience</option>
-                                <option value="0-5">0-5 Years</option>
-                                <option value="5-10">5-10 Years</option>
-                                <option value="10-20">10-20 Years</option>
-                                <option value="20+">20+ Years</option>
-                            </select>
-                        </div>
-
-                        <div class="filter-group">
-                            <label for="sortFilter"><i class="fas fa-sort"></i> Sort By</label>
-                            <select id="sortFilter" class="filter-select">
-                                <option value="featured">Featured</option>
-                                <option value="rating">Highest Rated</option>
-                                <option value="newest">Newest</option>
-                                <option value="distance">Nearest</option>
-                            </select>
-                        </div>
-
-                        <button class="btn btn-sm btn-secondary" id="clearFilters">
-                            <i class="fas fa-times"></i> Clear All
-                        </button>
-                    </div>
-
-                    <!-- Active Filters Display -->
-                    <div class="active-filters" id="activeFilters">
-                        <!-- Active filters will appear here -->
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Recent Searches -->
-        <section class="recent-searches">
-            <div class="container">
-                <h3 class="section-subtitle"><i class="fas fa-history"></i> Recent Searches</h3>
-                <div class="search-tags">
-                    <span class="search-tag active">Pottery</span>
-                    <span class="search-tag">Weaving</span>
-                    <span class="search-tag">Woodwork</span>
-                    <span class="search-tag">Jewelry</span>
-                    <span class="search-tag">Textiles</span>
-                </div>
-            </div>
-        </section>
-
-        <!-- Results Section -->
-        <section class="results-section">
-            <div class="container">
-                <!-- Results Header -->
-                <div class="results-header">
-                    <div class="results-info">
-                        <h2 id="resultsCount">12 Artisans Found</h2>
-                        <p class="text-sm" id="resultsDescription">Showing talented artisans near you</p>
-                    </div>
-                    <div class="view-controls">
-                        <button class="view-toggle active" data-view="grid" aria-label="Grid view">
-                            <i class="fas fa-th"></i>
-                        </button>
-                        <button class="view-toggle" data-view="list" aria-label="List view">
-                            <i class="fas fa-list"></i>
-                        </button>
-                        <button class="btn btn-sm btn-outline" id="mapToggle">
-                            <i class="fas fa-map"></i> Show Map
-                        </button>
-                    </div>
-                </div>
-
-                <!-- Map View (Hidden by default) -->
-                <div class="map-view" id="mapView" style="display: none;">
-                    <div class="map-container">
-                        <div id="artisansMap" style="height: 400px; background: #f0f0f0; border-radius: 8px; display: flex; align-items: center; justify-content: center;">
-                            <p><i class="fas fa-map-marked-alt fa-2x"></i><br>Map view would appear here with Google Maps API key</p>
-                        </div>
-                        <div class="map-legend">
-                            <h4><i class="fas fa-map-pin"></i> Legend</h4>
-                            <ul>
-                                <li><span class="legend-dot featured"></span> Featured Artisans</li>
-                                <li><span class="legend-dot verified"></span> Verified Artisans</li>
-                                <li><span class="legend-dot new"></span> New Artisans</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Artisans Grid/List -->
-                <div class="artisans-container view-grid" id="artisansContainer">
-                    <!-- Artisan Cards -->
-                    <div class="artisan-card">
-                        <div class="artisan-card-header">
-                            <div class="artisan-badge featured">Featured</div>
-                            <div class="artisan-badge verified">Verified</div>
-                            <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" 
-                                 alt="Rajesh Kumar - Pottery Artisan" class="artisan-image">
-                        </div>
-                        <div class="artisan-card-body">
-                            <div class="artisan-info">
-                                <h3 class="artisan-name">Rajesh Kumar</h3>
-                                <p class="artisan-craft"><i class="fas fa-palette"></i> Pottery & Ceramics</p>
-                                <p class="artisan-location"><i class="fas fa-map-marker-alt"></i> Delhi, India</p>
-                            </div>
-                            <div class="artisan-rating">
-                                <div class="stars">
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star-half-alt"></i>
-                                    <span class="rating-score">4.8</span>
-                                </div>
-                                <p class="rating-count">(42 reviews)</p>
-                            </div>
-                            <p class="artisan-description">Traditional pottery artist with 15+ years experience in terracotta and ceramic arts.</p>
-                            <div class="artisan-actions">
-                                <a href="profile.html?id=1" class="btn btn-primary btn-sm">View Profile</a>
-                                <button class="btn btn-outline btn-sm"><i class="far fa-heart"></i></button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="artisan-card">
-                        <div class="artisan-card-header">
-                            <div class="artisan-badge new">New</div>
-                            <img src="images/8.jpg" 
-                                 alt="Priya Sharma - Textile Weaver" class="artisan-image">
-                        </div>
-                        <div class="artisan-card-body">
-                            <div class="artisan-info">
-                                <h3 class="artisan-name">Priya Sharma</h3>
-                                <p class="artisan-craft"><i class="fas fa-tshirt"></i> Textile Weaving</p>
-                                <p class="artisan-location"><i class="fas fa-map-marker-alt"></i> Jaipur, India</p>
-                            </div>
-                            <div class="artisan-rating">
-                                <div class="stars">
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="far fa-star"></i>
-                                    <span class="rating-score">4.0</span>
-                                </div>
-                                <p class="rating-count">(18 reviews)</p>
-                            </div>
-                            <p class="artisan-description">Master weaver specializing in traditional Rajasthani patterns and natural dyes.</p>
-                            <div class="artisan-actions">
-                                <a href="profile.html" class="btn btn-primary btn-sm">View Profile</a>
-                                <button class="btn btn-outline btn-sm"><i class="far fa-heart"></i></button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="artisan-card">
-                        <div class="artisan-card-header">
-                            <div class="artisan-badge featured">Featured</div>
-                            <div class="artisan-badge verified">Verified</div>
-                            <img src="images/7.jpg" 
-                                 alt="Amit Patel - Woodwork Artisan" class="artisan-image">
-                        </div>
-                        <div class="artisan-card-body">
-                            <div class="artisan-info">
-                                <h3 class="artisan-name">Amit Patel</h3>
-                                <p class="artisan-craft"><i class="fas fa-tree"></i> Woodwork</p>
-                                <p class="artisan-location"><i class="fas fa-map-marker-alt"></i> Bangalore, India</p>
-                            </div>
-                            <div class="artisan-rating">
-                                <div class="stars">
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <span class="rating-score">5.0</span>
-                                </div>
-                                <p class="rating-count">(56 reviews)</p>
-                            </div>
-                            <p class="artisan-description">Wood carving expert with 25 years experience in traditional Indian furniture.</p>
-                            <div class="artisan-actions">
-                                <a href="profile.html" class="btn btn-primary btn-sm">View Profile</a>
-                                <button class="btn btn-outline btn-sm"><i class="far fa-heart"></i></button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="artisan-card">
-                        <div class="artisan-card-header">
-                            <div class="artisan-badge verified">Verified</div>
-                            <img src="images/6.jpg" 
-                                 alt="Sunita Rao - Jewelry Maker" class="artisan-image">
-                        </div>
-                        <div class="artisan-card-body">
-                            <div class="artisan-info">
-                                <h3 class="artisan-name">Sunita Rao</h3>
-                                <p class="artisan-craft"><i class="fas fa-gem"></i> Jewelry Making</p>
-                                <p class="artisan-location"><i class="fas fa-map-marker-alt"></i> Hyderabad, India</p>
-                            </div>
-                            <div class="artisan-rating">
-                                <div class="stars">
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star-half-alt"></i>
-                                    <span class="rating-score">4.7</span>
-                                </div>
-                                <p class="rating-count">(31 reviews)</p>
-                            </div>
-                            <p class="artisan-description">Creates exquisite handcrafted jewelry using traditional techniques.</p>
-                            <div class="artisan-actions">
-                                <a href="profile.html" class="btn btn-primary btn-sm">View Profile</a>
-                                <button class="btn btn-outline btn-sm"><i class="far fa-heart"></i></button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="artisan-card">
-                        <div class="artisan-card-header">
-                            <div class="artisan-badge new">New</div>
-                            <img src="images/5.jpg" 
-                                 alt="Kiran Mehta - Leatherworker" class="artisan-image">
-                        </div>
-                        <div class="artisan-card-body">
-                            <div class="artisan-info">
-                                <h3 class="artisan-name">Kiran Mehta</h3>
-                                <p class="artisan-craft"><i class="fas fa-warehouse"></i> Leatherwork</p>
-                                <p class="artisan-location"><i class="fas fa-map-marker-alt"></i> Mumbai, India</p>
-                            </div>
-                            <div class="artisan-rating">
-                                <div class="stars">
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star-half-alt"></i>
-                                    <i class="far fa-star"></i>
-                                    <span class="rating-score">3.8</span>
-                                </div>
-                                <p class="rating-count">(12 reviews)</p>
-                            </div>
-                            <p class="artisan-description">Traditional leather artisan specializing in hand-tooled bags and accessories.</p>
-                            <div class="artisan-actions">
-                                <a href="profile.html?id=5" class="btn btn-primary btn-sm">View Profile</a>
-                                <button class="btn btn-outline btn-sm"><i class="far fa-heart"></i></button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="artisan-card">
-                        <div class="artisan-card-header">
-                            <div class="artisan-badge featured">Featured</div>
-                            <div class="artisan-badge verified">Verified</div>
-                            <img src="https://images.unsplash.com/photo-1542744095-fcf48d80b0fd?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" 
-                                 alt="Vikram Singh - Metalworker" class="artisan-image">
-                        </div>
-                        <div class="artisan-card-body">
-                            <div class="artisan-info">
-                                <h3 class="artisan-name">Vikram Singh</h3>
-                                <p class="artisan-craft"><i class="fas fa-hammer"></i> Metalwork</p>
-                                <p class="artisan-location"><i class="fas fa-map-marker-alt"></i> Varanasi, India</p>
-                            </div>
-                            <div class="artisan-rating">
-                                <div class="stars">
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <span class="rating-score">5.0</span>
-                                </div>
-                                <p class="rating-count">(47 reviews)</p>
-                            </div>
-                            <p class="artisan-description">Master metalworker creating traditional brass and copper artifacts.</p>
-                            <div class="artisan-actions">
-                                 <a href="profile.html" class="btn btn-primary btn-sm">View Profile</a>
-                                <button class="btn btn-outline btn-sm"><i class="far fa-heart"></i></button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- No Results Message (Hidden) -->
-                <div class="no-results" id="noResults" style="display: none;">
-                    <div class="no-results-content">
-                        <i class="fas fa-search fa-3x"></i>
-                        <h3>No Artisans Found</h3>
-                        <p>Try adjusting your search criteria or browse all artisans</p>
-                        <button class="btn btn-primary" id="resetSearch">
-                            <i class="fas fa-redo"></i> Reset Search
-                        </button>
-                    </div>
-                </div>
-
-                <!-- Pagination -->
-                <div class="pagination">
-                    <button class="btn btn-outline" id="prevPage" disabled>
-                        <i class="fas fa-chevron-left"></i> Previous
-                    </button>
-                    <div class="page-numbers">
-                        <button class="page-number active">1</button>
-                        <button class="page-number">2</button>
-                        <button class="page-number">3</button>
-                        <span class="page-dots">...</span>
-                        <button class="page-number">5</button>
-                    </div>
-                    <button class="btn btn-outline" id="nextPage">
-                        Next <i class="fas fa-chevron-right"></i>
-                    </button>
-                </div>
-            </div>
-        </section>
-
-        <!-- CTA Section -->
-        <section class="cta-section">
-            <div class="container">
-                <div class="cta-card bg-gradient-secondary text-white">
-                    <div class="cta-content text-center">
-                        <h2 class="text-white">Are You an Artisan?</h2>
-                        <p class="lead mb-4">
-                            Join our community of 500+ artisans and reach customers who appreciate handmade quality
-                        </p>
-                        <a href="join-community.html" class="btn btn-primary btn-lg">
-                            <i class="fas fa-user-plus"></i> Join as Artisan
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <!-- Professional Footer -->
-    <footer class="main-footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-col">
-                    <div class="logo mb-3">
-                        <div class="logo-icon">AC</div>
-                        <div class="logo-text">
-                            <h1><span>ArtisanConnect</span></h1>
-                        </div>
-                    </div>
-                    <p>
-                        Bridging the gap between traditional artisans and modern consumers.
-                    </p>
-                    <div class="social-links">
-                        <a href="#" class="social-link" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#" class="social-link" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                        <a href="#" class="social-link" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-                        <a href="#" class="social-link" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-                    </div>
-                </div>
-
-                <div class="footer-col">
-                    <h4>Quick Links</h4>
-                    <ul class="footer-links">
-                        <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
-                        <li><a href="artisans.html"><i class="fas fa-search"></i> Discover Artisans</a></li>
-                        <li><a href="about.html"><i class="fas fa-bullseye"></i> Our Mission</a></li>
-                        <li><a href="join-community.html"><i class="fas fa-user-plus"></i> Join Community</a></li>
-                    </ul>
-                </div>
-
-                <div class="footer-col">
-                    <h4>Artisan Categories</h4>
-                    <ul class="footer-links">
-                        <li><a href="#"><i class="fas fa-palette"></i> Pottery</a></li>
-                        <li><a href="#"><i class="fas fa-tshirt"></i> Textiles</a></li>
-                        <li><a href="#"><i class="fas fa-gem"></i> Jewelry</a></li>
-                        <li><a href="#"><i class="fas fa-tree"></i> Woodwork</a></li>
-                    </ul>
-                </div>
-
-                <div class="footer-col">
-                    <h4>Contact Us</h4>
-                    <ul class="footer-links">
-                        <li><a href="mailto:hello@artisanconnect.com"><i class="fas fa-envelope"></i> hello@artisanconnect.com</a></li>
-                        <li><a href="tel:+911234567890"><i class="fas fa-phone"></i> +91 12345 67890</a></li>
-                        <li><a href="#"><i class="fas fa-comment-alt"></i> Live Chat</a></li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="footer-bottom">
-                <p>&copy; <span id="currentYear"></span> ArtisanConnect. All rights reserved.</p>
-            </div>
+    <section class="section-space-sm pt-0">
+      <div class="container">
+        <div class="recent-searches">
+          <span><i class="fas fa-clock-rotate-left"></i> Recent Searches</span>
+          <div class="recent-pills">
+            <button class="tag-pill active-tag" data-tag="pottery">Pottery</button>
+            <button class="tag-pill" data-tag="weaving">Weaving</button>
+            <button class="tag-pill" data-tag="woodwork">Woodwork</button>
+            <button class="tag-pill" data-tag="jewelry">Jewelry</button>
+            <button class="tag-pill" data-tag="textiles">Textiles</button>
+          </div>
         </div>
-    </footer>
 
-    <!-- JavaScript Files -->
-    <script src="js/main.js"></script>
-    <script src="js/artisans.js"></script>
-    
-    <script>
-        // Set current year
-        document.getElementById('currentYear').textContent = new Date().getFullYear();
-        
-        // Mobile menu toggle
-        const menuToggle = document.getElementById('menuToggle');
-        const mainNav = document.getElementById('mainNav');
-        
-        if (menuToggle && mainNav) {
-            menuToggle.addEventListener('click', function() {
-                this.classList.toggle('active');
-                mainNav.classList.toggle('active');
-            });
-            
-            // Close mobile menu when clicking on a link
-            const navLinks = mainNav.querySelectorAll('.nav-link, .btn-cta');
-            navLinks.forEach(link => {
-                link.addEventListener('click', function() {
-                    menuToggle.classList.remove('active');
-                    mainNav.classList.remove('active');
-                });
-            });
-        }
+        <div class="results-head">
+          <div>
+            <h2 id="resultsHeading">Artisans Found</h2>
+            <p id="resultsCount">Showing talented artisans near you</p>
+          </div>
+          <div class="view-switcher">
+            <button type="button" class="view-toggle active" data-view="grid"><i class="fas fa-grip"></i></button>
+            <button type="button" class="view-toggle" data-view="list"><i class="fas fa-list"></i></button>
+            <button type="button" class="btn btn-outline btn-sm" id="mapToggle"><i class="fas fa-map"></i> Show Map</button>
+          </div>
+        </div>
 
-        // Search functionality
-        document.getElementById('searchBtn').addEventListener('click', function() {
-            const searchTerm = document.getElementById('mainSearch').value;
-            if (searchTerm) {
-                alert('Searching for: ' + searchTerm);
-                // Implement actual search logic here
-            }
-        });
+        <div id="mapView" class="map-placeholder" style="display:none;">Map view placeholder for future Google Maps integration.</div>
+        <div id="artisansContainer" class="artisans-grid view-grid"></div>
+        <div id="noResults" class="empty-state hidden">
+          <i class="fas fa-face-frown"></i>
+          <h3>No artisans found</h3>
+          <p>Try changing your search or filter options.</p>
+        </div>
+      </div>
+    </section>
+  </main>
 
-        // Map toggle
-        document.getElementById('mapToggle').addEventListener('click', function() {
-            const mapView = document.getElementById('mapView');
-            const artisansContainer = document.getElementById('artisansContainer');
-            const isMapVisible = mapView.style.display !== 'none';
-            
-            if (isMapVisible) {
-                mapView.style.display = 'none';
-                artisansContainer.style.display = 'grid';
-                this.innerHTML = '<i class="fas fa-map"></i> Show Map';
-            } else {
-                mapView.style.display = 'block';
-                artisansContainer.style.display = 'none';
-                this.innerHTML = '<i class="fas fa-th"></i> Show Grid';
-            }
-        });
-
-        // View toggle
-        document.querySelectorAll('.view-toggle').forEach(toggle => {
-            toggle.addEventListener('click', function() {
-                document.querySelectorAll('.view-toggle').forEach(t => t.classList.remove('active'));
-                this.classList.add('active');
-                
-                const view = this.getAttribute('data-view');
-                const container = document.getElementById('artisansContainer');
-                container.classList.remove('view-grid', 'view-list');
-                container.classList.add('view-' + view);
-            });
-        });
-    </script>
+  <script src="js/main.js"></script>
+  <script type="module" src="js/artisans.js"></script>
 </body>
 </html>

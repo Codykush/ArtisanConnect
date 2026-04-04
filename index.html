@@ -1,261 +1,195 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ArtisanConnect - Bridging Crafts and Community</title>
-    <meta name="description" content="Connect with skilled artisans preserving traditional arts. Discover unique handmade products and support local craftsmanship.">
-    
-    <!-- Fonts & Icons -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    
-    <!-- CSS Files -->
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/animations.css">
-    <link rel="stylesheet" href="css/home.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>ArtisanConnect - Bridging Crafts and Community</title>
+  <meta name="description" content="Discover talented artisans, explore handmade products, and support traditional craftsmanship across India.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/guest-experience.css">
 </head>
-<body class="home-page">
-    <!-- Background Circles -->
-    <div class="bg-circles">
-        <div class="bg-circle circle-1"></div>
-        <div class="bg-circle circle-2"></div>
-        <div class="bg-circle circle-3"></div>
+<body class="home-page marketplace-page">
+  <header class="main-header">
+    <div class="container header-container">
+      <a href="index.html" class="logo">  
+        <div class="logo-icon">AC</div>
+        <div class="logo-text">
+          <h1>Artisan<span>Connect</span></h1>
+          <p>Bridging Crafts and Community</p>
+        </div>
+      </a>
+
+      <nav class="main-nav" id="mainNav">
+        <ul>
+          <li><a href="index.html" class="nav-link active"><i class="fas fa-house"></i> Home</a></li>
+          <li><a href="artisans.html" class="nav-link"><i class="fas fa-magnifying-glass"></i> Discover Artisans</a></li>
+          <li><a href="about.html" class="nav-link"><i class="fas fa-circle-dot"></i> Our Mission</a></li>
+          <li><a href="join-community.html" class="btn-cta"><i class="fas fa-user-plus"></i> Join Community</a></li>
+        </ul>
+      </nav>
+
+      <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
     </div>
+  </header>
 
-    <!-- Professional Header -->
-    <header class="main-header">
-        <div class="container header-container">
-            <a href="index.html" class="logo">
-                <div class="logo-icon">AC</div>
-                <div class="logo-text">
-                    <h1>Artisan<span>Connect</span></h1>
-                    <p>Bridging Crafts and Community</p>
-                </div>
-            </a>
-
-            <nav class="main-nav" id="mainNav">
-                <ul>
-                    <li><a href="index.html" class="nav-link active"><i class="fas fa-home"></i> Home</a></li>
-                    <li><a href="artisans.html" class="nav-link"><i class="fas fa-search"></i> Discover Artisans</a></li>
-                    <li><a href="about.html" class="nav-link"><i class="fas fa-bullseye"></i> Our Mission</a></li>
-                    <li><a href="join-community.html" class="btn-cta"><i class="fas fa-user-plus"></i> Join Community</a></li>
-                </ul>
-            </nav>
-
-            <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
+  <main>
+    <section class="hero-section marketplace-hero">
+      <div class="container hero-layout">
+        <div class="hero-copy text-center">
+          <h1>Preserving <span class="text-gradient">Traditional Crafts</span><br>in the Digital Age</h1>
+          <p>
+            Connect with master artisans, discover unique handmade treasures,
+            and support the preservation of cultural heritage.
+          </p>
+          <div class="hero-actions center-actions">
+            <a href="artisans.html" class="btn btn-primary btn-lg"><i class="fas fa-magnifying-glass"></i> Discover Artisans</a>
+            <a href="join-community.html" class="btn btn-outline btn-lg"><i class="fas fa-user-plus"></i> Join Community</a>
+          </div>
         </div>
-    </header>
+      </div>
+    </section>
 
-    <main>
-        <!-- Hero Section -->
-        <section class="hero-section">
-            <div class="container">
-                <div class="hero-content">
-                    <div class="hero-text animate-fade-in">
-                        <h1 class="hero-title">
-                            Preserving <span class="highlight">Traditional Crafts</span> in the Digital Age
-                        </h1>
-                        <p class="hero-subtitle">
-                            Connect with master artisans, discover unique handmade treasures, and support the preservation of cultural heritage.
-                        </p>
-                        <div class="hero-actions">
-                            <a href="artisans.html" class="btn btn-primary btn-lg">
-                                <i class="fas fa-search"></i> Discover Artisans
-                            </a>
-                            <a href="join-community.html" class="btn btn-outline btn-lg">
-                                <i class="fas fa-user-plus"></i> Join Community
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+    <section class="feature-stack section-space">
+      <div class="container narrow-stack">
+        <article class="story-card alternate-card">
+          <div class="story-icon"><i class="fas fa-handshake-angle"></i></div>
+          <div>
+            <h2>Connecting Local Artisans &amp; Skilled Craft Professionals with Customers</h2>
+            <p>
+              ArtisanConnect serves as a vital bridge that unites <span class="inline-highlight">local artisans</span>,
+              <span class="inline-highlight">professional craftspeople</span>, and <span class="inline-highlight">skilled designers</span>
+              within their specialized fields to connect directly with customers who appreciate authentic handmade creations.
+            </p>
+            <p>
+              Our platform transforms traditional crafts into thriving professions by creating meaningful relationships between makers and buyers.
+              We help artisans share their heritage, skills, and creative identity with people searching for work that carries real human stories.
+            </p>
+            <p>
+              This ecosystem helps craftsmanship evolve with contemporary demand while preserving cultural essence and enabling sustainable livelihoods.
+            </p>
+          </div>
+        </article>
 
-        <!-- Featured Content Section -->
-        <section class="featured-content">
-            <div class="container">
-                <!-- Content Card 1 -->
-                <div class="content-card animate-fade-in">
-                    <div class="content-icon">
-                        <i class="fas fa-handshake"></i>
-                    </div>
-                    <div class="content-text">
-                        <h2 class="content-title">Connecting Local Artisans & Skilled Artisans with Customers</h2>
-                        <div class="content-paragraph">
-                            <p>ArtisanConnect serves as a vital bridge that unites <span class="highlight-text">local artisans</span>, <span class="highlight-text">professional craftspeople</span>, and <span class="highlight-text">skilled designers</span> within their specialized fields to connect directly with customers who appreciate authentic, handmade creations.</p>
-                            <p>Our platform transforms traditional crafts into thriving professions by creating meaningful relationships between makers and buyers. We facilitate collaborations where local artisans can share their traditional knowledge, professional artisans can showcase their refined skills, and contemporary designers can apply modern aesthetics—all while customers discover unique, culturally-rich products that tell meaningful stories.</p>
-                            <p>This interconnected ecosystem ensures that traditional crafts evolve with contemporary demands while preserving their cultural essence, creating sustainable livelihoods for creative professionals and enriching the market with authentic, high-quality handmade products that stand apart from mass-produced alternatives.</p>
-                        </div>
-                    </div>
-                </div>
+        <article class="story-card alternate-card reverse-icon">
+          <div>
+            <h2>Showcase Your Craftsmanship</h2>
+            <p>
+              Showcase your creations to a nationwide audience with a simple upload flow.
+              Through ArtisanConnect, your handmade products become <span class="inline-highlight">instantly visible to customers</span>
+              who value authentic craftsmanship.
+            </p>
+            <p>
+              Add high-quality photos, share your location, and let the platform introduce your work to buyers in your city and beyond.
+            </p>
+            <p>
+              Turn your workshop into a <span class="inline-highlight">virtual storefront open 24/7</span>, where customers can explore, appreciate,
+              and connect with the story behind every piece.
+            </p>
+          </div>
+          <div class="story-icon"><i class="fas fa-eye"></i></div>
+        </article>
 
-                <!-- Content Card 2 -->
-                <div class="content-card reverse animate-fade-in delay-200">
-                    <div class="content-icon">
-                        <i class="fas fa-eye"></i>
-                    </div>
-                    <div class="content-text">
-                        <h2 class="content-title">Showcase Your Craftsmanship</h2>
-                        <div class="content-paragraph">
-                            <p>Showcase your creations to a nationwide audience with just a simple upload! Through ArtisanConnect, you can make your handmade products <span class="highlight-text">instantly visible to customers</span> who value authentic craftsmanship.</p>
-                            <p>Just upload high-quality photos of your work, add your location, and our platform does the rest—connecting you directly with interested buyers in your area and beyond. Your location information helps customers discover local artisans while enabling those from other regions to appreciate and commission your work.</p>
-                            <p>This seamless visibility system transforms your workshop into a <span class="highlight-text">virtual storefront open 24/7</span>, where potential customers can browse, inquire about, and purchase your creations while learning about the stories and techniques behind each piece. Let your craftsmanship speak for itself as we help you reach customers who are actively searching for the unique, personal touch that only handmade products can provide.</p>
-                        </div>
-                    </div>
-                </div>
+        <article class="story-card alternate-card">
+          <div class="story-icon"><i class="fas fa-users"></i></div>
+          <div>
+            <h2>Join Our Creative Community</h2>
+            <p>
+              Whether you are a <span class="inline-highlight">seasoned professional</span> or just beginning your artistic journey,
+              ArtisanConnect welcomes all creative individuals who want to share their talent with appreciative audiences.
+            </p>
+            <p>
+              We promote artisans across multiple levels, from local visibility to broader recognition, and help transform artistic passion into business opportunity.
+            </p>
+            <p>
+              With featured spotlights, category highlights, and direct customer discovery, your craft gets the attention it deserves.
+            </p>
+          </div>
+        </article>
+      </div>
+    </section>
 
-                <!-- Content Card 3 -->
-                <div class="content-card animate-fade-in delay-400">
-                    <div class="content-icon">
-                        <i class="fas fa-users"></i>
-                    </div>
-                    <div class="content-text">
-                        <h2 class="content-title">Join Our Creative Community</h2>
-                        <div class="content-paragraph">
-                            <p>Whether you're a <span class="highlight-text">seasoned professional</span> or just beginning your artistic journey, ArtisanConnect welcomes all creative individuals to join our growing community and showcase their talents.</p>
-                            <p>Our platform provides the perfect stage for artists, craftspeople, and designers of all skill levels to present their work to appreciative audiences. We actively promote your talent across multiple levels—starting with visibility in your immediate city, expanding to statewide recognition, and ultimately showcasing your creations to customers across the entire country.</p>
-                            <p>Our comprehensive promotion strategy includes <span class="highlight-text">featured artisan spotlights</span>, craft category highlights, and targeted marketing that connects your specific skills with customers seeking exactly what you create. By joining us, you're not just creating a profile; you're becoming part of a supportive network that celebrates craftsmanship, provides business growth opportunities, and helps transform artistic passion into sustainable profession, ensuring your talent receives the recognition and customer base it truly deserves.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+    <section class="stats-strip section-space-sm">
+      <div class="container stats-row">
+        <div class="stat-box"><strong>500+</strong><span>Active Artisans</span></div>
+        <div class="stat-box"><strong>50+</strong><span>Craft Categories</span></div>
+        <div class="stat-box"><strong>15+</strong><span>Indian States</span></div>
+        <div class="stat-box"><strong>10,000+</strong><span>Community Members</span></div>
+      </div>
+    </section>
 
-        <!-- Stats Section -->
-        <section class="stats-section bg-light">
-            <div class="container">
-                <div class="stats-grid">
-                    <div class="stat-card text-center animate-fade-in">
-                        <div class="stat-number">500+</div>
-                        <div class="stat-label">Active Artisans</div>
-                    </div>
-                    <div class="stat-card text-center animate-fade-in delay-100">
-                        <div class="stat-number">50+</div>
-                        <div class="stat-label">Craft Categories</div>
-                    </div>
-                    <div class="stat-card text-center animate-fade-in delay-200">
-                        <div class="stat-number">15+</div>
-                        <div class="stat-label">Indian States</div>
-                    </div>
-                    <div class="stat-card text-center animate-fade-in delay-300">
-                        <div class="stat-number">10,000+</div>
-                        <div class="stat-label">Community Members</div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- CTA Section -->
-        <section class="cta-section">
-            <div class="container">
-                <div class="cta-content text-center">
-                    <h2 class="text-white">Ready to Join Our Community?</h2>
-                    <p class="lead text-white mb-4">
-                        Whether you're an artisan or a supporter, there's a place for you in our growing community
-                    </p>
-                    <div class="cta-buttons">
-                        <a href="join-community.html" class="btn btn-primary btn-lg">
-                            <i class="fas fa-user-plus"></i> Join as Artisan
-                        </a>
-                        <a href="artisans.html" class="btn btn-outline btn-lg text-white">
-                            <i class="fas fa-search"></i> Browse Artisans
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <!-- Professional Footer -->
-    <footer class="main-footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-col">
-                    <div class="logo mb-3">
-                        <div class="logo-icon">AC</div>
-                        <div class="logo-text">
-                            <h1><span>ArtisanConnect</span></h1>
-                        </div>
-                    </div>
-                    <p>
-                        Bridging the gap between traditional artisans and modern consumers.
-                    </p>
-                    <div class="social-links">
-                        <a href="#" class="social-link" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#" class="social-link" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                        <a href="#" class="social-link" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-                        <a href="#" class="social-link" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-                    </div>
-                </div>
-
-                <div class="footer-col">
-                    <h4>Quick Links</h4>
-                    <ul class="footer-links">
-                        <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
-                        <li><a href="artisans.html"><i class="fas fa-search"></i> Discover Artisans</a></li>
-                        <li><a href="about.html"><i class="fas fa-bullseye"></i> Our Mission</a></li>
-                        <li><a href="join-community.html"><i class="fas fa-user-plus"></i> Join Community</a></li>
-                    </ul>
-                </div>
-
-                <div class="footer-col">
-                    <h4>Craft Categories</h4>
-                    <ul class="footer-links">
-                        <li><a href="#"><i class="fas fa-palette"></i> Pottery</a></li>
-                        <li><a href="#"><i class="fas fa-tshirt"></i> Textiles</a></li>
-                        <li><a href="#"><i class="fas fa-gem"></i> Jewelry</a></li>
-                        <li><a href="#"><i class="fas fa-tree"></i> Woodwork</a></li>
-                    </ul>
-                </div>
-
-                <div class="footer-col">
-                    <h4>Contact Us</h4>
-                    <ul class="footer-links">
-                        <li><a href="mailto:hello@artisanconnect.com"><i class="fas fa-envelope"></i> hello@artisanconnect.com</a></li>
-                        <li><a href="tel:+911234567890"><i class="fas fa-phone"></i> +91 12345 67890</a></li>
-                        <li><a href="#"><i class="fas fa-comment-alt"></i> Live Chat</a></li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="footer-bottom">
-                <p>&copy; <span id="currentYear"></span> ArtisanConnect. All rights reserved.</p>
-            </div>
+    <section class="cta-band">
+      <div class="container text-center text-white">
+        <h2>Ready to Join Our Community?</h2>
+        <p>Whether you are an artisan or a supporter, there is a place for you in our growing network.</p>
+        <div class="hero-actions center-actions">
+          <a href="join-community.html" class="btn btn-primary"><i class="fas fa-user-plus"></i> Join as Artisan</a>
+          <a href="artisans.html" class="btn btn-outline light-outline"><i class="fas fa-magnifying-glass"></i> Browse Artisans</a>
         </div>
-    </footer>
+      </div>
+    </section>
+  </main>
 
-    <!-- JavaScript Files -->
-    <script src="js/main.js"></script>
-    <script src="js/home.js"></script>
-    
-    <script>
-        // Set current year
-        document.getElementById('currentYear').textContent = new Date().getFullYear();
-        
-        // Mobile menu toggle
-        const menuToggle = document.getElementById('menuToggle');
-        const mainNav = document.getElementById('mainNav');
-        
-        if (menuToggle && mainNav) {
-            menuToggle.addEventListener('click', function() {
-                this.classList.toggle('active');
-                mainNav.classList.toggle('active');
-            });
-            
-            // Close mobile menu when clicking on a link
-            const navLinks = mainNav.querySelectorAll('.nav-link, .btn-cta');
-            navLinks.forEach(link => {
-                link.addEventListener('click', function() {
-                    menuToggle.classList.remove('active');
-                    mainNav.classList.remove('active');
-                });
-            });
-        }
-    </script>
+  <footer class="main-footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-col footer-brand">
+          <a href="index.html" class="logo">
+            <div class="logo-icon">AC</div>
+            <div class="logo-text">
+              <h1>Artisan<span>Connect</span></h1>
+              <p>Bridging Crafts and Community</p>
+            </div>
+          </a>
+          <p>Bridging the gap between traditional artisans and modern audiences.</p>
+          <div class="footer-social">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h3>Quick Links</h3>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="artisans.html">Discover Artisans</a></li>
+            <li><a href="about.html">Our Mission</a></li>
+            <li><a href="join-community.html">Join Community</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h3>Craft Categories</h3>
+          <ul>
+            <li><a href="artisans.html?craft=pottery">Pottery</a></li>
+            <li><a href="artisans.html?craft=textiles">Textiles</a></li>
+            <li><a href="artisans.html?craft=jewelry">Jewelry</a></li>
+            <li><a href="artisans.html?craft=woodwork">Woodwork</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h3>Contact Us</h3>
+          <ul>
+            <li><i class="fas fa-envelope"></i> hello@artisanconnect.com</li>
+            <li><i class="fas fa-phone"></i> +91 12345 67890</li>
+            <li><i class="fas fa-comments"></i> Live Chat</li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">© <span id="currentYear"></span> ArtisanConnect. All rights reserved.</div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
 </body>
 </html>

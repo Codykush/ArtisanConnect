@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>Artisan Dashboard | ArtisanConnect</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/theme-marketplace.css">
+</head>
+<body class="dashboard-page">
+  <header class="main-header">
+    <div class="container header-container">
+      <a href="index.html" class="logo">
+        <div class="logo-icon">AC</div>
+        <div class="logo-text">
+          <h1>Artisan<span>Connect</span></h1>
+          <p>Seller Dashboard</p>
+        </div>
+      </a>
+      <nav class="main-nav">
+        <ul>
+          <li><a href="artisans.html" class="nav-link">Discover</a></li>
+          <li><a href="dashboard.html" class="nav-link active">Dashboard</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="dashboard-wrap">
+    <div class="container">
+      <section class="dashboard-hero">
+        <h1>Artisan Dashboard</h1>
+        <p>Track views, requests, messages, products and reviews.</p>
+      </section>
+
+      <section class="stats-grid-dash" id="statsGrid"></section>
+
+      <section class="dash-grid">
+        <div class="dash-card">
+          <div class="dash-card-head">
+            <h3>Your Products</h3>
+            <a class="btn btn-outline btn-sm" id="openProfileBtn">Open Profile</a>
+          </div>
+          <div id="dashboardProducts"></div>
+        </div>
+
+        <div class="dash-card">
+          <div class="dash-card-head">
+            <h3>Inbox</h3>
+          </div>
+          <div id="dashboardInbox"></div>
+        </div>
+
+        <div class="dash-card">
+          <div class="dash-card-head">
+            <h3>Buy Requests</h3>
+          </div>
+          <div id="dashboardRequests"></div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <script src="js/main.js"></script>
+  <script type="module" src="js/dashboard.js"></script>
+</body>
+</html>
